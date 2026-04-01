@@ -1,0 +1,131 @@
+.hero-etiqueta {
+    display: inline-block;
+    background-color: #e8ebff;
+    color: #5b6df6;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+}
+
+.hero-titulo {
+    font-size: 74px;
+    line-height: 1.1;
+}
+
+.hero-descripcion {
+    max-width: 620px;
+    line-height: 1.8;
+}
+
+.barra-busqueda {
+    max-width: 760px;
+    border-radius: 999px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(31, 35, 51, 0.08);
+    gap: 14px;
+}
+
+.campo-busqueda {
+    flex: 1;
+    gap: 10px;
+    padding: 0 8px;
+}
+
+.input-hero {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #1f2333;
+}
+
+.input-hero::placeholder {
+    color: #a0a6bb;
+}
+
+.icono-busqueda {
+    color: #5b6df6;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.separador-barra {
+    width: 1px;
+    height: 28px;
+    background-color: #e9ebf5;
+}
+
+.boton-busqueda {
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.empresas-destacadas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-size: 13px;
+    color: #62697f;
+}
+
+.texto-empresa-label {
+    color: #8d93a8;
+    font-style: italic;
+}
+
+/* card */
+
+.tarjeta-oferta {
+    border-radius: 18px;
+    padding: 28px;
+}
+
+.icono-oferta {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background-color: #ececff;
+    color: #5b5df6;
+    font-size: 18px;
+}
+
+.etiqueta-card {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6a6ff5;
+    background-color: #eef0ff;
+    padding: 6px 10px;
+    border-radius: 999px;
+    line-height: 1;
+}
+
+
+.boton-oferta {
+    background-color: #5b5df6;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.boton-oferta:hover {
+    background-color: #4a4de8;
+    color: #ffffff;
+}
+
+.card-recurso{
+    border-radius: 18px;
+    padding: 28px;
+}
+.fecha-foro{
+    padding: 10px 25px;
+}

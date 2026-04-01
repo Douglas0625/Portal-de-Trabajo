@@ -1,0 +1,57 @@
+/* ===== NAVBAR ===== */
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e9ebf5;
+    padding: 12px 20px;
+}
+
+.nav-link {
+    color: #6f7894;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    color: #5b6df6;
+}
+
+.nav-gap{
+    gap: 40px;
+}
+
+.nav-link-gap {
+    gap: 30px;
+}
+
+.nav-botones{
+    gap: 20px !important;
+}
+
+ /* ===== NAVBOTONES ===== */
+.boton-primario {
+    background: #5b6df6;
+    color: #ffffff;
+    border-radius: 18px;
+    padding: 10px 24px;
+    border: none;
+    font-weight: 500;
+}
+
+.boton-primario:hover {
+    background: #4a5ae0;
+}
+
+.boton-secundario {
+    border: none;
+    background: #ffffff;
+    color: #1f2333;
+    font-size: 14px;
+    padding: 10px 24px;
+    font-weight: 500;
+}
+
+.boton-secundario:hover {
+    background: #f4f6ff;
+}
+
+

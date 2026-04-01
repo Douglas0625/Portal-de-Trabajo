@@ -1,0 +1,49 @@
+/* ===== BODY ===== */
+body {
+    font-family: 'Jua', sans-serif;
+    background-color: #ffffff;
+    color: #1f2333;
+    line-height: 1.6;
+}
+
+
+/* ===== TIPOGRAFÍA ===== */
+.titulos {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.subtitulos {
+    font-size: 20px;
+    color: #6f7894;
+    line-height: 1.6;
+}
+
+.parrafos {
+    font-size: 14px;
+    color: #6f7894;
+    line-height: 1.6;
+}
+
+.text-azul {
+    color: #5b6df6;
+}
+
+/* ===== UTILIDADES BÁSICAS ===== */
+
+/* color fondo gris */
+.bg-gris{
+    background-color: #ecedf4;
+}
+
+.cards-container {
+    border-radius: 18px;
+    padding: 28px;
+}
+
+/* ===== FUENTES ===== */
+.fuente-inter {
+    font-family: 'Inter', sans-serif;
+}
+
