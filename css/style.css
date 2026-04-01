@@ -6,44 +6,105 @@ body {
     line-height: 1.6;
 }
 
-
-/* ===== TIPOGRAFÍA ===== */
+/* ===== TIPOGRAFÍA BASE ===== */
 .titulos {
+    font-family: 'Jua', sans-serif;
     font-size: 36px;
     font-weight: 600;
     line-height: 1.6;
+    color: #1f2333;
 }
 
 .subtitulos {
+    font-family: 'Jua', sans-serif;
     font-size: 20px;
-    color: #6f7894;
+    font-weight: 400;
     line-height: 1.6;
+    color: #6f7894;
 }
 
 .parrafos {
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
-    color: #6f7894;
+    font-weight: 400;
     line-height: 1.6;
+    color: #6f7894;
 }
 
+/* ===== VARIANTES DE TEXTO ===== */
+.titulo-seccion {
+    font-family: 'Jua', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #1f2333;
+}
+
+.titulo-card {
+    font-family: 'Jua', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #1f2333;
+}
+
+.subtexto {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #6f7894;
+}
+
+.texto-mini {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6f7894;
+}
+
+.texto-etiqueta {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #6f7894;
+}
+
+.texto-puntaje {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #1f2333;
+}
+
+.texto-italico {
+    font-style: italic;
+}
+
+/* ===== COLOR ===== */
 .text-azul {
     color: #5b6df6;
 }
 
-/* ===== UTILIDADES BÁSICAS ===== */
-
-/* color fondo gris */
-.bg-gris{
+/* ===== FONDOS ===== */
+.bg-gris {
     background-color: #ecedf4;
 }
 
+/* ===== CONTENEDORES ===== */
 .cards-container {
     border-radius: 18px;
     padding: 28px;
 }
 
-/* ===== FUENTES ===== */
+/* ===== FUENTES AUXILIARES ===== */
 .fuente-inter {
     font-family: 'Inter', sans-serif;
 }
 
+.fuente-titulos {
+    font-family: 'Jua', sans-serif;
+}
