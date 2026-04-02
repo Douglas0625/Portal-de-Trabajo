@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Moderacion de Reportes</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/moderacionReportes.css">
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container">
+                <div class="d-flex gap-5 align-items-center">
+                    <a class="navbar-brand" href="#">
+                        <img src="/media/EmpleaLinkAdmin.png" alt="Logo" width="190" height="50" class="d-inline-block align-text-top">
+                    </a>
+                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link" href="#">Moderacion</a>
+                </div>
+                <div class="d-flex gap-3 align-items-center">
+                    <i class="bi bi-bell"></i>
+                    <hr class="vr" style="height: 30px; margin: 0 15px;">
+                    <div class="d-flex flex-column align-items-end">
+                        <p class="mb-0" >Admin Central</p>
+                        <small class="text-muted">Moderador Jefe</small>
+                    </div>
+                    <a class="nav-link d-flex align-items-center justify-content-center bg-primary bg-opacity-10 fw-bold rounded-circle" href="#" style="width: 45px; height: 45px; color: #554DEF;">
+                        AD
+                    </a>
+                    <i class="bi bi-box-arrow-right"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- base del titulo -->
+        <section class="pb-5" style="background-color: #ECEDF4">
+            <div class="container d-flex flex-column align-items-start gap-3 py-4">
+                <a class="fw-bold nav-link" href="#" style="color:#554DEF"><small><i class="bi bi-arrow-left"></i> Volver al Dashboard</small></a>
+            </div>
+            <div class="container d-flex pb-5 justify-content-between align-items-end gap-5">
+                <div>
+                    <h1>Moderación de <span style="color: #554DEF;">Reportes</span></h1>
+                    <p class="secondary-color">Revisa y gestiona las denuncias realizadas por la comunidad para mantener un entorno profesional.</p>
+                </div>
+                <div class="mt-4">
+                    <div class="d-flex gap-3">
+
+                        <!-- Pendientes -->
+                        <div class="col-md-4" style="width: 170px; height: 100px;">
+                            <div class="p-4 rounded-4 text-center" style="background-color: #f3e9dd;">
+                                <h2 class="fw-bold mb-1" style="color:#f97316;">14</h2>
+                                <small class=" fw-semibold">PENDIENTES</small>
+                            </div>
+                        </div>
+
+                        <!-- Revisados -->
+                        <div class="col-md-4" style="width: 170px; height: 100px;">
+                            <div class="p-4 rounded-4 text-center" style="background-color: #e6f4ea;">
+                                <h2 class="fw-bold mb-1" style="color:#22c55e;">124</h2>
+                                <small class="fw-semibold">REVISADOS</small>
+                            </div>
+                        </div>
+
+                        <!-- Bloqueados -->
+                        <div class="col-md-4" style="width: 170px; height: 100px;">
+                            <div class="p-4 rounded-4 text-center" style="background-color: #f8e7e7;">
+                                <h2 class="fw-bold mb-1" style="color:#ef4444;">42</h2>
+                                <small class=" fw-semibold">BLOQUEADOS</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros y busqueda -->
+
+            <div class="container">
+                <div class=" d-flex justify-content-between my-5 p-3 rounded-4" style="background-color: white;">
+                    <form class="d-flex" style="border: black;" role="search">
+                        <button class="btn" type="submit">Search</button>
+                        <input class="form-control me-2" style="width: 650px;" type="search" placeholder="Buscar por usuario reportado o motivo..." aria-label="Search"/>
+                    </form>
+                    <div class="d-flex gap-5 align-items-start">
+                        <li class="nav-item dropdown p-2" style="width: 250px; border: 1px solid gray; border-radius: 5px;">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Todos los tipos
+                            </a>
+                            <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown p-2" style="width: 250px; border: 1px solid gray; border-radius: 5px;">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Solo Pendientes
+                            </a>
+                            <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                </div>
+            </div>
+
+            <!-- card -->
+
+            <div class="card container" style="width:100%; margin:24px auto; border-radius:18px; overflow:hidden; border-radius: 20px;">
+                <div class="row g-0">
+                    <div class="col-md-3" style="background:#fff; border-right:1px solid #ececec; padding:22px;">
+                        <span style="background:#eef2ff; color:#554DEF; font-size:11px; font-weight:700; border-radius:20px; padding:6px 10px;">COMENTARIO</span>
+                        <div class="text-muted small mt-2 mb-4">HACE 2 HORAS</div>
+
+                        <div class="mb-3 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-exclamation-circle pt-3 rounded-circle justify-content-center align-items-center" style="color:#ef4444; background-color: rgba(239, 68, 68, 0.15); width: 40px; height: 40px; "></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">MOTIVO</h5>
+                                <h6 style="color:#ef4444; font-weight:600;">Lenguaje inapropiado</h6>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-person pt-3 rounded-circle justify-content-center align-items-center" style="color:gray; background-color: rgba(233, 236, 239, 0.5); width: 40px; height: 40px; "></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">DENUNCIANTE</h5>
+                                <h6>JuanPerez88</h6>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-person-exclamation pt-3 rounded-circle justify-content-center align-items-center" style="color: #554DEF; background-color: rgba(97, 93, 228, 0.15); width: 40px; height: 40px;"></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">DENUNCIADO</h5>
+                                <a href="#" style="color:#554DEF; font-weight:600; text-decoration:none;">HaterUser22</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5 style="font-size:11px; color:gray; font-weight:700; text-transform:uppercase; margin-bottom:4px;">Severidad</h5>
+                            <span style="background:#f97316; color:white; font-size:12px; padding:4px 10px; border-radius:12px; font-weight:700;">Alta</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9" style="background:#fff; padding:28px;">
+                        <h5 class="fw-bold mb-4 text-center">Contenido Reportado</h5>
+
+                        <div style="border:1px solid #ececec; border-radius:16px; padding:26px; color:#6b7280; font-size:30px; font-style:italic; line-height:1.5; background:#fff;" class="mb-4">
+                        “Este es un comentario con lenguaje ofensivo y ataques personales hacia otros usuarios que no comparten mi opinión sobre el mercado laboral.”
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-end gap-4 align-items-center mt-4">
+                        <a href="#" style="color:#6b7280; font-weight:600; text-decoration:none;">
+                            <i class="fa-regular fa-circle-check me-2"></i>
+                            No bloquear / Descartar
+                        </a>
+                        <button class="btn" style="background:#ef4444; color:white; border:none; border-radius:12px; padding:12px 28px; font-weight:600;">
+                            <i class="fa-solid fa-user-slash me-2"></i>
+                            Bloquear Usuario
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card -->
+
+            <div class="card container" style="width:100%; margin:24px auto; border-radius:18px; overflow:hidden; border-radius: 20px;">
+                <div class="row g-0">
+                    <div class="col-md-3" style="background:#fff; border-right:1px solid #ececec; padding:22px;">
+                        <span style="background:#eef2ff; color:#554DEF; font-size:11px; font-weight:700; border-radius:20px; padding:6px 10px;">COMENTARIO</span>
+                        <div class="text-muted small mt-2 mb-4">HACE 2 HORAS</div>
+
+                        <div class="mb-3 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-exclamation-circle pt-3 rounded-circle justify-content-center align-items-center" style="color:#ef4444; background-color: rgba(239, 68, 68, 0.15); width: 40px; height: 40px; "></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">MOTIVO</h5>
+                                <h6 style="color:#ef4444; font-weight:600;">Lenguaje inapropiado</h6>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-person pt-3 rounded-circle justify-content-center align-items-center" style="color:gray; background-color: rgba(233, 236, 239, 0.5); width: 40px; height: 40px; "></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">DENUNCIANTE</h5>
+                                <h6>JuanPerez88</h6>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-person-exclamation pt-3 rounded-circle justify-content-center align-items-center" style="color: #554DEF; background-color: rgba(97, 93, 228, 0.15); width: 40px; height: 40px;"></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">DENUNCIADO</h5>
+                                <a href="#" style="color:#554DEF; font-weight:600; text-decoration:none;">HaterUser22</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5 style="font-size:11px; color:gray; font-weight:700; text-transform:uppercase; margin-bottom:4px;">Severidad</h5>
+                            <span style="background:#ef4444; color:white; font-size:12px; padding:4px 10px; border-radius:12px; font-weight:700;">Critica</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9" style="background:#fff; padding:28px;">
+                        <h5 class="fw-bold mb-4 text-center">Contenido Reportado</h5>
+
+                        <div style="border:1px solid #ececec; border-radius:16px; padding:26px; color:#6b7280; font-size:30px; font-style:italic; line-height:1.5; background:#fff;" class="mb-4">
+                        “Este es un comentario con lenguaje ofensivo y ataques personales hacia otros usuarios que no comparten mi opinión sobre el mercado laboral.”
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-end gap-4 align-items-center mt-4">
+                        <a href="#" style="color:#6b7280; font-weight:600; text-decoration:none;">
+                            <i class="fa-regular fa-circle-check me-2"></i>
+                            No bloquear / Descartar
+                        </a>
+                        <button class="btn" style="background:#ef4444; color:white; border:none; border-radius:12px; padding:12px 28px; font-weight:600;">
+                            <i class="fa-solid fa-user-slash me-2"></i>
+                            Bloquear Usuario
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card -->
+
+            <div class="card container" style="width:100%; margin:24px auto; border-radius:18px; overflow:hidden; border-radius: 20px;">
+                <div class="row g-0">
+                    <div class="col-md-3" style="background:#fff; border-right:1px solid #ececec; padding:22px;">
+                        <span style="background:#eef2ff; color:#554DEF; font-size:11px; font-weight:700; border-radius:20px; padding:6px 10px;">COMENTARIO</span>
+                        <div class="text-muted small mt-2 mb-4">HACE 2 HORAS</div>
+
+                        <div class="mb-3 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-exclamation-circle pt-3 rounded-circle justify-content-center align-items-center" style="color:#ef4444; background-color: rgba(239, 68, 68, 0.15); width: 40px; height: 40px; "></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">MOTIVO</h5>
+                                <h6 style="color:#ef4444; font-weight:600;">Lenguaje inapropiado</h6>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-person pt-3 rounded-circle justify-content-center align-items-center" style="color:gray; background-color: rgba(233, 236, 239, 0.5); width: 40px; height: 40px; "></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">DENUNCIANTE</h5>
+                                <h6>JuanPerez88</h6>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 d-flex gap-3 align-items-start">
+                            <i class="d-flex bi bi-person-exclamation pt-3 rounded-circle justify-content-center align-items-center" style="color: #554DEF; background-color: rgba(97, 93, 228, 0.15); width: 40px; height: 40px;"></i>
+                            <div>
+                                <h5 style="font-size:11px; color:gray; font-weight:700;  margin-bottom:4px;">DENUNCIADO</h5>
+                                <a href="#" style="color:#554DEF; font-weight:600; text-decoration:none;">HaterUser22</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5 style="font-size:11px; color:gray; font-weight:700; text-transform:uppercase; margin-bottom:4px;">Severidad</h5>
+                            <span class="bg-primary" style=" color:white; font-size:12px; padding:4px 10px; border-radius:12px; font-weight:700;">Baja</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9" style="background:#fff; padding:28px;">
+                        <h5 class="fw-bold mb-4 text-center">Contenido Reportado</h5>
+
+                        <div style="border:1px solid #ececec; border-radius:16px; padding:26px; color:#6b7280; font-size:30px; font-style:italic; line-height:1.5; background:#fff;" class="mb-4">
+                        “Este es un comentario con lenguaje ofensivo y ataques personales hacia otros usuarios que no comparten mi opinión sobre el mercado laboral.”
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-end gap-4 align-items-center mt-4">
+                        <a href="#" style="color:#6b7280; font-weight:600; text-decoration:none;">
+                            <i class="fa-regular fa-circle-check me-2"></i>
+                            No bloquear / Descartar
+                        </a>
+                        <button class="btn" style="background:#ef4444; color:white; border:none; border-radius:12px; padding:12px 28px; font-weight:600;">
+                            <i class="fa-solid fa-user-slash me-2"></i>
+                            Bloquear Usuario
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="bg-white my-5">
+            <div class="container py-5">
+                <div class="row text-center text-md-start">
+
+                    <!-- Columna 1 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="d-flex align-items-center gap-2 justify-content-start">
+                            <img src="/media/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top mb-2">
+                            <h5 class="fw-bold" style="color: #554DEF;">EmpleaLink</h5>
+                        </div>
+                        <p class="text-secondary small">
+                            La plataforma que conecta talento con oportunidades laborales.
+                        </p>
+                        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+                            <i class="bi bi-facebook"></i>
+                            <i class="bi bi-instagram"></i>
+                            <i class="bi bi-linkedin"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- Columna 2 -->
+                    <div class="col-md-4 mb-4">
+                        <h6 class="">Para Candidato</h6>
+                        <ul class="list-unstyled small">
+                            <li><a href="#" class="text-secondary text-decoration-none">Explorar Empleos</a></li>
+                            <li><a href="#" class="text-secondary text-decoration-none">Subir mi CV</a></li>
+                            <li><a href="#" class="text-secondary text-decoration-none">COnsejos de Carrera</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna 3 -->
+                    <div class="col-md-4 mb-4">
+                        <h6 class="">Para Empresas</h6>
+                        <ul class="list-unstyled small">
+                            <li><a href="#" class="text-secondary text-decoration-none">publicar Vacante</a></li>
+                            <li><a href="#" class="text-secondary text-decoration-none">Crear Perfil</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parte inferior -->
+            <div class="border-top py-3">
+                <div class="container d-flex justify-content-between align-items-center flex-wrap">
+                    <small class="text-secondary">
+                        © 2026 EmpleaLink. Todos los derechos reservados. Douglas Leon y Luis Barrera
+                    </small>
+
+                    <small class="text-secondary">
+                        Hecho con ❤️ para tu futuro
+                    </small>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    </body>
+</html>
