@@ -2,18 +2,35 @@
     --bs-body-font-family: "Jua", sans-serif;
 } */
 
-h1 {
-    font-family: 'Jua', sans-serif;
+.com-seccion-l{
+    background:#fff; 
+    border-right:1px solid #ececec; 
+    padding:22px;
 }
 
-li {
-    list-style: none;
+.com-etiqueta{
+    background:#eef2ff; 
+    color:#554DEF; 
+    font-size:11px; 
+    font-weight:700; 
+    border-radius:20px; 
+    padding:6px 10px;
 }
 
-h5 {
-    font-family: 'Jua', sans-serif;
+.com-icono{
+    font-size:18px; 
+    font-weight:700; 
+    border-radius:20px; 
+    padding:6px 10px;
 }
 
-h6 {
-    font-family: 'Jua', sans-serif;
+.com {
+    border:1px solid #ececec; 
+    border-radius:16px; 
+    padding:26px; 
+    color:#6b7280; 
+    font-size:18px; 
+    font-style:italic; 
+    line-height:1.5; 
+    background:#fff;
 }

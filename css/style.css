@@ -62,7 +62,7 @@ body {
 
 .texto-mini {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
     color: #6f7894;
@@ -86,6 +86,9 @@ body {
 
 .texto-italico {
     font-style: italic;
+}
+.f-20{
+    font-size: 20px;
 }
 
 /* COLOR */
