@@ -129,38 +129,40 @@
 
 
             <div class="container d-flex gap-4">
-                <div class="p-4 rounded-4" style=" max-height: 600px; background-color: white; font-family: sans-serif;">
-                    <div class="py-3 d-flex justify-content-start align-items-center">
-                        <div class="d-flex justify-content-center align-items-center rounded-3" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
-                            <i class="bi bi-file-earmark-plus fs-3" style="color: #554DEF;"></i>
+                <div style="font-family: sans-serif;">
+                    <div class="p-4 rounded-4" style=" background-color: white; font-family: sans-serif;">
+                        <div class="py-3 d-flex justify-content-start align-items-center">
+                            <div class="d-flex justify-content-center align-items-center rounded-3" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
+                                <i class="bi bi-file-earmark-plus fs-3" style="color: #554DEF;"></i>
+                            </div>
+                            <h1 class="fw-bold ps-4">Publicar en el Foro / Recurso</h1>
                         </div>
-                        <h1 class="fw-bold ps-4">Publicar en el Foro / Recurso</h1>
+                        <p class="pb-4">Crea nuevas entradas de noticias, consejos o recursos para la comunidad</p>
+                        <form class="row g-3">
+                            <div class="col-md-8">
+                                    <label for="inputEmail4" class="form-label">Titulo de la Publicacion</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Ej. Nuevas tendencias de IT 2024">
+                            </div>
+                            <div class="col-md-4">
+                                    <label for="inputState" class="form-label">Tipo de Contenido</label>
+                                    <select id="inputState" class="form-select">
+                                        <option selected>Entrada de Foro</option>
+                                        <option>Noticias</option>
+                                    </select>
+                            </div>
+                            <div class="col-12">
+                                    <label for="inputPassword4" class="form-label">Enlace de imagen o Recurso</label>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="https://ejemplo.com/imagen.jpg">
+                            </div>
+                            <div class="mb-3 col-12">
+                                <label for="exampleFormControlTextarea1" class="form-label">Mensaje / Contenido</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Escribe el cuerpo de tu Publicacion Aqui."></textarea>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end ">
+                                    <button type="submit" class="btn fw-bold rounded-4" style="width: 200px; height: 50px; background-color: #554DEF; color:white;"><i class="bi bi-send"></i> Publicar Ahora</button>
+                            </div>
+                        </form>
                     </div>
-                    <p class="pb-4">Crea nuevas entradas de noticias, consejos o recursos para la comunidad</p>
-                    <form class="row g-3">
-                        <div class="col-md-8">
-                                <label for="inputEmail4" class="form-label">Titulo de la Publicacion</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Ej. Nuevas tendencias de IT 2024">
-                        </div>
-                        <div class="col-md-4">
-                                <label for="inputState" class="form-label">Tipo de Contenido</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Entrada de Foro</option>
-                                    <option>Noticias</option>
-                                </select>
-                        </div>
-                        <div class="col-12">
-                                <label for="inputPassword4" class="form-label">Enlace de imagen o Recurso</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="https://ejemplo.com/imagen.jpg">
-                        </div>
-                        <div class="mb-3 col-12">
-                            <label for="exampleFormControlTextarea1" class="form-label">Mensaje / Contenido</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Escribe el cuerpo de tu Publicacion Aqui."></textarea>
-                        </div>
-                        <div class="col-12 d-flex justify-content-end ">
-                                <button type="submit" class="btn fw-bold rounded-4" style="width: 200px; height: 50px; background-color: #554DEF; color:white;"><i class="bi bi-send"></i> Publicar Ahora</button>
-                        </div>
-                    </form>
 
 
                     <!-- TABLA DE GESTION DE USUARIOS -->
@@ -512,7 +514,12 @@
                     </div>
                 </div>
             </div>
-        </section>    
+        </section>  
+        
+        
+        <!-- FOOTER -->
+
+
         <footer class="bg-white my-5">
             <div class="container py-5">
                 <div class="row text-center text-md-start">
