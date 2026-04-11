@@ -22,9 +22,9 @@ body {
 
 /* Common Card Style */
 .perfil-card {
+
     background-color: white;
     border-radius: 16px;
-    padding: 24px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     margin-bottom: 24px;
 }
@@ -71,20 +71,20 @@ body {
 
 .profile-name-sidebar {
     font-family: 'Jua', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     color: #1f2333;
     margin-bottom: 4px;
 }
 .profile-role-sidebar {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     color: #5b6df6;
     margin-bottom: 4px;
     font-weight: 500;
 }
 .profile-location-sidebar {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     color: #6f7894;
     margin-bottom: 0;
 }
@@ -105,7 +105,7 @@ body {
 }
 .contact-item-text {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     color: #1f2333;
     margin: 0;
 }
@@ -155,7 +155,7 @@ body {
 /* Sidebar Stats Grid */
 .stats-title {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: #6f7894;
     text-transform: uppercase;
@@ -184,7 +184,7 @@ body {
 
 .stat-grid-item .number {
     font-family: 'Jua', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: #1f2333;
     line-height: 1;
     margin-bottom: 4px;
@@ -215,25 +215,13 @@ body {
     justify-content: center;
     font-size: 20px;
 }
-.section-title h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #1f2333;
-    margin-bottom: 4px;
-}
-.section-title p {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: #6f7894;
-    margin: 0;
-}
+
 
 .form-label-custom {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: #1f2333;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6f7894;
     margin-bottom: 8px;
 }
 .form-control-custom {

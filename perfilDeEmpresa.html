@@ -3,26 +3,44 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Perfil de Empresa</title>
+        <title>EmpleaLink - Dashboard Usuario</title>
+        <!-- bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jua&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+        <!-- css -->
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/componentes.css">
+        <!-- iconos -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/componentes.css">
-        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <!-- Navbar -->
-        <nav class="navbar bg-body-tertiary">
+
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <div class="d-flex gap-5 align-items-center">
+                <!-- Izquierda -->
+                <div class="nav-gap d-flex">
                     <a class="navbar-brand" href="#">
-                        <img src="/media/Frame.png" alt="Logo" width="190" height="50" class="d-inline-block align-text-top">
+                        <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
                     </a>
-                    <a class="nav-link" href="#">Inicio</a>
-                    <a class="nav-link" href="#">Empleos</a>
-                    <a class="nav-link" href="#">Dashboard</a>
-                    <a class="nav-link" href="#">Foro</a>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+        
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav nav-link-gap">
+                            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                            <a class="nav-link" href="#">Empleos</a>
+                            <a class="nav-link" href="#">Foro</a>
+                        </div>
+                    </div>
                 </div>
+                <!-- Derecha -->
                 <div class="d-flex gap-3 align-items-center">
                     <i class="bi bi-bell"></i>
                     <hr class="vr" style="height: 30px; margin: 0 15px;">
@@ -48,9 +66,9 @@
                     <h1>Mi <span style="color: #554DEF;">Empresa</span></h1>
                     <p class="secondary-color" style="font-family: sans-serif;">Gestiona tu identidad institucional y destaca tu cultura para atraer al mejor talento.</p>
                 </div>
-                <div style="font-family: sans-serif;">
-                    <button class="btn mx-5">Cancelar</button>
-                    <button class="btn rounded-4" style="color: white; background-color: #554DEF; width: 250px; height: 50px;"><i class="bi bi-floppy"></i> Guardar Cambios</button>
+                <div class="d-flex gap-3">
+                    <button class="boton-secundario">Cancelar</button>
+                    <button class="boton-primario"><i class="bi bi-floppy"></i> Guardar Cambios</button>
                 </div>
             </div>
 
@@ -64,7 +82,7 @@
                     <div class="mb-4 card border-0 rounded-5 overflow-hidden" style="font-family: sans-serif; background-color:#ffffff;">
 
                         <!-- Header -->
-                        <div class="text-center p-4 d-flex flex-column align-items-center" style="background-color:#f7f7fb;">
+                        <div class="text-center p-5 d-flex flex-column align-items-center" style="background-color:#f7f7fb;">
                             <div class="position-relative d-inline-block">
 
                                 <!-- Avatar -->
@@ -102,7 +120,7 @@
 
 
                             <!-- Botones -->
-                            <button class="btn w-100 rounded-4 py-3 mb-3"style="border:1px solid #554DEF; color:#554DEF; background-color:#ECEDF4"><i class="bi bi-eye"></i> Ver Perfil Publico</button>
+                            <button class="btn w-100 mb-3 boton-secundario-grande"><i class="bi bi-eye"></i> Ver Perfil Publico</button>
 
                         </div>
                     </div>
@@ -160,33 +178,33 @@
 
 
                 <div style="font-family: sans-serif;">
-                    <div class="p-4 rounded-5 mb-4" style=" background-color: white; font-family: sans-serif;">
+                    <div class="p-5 rounded-5 mb-4" style=" background-color: white; font-family: sans-serif;">
                         <div class="py-3 d-flex justify-content-start align-items-center">
                             <div class="d-flex justify-content-center align-items-center rounded-4" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
                                 <i class="bi bi-buildings fs-3" style="color: #554DEF;"></i>
                             </div>
-                            <h1 class="fw-bold ps-4">Informacion General</h1>
+                            <h1 class="fw-bold ps-4 titulos fuente-inter">Informacion General</h1>
                         </div>
                         <p class="pb-4">Datos básicos de identificación institucional</p>
                         <form class="row g-3 mb-4">
                             <div class="mb-3 col-md-6" s>
-                                <label for="inputEmail4" class="form-label">Nombre de la Empresa</label>
+                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Nombre de la Empresa</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="TecgFlows Solutions">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputPassword4" class="form-label">Correo Corporativo</label>
+                                <label for="inputPassword4" class="form-label fw-bold fuente-inter">Correo Corporativo</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="contact@techflow.io">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputEmail4" class="form-label">Telefono</label>
+                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Telefono</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="+54 9 11 5555 0123">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputPassword4" class="form-label">Ubicacion</label>
+                                <label for="inputPassword4" class="form-label fw-bold fuente-inter">Ubicacion</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="Buenos Aires, Argentina">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputState" class="form-label">Rubro o Sector</label>
+                                <label for="inputState" class="form-label fw-bold fuente-inter">Rubro o Sector</label>
                                 <select id="inputState" class="form-select rounded-4" style="height: 50px;">
                                     <option selected>Tecnologia e IA</option>
                                     <option>Backend</option>
@@ -194,14 +212,14 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputState" class="form-label">Tamaño de la empresa</label>
+                                <label for="inputState" class="form-label fw-bold fuente-inter">Tamaño de la empresa</label>
                                 <select id="inputState" class="form-select rounded-4" style="height: 50px;">
                                     <option selected>0 - 50 empleados</option>
                                     <option>51 - 250 empleados</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                    <label for="inputPassword4" class="form-label">Enlace de imagen o Recurso</label>
+                                    <label for="inputPassword4" class="form-label fw-bold fuente-inter">Enlace de imagen o Recurso</label>
                                     <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="https://ejemplo.com/imagen.jpg">
                             </div>
                         </form>
@@ -211,29 +229,29 @@
                     <!-- Descripcion y cultura -->
 
 
-                    <div class="mb-4 p-4 rounded-4" style=" background-color: white; font-family: sans-serif;">
+                    <div class="mb-4 p-5 rounded-4" style=" background-color: white; font-family: sans-serif;">
                         <div class="py-3 d-flex justify-content-start align-items-center">
                             <div class="d-flex justify-content-center align-items-center rounded-4" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
                                 <i class="bi bi-file-earmark-text fs-3" style="color: #554DEF;"></i>
                             </div>
-                            <h1 class="fw-bold ps-4">Descripcion y Cultura</h1>
+                            <h1 class="fw-bold ps-4 titulos fuente-inter">Descripcion y Cultura</h1>
                         </div>
                         <p class="pb-4">Define la esencia de tu organización</p>
                         <form class="row g-3">
                             <div class="mb-3 col-12">
-                                <label for="exampleFormControlTextarea1" class="form-label">Sobre la empresa</label>
+                                <label for="exampleFormControlTextarea1" class="form-label fw-bold fuente-inter">Sobre la empresa</label>
                                 <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Somos una compañía líder en el desarrollo de soluciones de Inteligencia Artificial aplicadas al análisis de datos masivos. Nuestra misión es democratizar el acceso a la tecnología de punta para empresas de todos los tamaños."></textarea>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="exampleFormControlTextarea1" class="form-label">Misión (Opcional)</label>
+                                <label for="exampleFormControlTextarea1" class="form-label fw-bold fuente-inter">Misión (Opcional)</label>
                                 <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Escribe la misión aquí..."></textarea>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="exampleFormControlTextarea1" class="form-label">Visión (Opcional)</label>
+                                <label for="exampleFormControlTextarea1" class="form-label fw-bold fuente-inter">Visión (Opcional)</label>
                                 <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Escribe la visión aquí..."></textarea>
                             </div>
                             <div class="mb-3 mb-3 col-12">
-                                <label for="exampleFormControlTextarea1" class="form-label">Cultura y Beneficios</label>
+                                <label for="exampleFormControlTextarea1" class="form-label fw-bold fuente-inter">Cultura y Beneficios</label>
                                 <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Fomentamos un ambiente de trabajo colaborativo, flexible y orientado a objetivos. Ofrecemos medicina prepaga de primer nivel, capacitaciones constantes y home office total."></textarea>
                             </div>
                         </form>
@@ -243,29 +261,29 @@
                     <!-- Gestion de talentos -->
 
 
-                    <div class="p-4 rounded-5 mb-4" style=" background-color: white; font-family: sans-serif;">
+                    <div class="p-5 rounded-5 mb-4" style=" background-color: white; font-family: sans-serif;">
                         <div class="py-3 d-flex justify-content-start align-items-center">
                             <div class="d-flex justify-content-center align-items-center rounded-4" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
                                 <i class="bi bi-people fs-3" style="color: #554DEF;"></i>
                             </div>
-                            <h1 class="fw-bold ps-4">Gestion de talentos</h1>
+                            <h1 class="fw-bold ps-4 titulos fuente-inter">Gestion de talentos</h1>
                         </div>
                         <p class="pb-4">Datos del contacto de RRHH y reclutamiento</p>
                         <form class="row g-3 mb-4">
                             <div class="mb-3 col-md-6" s>
-                                <label for="inputEmail4" class="form-label">Responsable de Reclutamiento</label>
+                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Responsable de Reclutamiento</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="Lucía Fernández">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputPassword4" class="form-label">Cargo del Responsable</label>
+                                <label for="inputPassword4" class="form-label fw-bold fuente-inter">Cargo del Responsable</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="Gerente de Adquisición de Talento">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputEmail4" class="form-label">Correo de Reclutamiento</label>
+                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Correo de Reclutamiento</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="jobs@techflow.io">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputState" class="form-label">Modalidad predominante</label>
+                                <label for="inputState" class="form-label fw-bold fuente-inter">Modalidad predominante</label>
                                 <select id="inputState" class="form-select rounded-4" style="height: 50px;">
                                     <option selected>100% Remoto</option>
                                     <option>50% remoto 50% presencial</option>
@@ -279,29 +297,29 @@
                     <!-- Redes y Enlaces -->
 
 
-                    <div class="p-4 rounded-5 mb-4" style=" background-color: white; font-family: sans-serif;">
+                    <div class="p-5 rounded-5 mb-4" style=" background-color: white; font-family: sans-serif;">
                         <div class="py-3 d-flex justify-content-start align-items-center">
                             <div class="d-flex justify-content-center align-items-center rounded-4" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
                                 <i class="bi bi-globe-americas fs-3" style="color: #554DEF;"></i>
                             </div>
-                            <h1 class="fw-bold ps-4">Redes y Enlaces</h1>
+                            <h1 class="fw-bold ps-4 titulos fuente-inter">Redes y Enlaces</h1>
                         </div>
                         <p class="pb-4">Presencia digital de la compañía</p>
                         <form class="row g-3 mb-4">
                             <div class="mb-3 col-md-6" s>
-                                <label for="inputEmail4" class="form-label">Sitio Web Oficial</label>
+                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Sitio Web Oficial</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="www.techflow.io">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputPassword4" class="form-label">LinkedIn</label>
+                                <label for="inputPassword4" class="form-label fw-bold fuente-inter">LinkedIn</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="linkedin.com/company/techflow">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputEmail4" class="form-label">Instagram</label>
+                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Instagram</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="@techflow_io">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputEmail4" class="form-label">Facebook</label>
+                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Facebook</label>
                                 <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="facebook.com/techflowsolutions">
                             </div>
                         </form>
@@ -311,9 +329,9 @@
                     <!-- BOTONES FINALES -->
 
 
-                    <div class="pb-5 mb-5 mt-5 d-flex align-items-center justify-content-end">
-                        <button class="btn mx-5">Cancelar</button>
-                        <button class="btn rounded-4" style="color: white; background-color: #554DEF; width: 250px; height: 50px;"><i class="bi bi-floppy"></i> Guardar Cambios</button>
+                    <div class="pb-5 mb-5 mt-5 d-flex gap-3 align-items-center justify-content-end">
+                        <button class="boton-secundario">Cancelar</button>
+                        <button class="boton-primario"><i class="bi bi-floppy"></i> Guardar Cambios</button>
                     </div>
                 </div>
             </div>
@@ -323,59 +341,53 @@
         <!-- FOOTER -->
 
 
-        <footer class="bg-white my-5">
+        <footer class="bg-white border-top">
             <div class="container py-5">
-                <div class="row text-center text-md-start">
+                <div class="row mb-4 gap-4 py-2">
 
-                    <!-- Columna 1 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="d-flex align-items-center gap-2 justify-content-start">
-                            <img src="/media/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top mb-2">
-                            <h5 class="fw-bold" style="color: #554DEF;">EmpleaLink</h5>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img src="./media/Frame.svg" width="130">
                         </div>
-                        <p class="text-secondary small">
-                            La plataforma que conecta talento con oportunidades laborales.
+
+                        <p class="subtexto" style="font-size: 14px;">
+                            Transformamos el futuro laboral conectando el talento adecuado con el lugar perfecto.
                         </p>
-                        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
-                            <i class="bi bi-facebook"></i>
-                            <i class="bi bi-instagram"></i>
-                            <i class="bi bi-linkedin"></i>
+
+                        <div class="d-flex gap-3 mt-4">
+                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-facebook" style="font-size: 14px; color: #1f2333;"></i></span>
+                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-twitter" style="font-size: 14px; color: #1f2333;"></i></span>
+                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-instagram" style="font-size: 14px; color: #1f2333;"></i></span>
+                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-linkedin" style="font-size: 14px; color: #1f2333;"></i></span>
                         </div>
-
                     </div>
-
-                    <!-- Columna 2 -->
-                    <div class="col-md-4 mb-4">
-                        <h6 class="">Para Candidato</h6>
-                        <ul class="list-unstyled small">
-                            <li><a href="#" class="text-secondary text-decoration-none">Explorar Empleos</a></li>
-                            <li><a href="#" class="text-secondary text-decoration-none">Subir mi CV</a></li>
-                            <li><a href="#" class="text-secondary text-decoration-none">COnsejos de Carrera</a></li>
+                    <!-- Candidatos -->
+                    <div class="col">
+                        <h6 class="titulo-seccion mb-3" style="font-size: 16px;">Para Candidatos</h6>
+                        <ul class="lista-footer" style="font-size: 14px;">
+                            <li>Explorar Empleos</li>
+                            <li>Subir mi CV</li>
+                            <li>Consejos de Carrera</li>
+                        </ul>
+                    </div>
+                    <!-- Empresas -->
+                    <div class="col">
+                        <h6 class="titulo-seccion mb-3" style="font-size: 16px;">Para Empresas</h6>
+                        <ul class="lista-footer" style="font-size: 14px;">
+                            <li>Publicar Vacante</li>
+                            <li>Crear perfil</li>
                         </ul>
                     </div>
 
-                    <!-- Columna 3 -->
-                    <div class="col-md-4 mb-4">
-                        <h6 class="">Para Empresas</h6>
-                        <ul class="list-unstyled small">
-                            <li><a href="#" class="text-secondary text-decoration-none">publicar Vacante</a></li>
-                            <li><a href="#" class="text-secondary text-decoration-none">Crear Perfil</a></li>
-                        </ul>
-                    </div>
                 </div>
-            </div>
 
-            <!-- Parte inferior -->
-            <div class="border-top py-3">
-                <div class="container d-flex justify-content-between align-items-center flex-wrap">
-                    <small class="text-secondary">
-                        © 2026 EmpleaLink. Todos los derechos reservados. Douglas Leon y Luis Barrera
-                    </small>
+                <hr style="border-color: #ecedf4; margin-top: 30px; margin-bottom: 20px;">
 
-                    <small class="text-secondary">
-                        Hecho con ❤️ para tu futuro
-                    </small>
+                <div class="d-flex justify-content-between flex-wrap texto-mini">
+                    <span>© 2026 EmpleaLink. Todos los derechos reservados. Douglas Leon y Luis Barrera</span>
+                    <span>Hecho con ❤ para tu futuro</span>
                 </div>
+
             </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
