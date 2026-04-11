@@ -1,0 +1,75 @@
+.barra-busqueda {
+    border-radius: 999px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(31, 35, 51, 0.08);
+    gap: 14px;
+}
+
+.input-hero {
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #1f2333;
+}
+
+.input-hero::placeholder {
+    color: #a0a6bb;
+}
+
+.icono-busqueda {
+    color: #5b6df6;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.separador-barra {
+    width: 1px;
+    height: 28px;
+    background-color: #e9ebf5;
+}
+
+.boton-busqueda {
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.boton-filtro {
+    font-family: 'Inter', sans-serif;
+    border: none;
+    background: #ffffff;
+    border-radius: 18px;
+    color: #5b6df6;
+    font-size: 14px;
+    padding: 5px 15px;
+    font-weight: bold;
+}
+
+.boton-filtro:hover {
+    background: #f4f6ff;
+}
+
+.borde-card-empleo {
+    border: 1px solid #e9ebf5;
+}
+
+.logo-empleo {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background-color: #eef1f7;
+    color: #5b6df6;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.fondo-badge-azul {
+    background-color: #eef0ff;
+}
