@@ -122,3 +122,58 @@
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
+
+.modal-respuesta {
+    border: none;
+    border-radius: 24px;
+    background: transparent;
+    box-shadow: none;
+}
+
+.comentario-input-box {
+    border: 1px solid #5b6df6;
+    border-radius: 22px;
+    padding: 18px 18px 12px 18px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(31, 35, 51, 0.08);
+    min-height: 95px;
+}
+
+.input-comentario-modal {
+    width: 100%;
+    min-height: 60px;
+    border: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #1f2333;
+    line-height: 1.6;
+}
+
+.input-comentario-modal::placeholder {
+    color: #6f7894;
+}
+
+.boton-enviar-comentario {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    background-color: #5b6df6;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(91, 109, 246, 0.25);
+}
+
+.boton-enviar-comentario:hover {
+    background-color: #4a5ae0;
+}
+
+.modal-backdrop.show {
+    opacity: 0.35;
+}

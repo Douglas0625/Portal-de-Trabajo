@@ -133,8 +133,9 @@
                                     </p>
                                 </div>
 
-                                <button class="boton-responder mt-2" type="button">Responder</button>
-
+                                <button class="boton-responder mt-2" type="button" data-bs-toggle="modal" data-bs-target="#modalResponder">
+                                    Responder
+                                </button>
 
 
                                 <!-- Respuesta admin -->
@@ -173,7 +174,9 @@
                                     </p>
                                 </div>
 
-                                <button class="boton-responder mt-2" type="button">Responder</button>
+                                <button class="boton-responder mt-2" type="button" data-bs-toggle="modal" data-bs-target="#modalResponder">
+                                    Responder
+                                </button>
                             </div>
                         </div>
 
@@ -202,7 +205,24 @@
 
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modalResponder" tabindex="-1" aria-labelledby="modalResponderLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content modal-respuesta">
+                <div class="modal-body p-0">
 
+                    <div class="comentario-input-box d-flex align-items-end justify-content-between gap-3">
+                        <textarea class="input-comentario-modal parrafos" placeholder="Escribe un comentario..."></textarea>
+
+                        <button class="boton-enviar-comentario" type="button">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
