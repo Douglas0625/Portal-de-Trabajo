@@ -14,6 +14,7 @@
         <!-- css -->
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="./css/componentes.css">
+        <link rel="stylesheet" href="./css/gestionOferta.css">
         <!-- iconos -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     </head>
@@ -67,7 +68,9 @@
                     <p class="secondary-color" style="font-family: sans-serif;">Administra tus vacantes y revisa los candidatos más recientes sin cambiar de pantalla.</p>
                 </div>
                 <div style="font-family: sans-serif;">
-                    <button class="btn rounded-4" style="color: white; background-color: #554DEF; width: 250px; height: 50px;"><i class="bi bi-plus"></i> Crear Nueva Oferta</button>
+                    <button class="btn rounded-4 boton-primario-grande" data-bs-toggle="modal" data-bs-target="#modalOferta">
+                        <i class="bi bi-plus"></i> Crear Nueva Oferta
+                    </button>
                 </div>
             </div>
 
@@ -149,7 +152,7 @@
 
 
 
-            <!-- CUERPO DEL PERFIL DE EMPRESA -->
+            <!-- CUERPO DEL FILTRO -->
 
 
 
@@ -178,7 +181,6 @@
                                     <select id="inputState" class="form-select rounded-4" style="height: 50px;">
                                         <option selected>Activas</option>
                                         <option>Cerradas</option>
-                                        <option>extra</option>
                                     </select>
                                 </div> 
                                 <div class="text-center pt-3">
@@ -283,19 +285,111 @@
                                 </div>
                             </div>
     
-    
+
+                            <div class="collapse mt-4 candidatos-expandido" id="candidatosOferta1">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="border rounded-4 p-3 d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <img src="media/fotoPerfilChiquita.jpg" class="rounded-circle" width="40" height="40">
+                                                <div>
+                                                    <div class="fw-bold">Sofía Herrera</div>
+                                                    <small class="text-secondary">Product Designer</small>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="border rounded-4 p-3 d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <img src="media/fotoPerfilChiquita.jpg" class="rounded-circle" width="40" height="40">
+                                                <div>
+                                                    <div class="fw-bold">Daniel Flores</div>
+                                                    <small class="text-secondary">UI Designer</small>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="border rounded-4 p-3 d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <img src="media/fotoPerfilChiquita.jpg" class="rounded-circle" width="40" height="40">
+                                                <div>
+                                                    <div class="fw-bold">Valeria Castro</div>
+                                                    <small class="text-secondary">UX Researcher</small>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="border rounded-4 p-3 d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <img src="media/fotoPerfilChiquita.jpg" class="rounded-circle" width="40" height="40">
+                                                <div>
+                                                    <div class="fw-bold">José Mejía</div>
+                                                    <small class="text-secondary">Visual Designer</small>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="border rounded-4 p-3 d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <img src="media/fotoPerfilChiquita.jpg" class="rounded-circle" width="40" height="40">
+                                                <div>
+                                                    <div class="fw-bold">Lucía Pineda</div>
+                                                    <small class="text-secondary">Interaction Designer</small>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="border rounded-4 p-3 d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <img src="media/fotoPerfilChiquita.jpg" class="rounded-circle" width="40" height="40">
+                                                <div>
+                                                    <div class="fw-bold">Andrés Molina</div>
+                                                    <small class="text-secondary">Senior UX Designer</small>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="text-center mt-4">
-                                <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">
-                                    Ver todos los candidatos recientes (6)
-                                </a>
+                                <button class="btn fw-bold text-decoration-none border-0 bg-transparent p-0" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#candidatosOferta1" 
+                                        aria-expanded="false" 
+                                        aria-controls="candidatosOferta1"
+                                        style="color:#554DEF;">
+                                    Ver todos los candidatos recientes (10)
+                                </button>
+
                                 <div class="small text-secondary fw-bold mt-2">
                                     +44 postulantes totales esperando revisión
                                 </div>
                             </div>
+
+
                         </div>
                         <div class="vr mx-5"></div>
-                        <button class="btn rounded-4"style="background:#f7f7fb; height: 40px;"><i class="bi bi-pencil"></i></button>
-
+                        <button class="btn rounded-4" data-bs-toggle="modal" data-bs-target="#modalOferta" style="background:#f7f7fb; height: 40px;">
+                            <i class="bi bi-pencil"></i>
+                        </button>
                     </div>
                     <div class="d-flex rounded-5 p-4 mb-4" style="background-color: white;">
                         <div>
@@ -342,7 +436,7 @@
                                                 <small class="text-secondary">UI Designer Senior</small>
                                             </div>
                                         </div>
-                                        <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        <a href="perfilDeCandidato.html" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
                                     </div>
                                 </div>
     
@@ -355,7 +449,7 @@
                                                 <small class="text-secondary">Product Designer</small>
                                             </div>
                                         </div>
-                                        <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        <a href="perfilDeCandidato.html" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
                                     </div>
                                 </div>
     
@@ -368,7 +462,7 @@
                                                 <small class="text-secondary">UX Designer</small>
                                             </div>
                                         </div>
-                                        <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        <a href="perfilDeCandidato.html" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
                                     </div>
                                 </div>
     
@@ -380,8 +474,8 @@
                                                 <div class="fw-bold">Mateo Sosa</div>
                                                 <small class="text-secondary">Visual Designer</small>
                                             </div>
-                                        </div>
-                                        <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        </div> 
+                                        <a href="perfilDeCandidato.html" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
                                     </div>
                                 </div>
                             </div>
@@ -484,7 +578,7 @@
                                                 <small class="text-secondary">Visual Designer</small>
                                             </div>
                                         </div>
-                                        <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
+                                        <a href="perfilDeCandidato.html" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver perfil</a>
                                     </div>
                                 </div>
                             </div>
@@ -507,6 +601,162 @@
             </div>
         </section>  
         
+        <!-- Modal -->
+        <div class="modal fade" id="modalOferta" tabindex="-1" aria-labelledby="modalOfertaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-oferta">
+
+                    <div class="modal-body p-4 p-md-5 fuente-inter">
+
+                        <!-- Header -->
+                        <div class="d-flex align-items-start gap-3 mb-4">
+                            <div class="icono-modal-oferta d-flex align-items-center justify-content-center">
+                                <i class="bi bi-suitcase-lg text-azul"></i>
+                            </div>
+
+                            <div>
+                                <h2 class="titulo-seccion mb-1 fuente-inter" id="modalOfertaLabel">Crear una nueva oferta</h2>
+                                <p class="texto-mini mb-0">
+                                    Completa los detalles de la nueva oferta de trabajo. Todos los campos son obligatorios.
+                                </p>
+                            </div>
+                        </div>
+
+                        <form>
+                            <!-- Título -->
+                            <div class="mb-4">
+                                <label class="titulo-seccion mb-2 fuente-inter">Título del Puesto</label>
+                                <input type="text" class="form-control input-auth" placeholder="Ej. Programador Senior">
+                            </div>
+
+                            <!-- Experiencia -->
+                            <div class="mb-4">
+                                <label class="titulo-seccion mb-2 fuente-inter">Experiencia requerida</label>
+                                <input type="text" class="form-control input-auth" placeholder="Ej. Programador Senior">
+                            </div>
+
+                            <!-- Ubicación -->
+                            <div class="mb-4">
+                                <label class="titulo-seccion mb-3 fuente-inter">Ubicación</label>
+
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="opcion-radio">
+                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="remoto" checked>
+                                            <label class="form-check-label parrafos mb-0" for="remoto">
+                                                Remoto
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="opcion-radio">
+                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="presencial">
+                                            <label class="form-check-label parrafos mb-0" for="presencial">
+                                                Presencial
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="opcion-radio">
+                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="hibrido">
+                                            <label class="form-check-label parrafos mb-0" for="hibrido">
+                                                Híbrido
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tipo -->
+                            <div class="mb-4">
+                                <label class="titulo-seccion mb-3 fuente-inter">Tipo</label>
+
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="opcion-radio">
+                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="fulltime" checked>
+                                            <label class="form-check-label parrafos mb-0" for="fulltime">
+                                                Full time
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="opcion-radio">
+                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="midtime">
+                                            <label class="form-check-label parrafos mb-0" for="midtime">
+                                                Mid time
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="opcion-radio">
+                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="practicas">
+                                            <label class="form-check-label parrafos mb-0" for="practicas">
+                                                Prácticas
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Salarios -->
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="titulo-seccion mb-2 fuente-inter">Salario Mínimo</label>
+                                    <input type="text" class="form-control input-auth">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="titulo-seccion mb-2 fuente-inter">Salario Máximo</label>
+                                    <input type="text" class="form-control input-auth">
+                                </div>
+                            </div>
+
+                            <!-- Descripción -->
+                            <div class="mb-4">
+                                <label class="titulo-seccion mb-2 fuente-inter">Descripción</label>
+                                <textarea class="form-control input-auth textarea-oferta" rows="4"></textarea>
+                            </div>
+
+                            <!-- Responsabilidades -->
+                            <div class="mb-4">
+                                <label class="titulo-seccion mb-2 fuente-inter">Responsabilidades</label>
+                                <textarea class="form-control input-auth textarea-oferta" rows="4"></textarea>
+                            </div>
+
+                            <!-- Requisitos -->
+                            <div class="mb-4">
+                                <label class="titulo-seccion mb-2 fuente-inter">Requisitos</label>
+                                <textarea class="form-control input-auth textarea-oferta" rows="4"></textarea>
+                            </div>
+
+                            <!-- Estado -->
+                            <div class="mb-5">
+                                <label class="titulo-seccion mb-2 fuente-inter">Estado de Publicación</label>
+                                <select class="form-select input-auth">
+                                    <option selected>Activa</option>
+                                    <option>Pausada</option>
+                                    <option>Cerrada</option>
+                                </select>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="d-flex justify-content-end gap-3">
+                                <button type="button" class="boton-secundario" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="boton-primario">Guardar Cambios</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         
         <!-- FOOTER -->
 

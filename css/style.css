@@ -115,3 +115,7 @@ body {
 .fuente-titulos {
     font-family: 'Jua', sans-serif;
 }
+
+.candidatos-expandido {
+    padding-top: 10px;
+}
