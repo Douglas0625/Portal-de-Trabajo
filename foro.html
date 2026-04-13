@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EmpleaLink - Foro y Noticias</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/componentes.css">
+    <link rel="stylesheet" href="./css/foro.css">
+    <!-- iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+  </head>
+  <body class="bg-gris">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container">
+            <div class="nav-gap d-flex align-items-center">
+                <a class="navbar-brand m-0 p-0" href="#">
+                    <img src="./media/Frame.svg" alt="EmpleaLink" width="130">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNavAltMarkup">
+                    <div class="navbar-nav nav-link-gap">
+                        <a class="nav-link" href="#">Empleos</a>
+                        <a class="nav-link" href="#">Dashboard</a>
+                        <a class="nav-link" href="#">Recursos</a>
+                        <a class="nav-link" href="#">Foro</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-profile ms-auto">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="profile-info d-none d-md-block">
+                        <p class="profile-name">Gabriela Rojas</p>
+                        <p class="profile-role">UX/UI Designer</p>
+                    </div>
+                    <img src="./media/fotoPerfilChiquita.jpg" alt="Profile" width="40" height="40" onerror="this.src='https://ui-avatars.com/api/?name=Gabriela+Rojas&background=random'">
+                </div>
+                <div class="logout-icon ms-2">
+                    <i class="bi bi-box-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <div class="container">
+        <section id="header">
+            <h1 class="titulos mt-4 mb-3">Foro y <span class="text-azul">Noticias</span></h1>
+            <p class="subtitulos fuente-inter mb-3">
+                Mantente informado con las últimas noticias del mercado laboral, consejos de carrera y debates en nuestro foro.
+            </p>
+        </section>
+        <section class="bg-gris py-4">
+            <div class="container">
+                <div class="bg-white foro-card-principal">
+
+                    <!-- Encabezado del post -->
+                    <div class="p-4 border-bottom">
+                        <div class="d-flex justify-content-between align-items-start mb-4">
+
+                            <div class="d-flex gap-3 align-items-start">
+                                <div class="avatar-foro">
+                                    <img src="./media/fotoPerfilChiquita.jpg" alt="Admin" class="img-fluid rounded-circle">
+                                </div>
+
+                                <div>
+                                    <div class="subtexto fuente-titulos text-dark mb-0">Admin EmpleaLink</div>
+                                    <div class="d-flex gap-2 align-items-center flex-wrap">
+                                        <span class="texto-mini text-azul fw-semibold">Administrador</span>
+                                        <span class="texto-mini">•</span>
+                                        <span class="texto-mini">Hace 2 horas</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="badge-etiqueta-oficial">OFICIAL</span>
+                        </div>
+
+                        <h1 class="titulo-card fuente-inter fw-bold titulo-post-foro mb-2">
+                            Nuevas leyes de teletrabajo en LATAM 2024
+                        </h1>
+
+                        <p class="subtexto mb-0">
+                            A partir del próximo mes, entra en vigor el nuevo marco regulatorio para el trabajo remoto.
+                            Esto incluye subsidios obligatorios para internet y equipos ergonómicos.
+                            ¿Cómo creen que esto afectará a las pequeñas empresas?
+                        </p>
+                    </div>
+
+                    <!-- Acciones -->
+                    <div class="p-4 border-bottom">
+                        <div class="d-flex gap-4 flex-wrap">
+                            <div class="d-flex align-items-center gap-2 texto-etiqueta">
+                                <i class="bi bi-chat"></i>
+                                <span>14 comentarios</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comentarios -->
+                    <div class="p-4">
+
+                        <!-- Comentario 1 -->
+                        <div class="d-flex gap-3 align-items-start mb-4">
+                            <div class="avatar-comentario">
+                                <img src="./media/fotoPerfilChiquita.jpg" alt="Usuario" class="img-fluid rounded-circle">
+                            </div>
+
+                            <div class="flex-grow-1">
+                                <div class="comentario-box">
+                                    <div class="d-flex justify-content-between align-items-start gap-3 mb-1">
+                                        <div class="titulo-seccion">Carlos Ruiz</div>
+                                        <span class="texto-mini">Hace 1 hora</span>
+                                    </div>
+
+                                    <p class="parrafos mb-0">
+                                        Es un gran avance para los derechos laborales, aunque el costo operativo subirá un poco.
+                                    </p>
+                                </div>
+
+                                <button class="boton-responder mt-2" type="button">Responder</button>
+
+
+
+                                <!-- Respuesta admin -->
+                                <div class="d-flex gap-2 align-items-start ms-2 mt-3">
+                                    <i class="bi bi-arrow-return-right texto-mini mt-2"></i>
+
+                                    <div class="respuesta-admin-box flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start gap-3 mb-1">
+                                            <div class="texto-mini text-azul fw-semibold">Admin EmpleaLink</div>
+                                            <span class="texto-mini">Hace 45 min</span>
+                                        </div>
+
+                                        <p class="parrafos mb-0">
+                                            Exacto Carlos, buscamos un equilibrio entre bienestar y sostenibilidad.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comentario 2 -->
+                        <div class="d-flex gap-3 align-items-start mb-4">
+                            <div class="avatar-comentario">
+                                <img src="./media/fotoPerfilChiquita.jpg" alt="Usuario" class="img-fluid rounded-circle">
+                            </div>
+
+                            <div class="flex-grow-1">
+                                <div class="comentario-box">
+                                    <div class="d-flex justify-content-between align-items-start gap-3 mb-1">
+                                        <div class="titulo-seccion">Ana Martínez</div>
+                                        <span class="texto-mini">Hace 30 min</span>
+                                    </div>
+
+                                    <p class="parrafos mb-0">
+                                        ¿Esto aplica también para contratos por honorarios o solo dependencia?
+                                    </p>
+                                </div>
+
+                                <button class="boton-responder mt-2" type="button">Responder</button>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Escribir comentario -->
+                        <div class="d-flex gap-3 align-items-start mt-5">
+                            <div class="avatar-comentario">
+                                <img src="./media/fotoPerfilChiquita.jpg" alt="Usuario" class="img-fluid rounded-circle">
+                            </div>
+
+                            <div class="flex-grow-1">
+                                <div class="comentario-input-box d-flex align-items-center justify-content-between gap-3">
+                                    <input type="text" class="input-comentario parrafos" placeholder="Escribe un comentario...">
+                                    <button class="boton-enviar-comentario" type="button">
+                                        <i class="bi bi-send"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+
+
+
+    <!-- footer -->
+    <footer class="bg-white border-top">
+            <div class="container py-5">
+                <div class="row mb-4 gap-4 py-2">
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img src="./media/Frame.svg" width="130">
+                        </div>
+
+                        <p class="subtexto" style="font-size: 14px;">
+                            Transformamos el futuro laboral conectando el talento adecuado con el lugar perfecto.
+                        </p>
+
+                        <div class="d-flex gap-3 mt-4">
+                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-facebook" style="font-size: 14px; color: #1f2333;"></i></span>
+                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-twitter" style="font-size: 14px; color: #1f2333;"></i></span>
+                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-instagram" style="font-size: 14px; color: #1f2333;"></i></span>
+                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-linkedin" style="font-size: 14px; color: #1f2333;"></i></span>
+                        </div>
+                    </div>
+                    <!-- Candidatos -->
+                    <div class="col">
+                        <h6 class="titulo-seccion mb-3" style="font-size: 16px;">Para Candidatos</h6>
+                        <ul class="lista-footer" style="font-size: 14px;">
+                            <li>Explorar Empleos</li>
+                            <li>Subir mi CV</li>
+                            <li>Consejos de Carrera</li>
+                        </ul>
+                    </div>
+                    <!-- Empresas -->
+                    <div class="col">
+                        <h6 class="titulo-seccion mb-3" style="font-size: 16px;">Para Empresas</h6>
+                        <ul class="lista-footer" style="font-size: 14px;">
+                            <li>Publicar Vacante</li>
+                            <li>Crear perfil</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <hr style="border-color: #ecedf4; margin-top: 30px; margin-bottom: 20px;">
+
+                <div class="d-flex justify-content-between flex-wrap texto-mini">
+                    <span>© 2026 EmpleaLink. Todos los derechos reservados. Douglas Leon y Luis Barrera</span>
+                    <span>Hecho con ❤ para tu futuro</span>
+                </div>
+
+            </div>
+        </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
