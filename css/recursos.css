@@ -40,21 +40,6 @@
     border: 1px solid #e9ebf5;
 }
 
-.avatar-opinion {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background-color: #eef0ff;
-    color: #5b6df6;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
 .badge-puntaje {
     background-color: #fff7d6;
     color: #d4a300;
@@ -111,4 +96,34 @@
 
 .barra-roja {
     background-color: #ef4444;
+}
+
+.avatar-comentario {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.rating {
+  direction: rtl; /* importante para que funcione bien */
+  display: inline-flex;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 30px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+  color: gold;
+}
+
+.rating input:checked ~ label {
+  color: gold;
 }
