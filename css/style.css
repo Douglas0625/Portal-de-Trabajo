@@ -87,8 +87,13 @@ body {
 .texto-italico {
     font-style: italic;
 }
+
 .f-20{
     font-size: 20px;
+}
+
+.f-24{
+    font-size: 24px;
 }
 
 /* COLOR */
