@@ -127,3 +127,14 @@
 .rating input:checked ~ label {
   color: gold;
 }
+
+.auth-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5b6df6;
+    background-color: #e8ebff;
+    padding: 6px 14px;
+    border-radius: 999px;
+}

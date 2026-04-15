@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <div class="nav-gap d-flex">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                     <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
                 </a>
                 
@@ -34,15 +34,20 @@
     
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav nav-link-gap">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                        <a class="nav-link" href="#">Empleos</a>
-                        <a class="nav-link" href="#">Recursos</a>
+                        <!-- aqui depende de que rol este logueado, si es empresa o candidato, se le mostrara una pagina de inicio diferente -->
+                        <a class="nav-link" aria-current="page" href="index.html">Inicio</a> 
+                        <a class="nav-link active" href="ofertas.html">Empleos</a>
+                        <a class="nav-link" href="recursos_y_valoracione.html">Recursos</a>
                     </div>
                 </div>
             </div>
             <div class="nav-botones d-flex">
-                <button class="boton-secundario" type="submit">Iniciar Sesión</button>
-                <button class="boton-primario" type="submit">Registrarse</button>
+                <a href="inicio_registro.html">
+                    <button class="boton-secundario" type="submit">Iniciar Sesión</button>
+                </a>
+                <a href="inicio_registro.html">
+                    <button class="boton-primario" type="submit">Registrarse</button>
+                </a>
             </div>
 
         </div>
@@ -205,7 +210,8 @@
                                 <!-- Derecha -->
                                 <div class="col-lg-3">
                                     <div class="border-start ps-4 h-100 d-flex flex-column gap-4">
-                                        <a href="#" class="boton-primario text-decoration-none text-center d-flex align-items-center justify-content-center gap-2">
+                                        <!-- detalle oferta -->
+                                        <a href="" class="boton-primario text-decoration-none text-center d-flex align-items-center justify-content-center gap-2">
                                             Ver oferta
                                             <i class="bi bi-arrow-right"></i>
                                         </a>
