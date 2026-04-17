@@ -1,0 +1,1 @@
+export const API_URL = "https://portal-empleo-api-production.up.railway.app";
