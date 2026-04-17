@@ -1,0 +1,179 @@
+/* ===== FORO DETALLE ===== */
+.foro-card-principal {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #e9ebf5;
+}
+
+.titulo-post-foro {
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.avatar-foro {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.avatar-comentario {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.badge-etiqueta-oficial {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #5b6df6;
+    background-color: #eef0ff;
+    padding: 6px 10px;
+    border-radius: 999px;
+    line-height: 1;
+}
+
+.comentario-box {
+    border: 1px solid #e9ebf5;
+    border-radius: 16px;
+    padding: 14px 16px;
+    background-color: #ffffff;
+}
+
+.respuesta-admin-box {
+    border-radius: 14px;
+    padding: 14px 16px;
+    background-color: #f4f3ff;
+    border: 1px solid #e6e3ff;
+}
+
+.boton-responder {
+    border: none;
+    background: transparent;
+    color: #5b6df6;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0;
+}
+
+.boton-responder:hover {
+    text-decoration: underline;
+}
+
+.comentario-input-box {
+    border: 1px solid #e9ebf5;
+    border-radius: 16px;
+    padding: 10px 12px 10px 16px;
+    background-color: #ffffff;
+}
+
+.input-comentario {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+}
+
+.boton-enviar-comentario {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 12px;
+    background-color: #5b6df6;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.boton-enviar-comentario:hover {
+    background-color: #4a5ae0;
+}
+
+/* User Navbar adjustments */
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-profile img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    text-align: right;
+}
+
+.profile-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2333;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.profile-role {
+    font-size: 12px;
+    color: #6f7894;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.modal-respuesta {
+    border: none;
+    border-radius: 24px;
+    background: transparent;
+    box-shadow: none;
+}
+
+.comentario-input-box {
+    border: 1px solid #5b6df6;
+    border-radius: 22px;
+    padding: 18px 18px 12px 18px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(31, 35, 51, 0.08);
+    min-height: 95px;
+}
+
+.input-comentario-modal {
+    width: 100%;
+    min-height: 60px;
+    border: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #1f2333;
+    line-height: 1.6;
+}
+
+.input-comentario-modal::placeholder {
+    color: #6f7894;
+}
+
+.boton-enviar-comentario {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    background-color: #5b6df6;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(91, 109, 246, 0.25);
+}
+
+.boton-enviar-comentario:hover {
+    background-color: #4a5ae0;
+}
+
+.modal-backdrop.show {
+    opacity: 0.35;
+}

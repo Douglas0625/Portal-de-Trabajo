@@ -1,0 +1,517 @@
+/* ===== PERFIL USUARIO STYLES ===== */
+
+body {
+    background-color: #f4f5f8;
+}
+
+/* Link Volver */
+.link-volver {
+    font-family: 'Inter', sans-serif;
+    color: #5b6df6;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+.link-volver:hover {
+    color: #4a5ae0;
+}
+
+/* Common Card Style */
+.perfil-card {
+
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    margin-bottom: 24px;
+}
+
+/* Sidebar Profile */
+.sidebar-profile-header {
+    text-align: center;
+    position: relative;
+    margin-bottom: 24px;
+}
+.sidebar-profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+.sidebar-badge-active {
+    position: absolute;
+    top: 0;
+    right: 15%;
+    background-color: #2ecc71;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+.sidebar-edit-icon {
+    position: absolute;
+    bottom: -5px;
+    right: 35%;
+    background-color: #5b6df6;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+.profile-name-sidebar {
+    font-family: 'Jua', sans-serif;
+    font-size: 24px;
+    color: #1f2333;
+    margin-bottom: 4px;
+}
+.profile-role-sidebar {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #5b6df6;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+.profile-location-sidebar {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #6f7894;
+    margin-bottom: 0;
+}
+
+/* Sidebar Contact Items */
+.contact-item-box {
+    border: 1px solid #ecedf4;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.contact-item-box i {
+    color: #6f7894;
+    font-size: 16px;
+}
+.contact-item-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #1f2333;
+    margin: 0;
+}
+
+/* CV Buttons */
+.btn-upload-cv {
+    background-color: #edf0ff;
+    color: #5b6df6;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 12px;
+    padding: 12px 24px;
+    border: none;
+    width: 100%;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.btn-upload-cv:hover {
+    background-color: #e0e6ff;
+}
+
+.btn-download-cv {
+    background-color: #f4f5f8;
+    color: #6f7894;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 12px;
+    padding: 12px 24px;
+    border: none;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.btn-download-cv:hover {
+    background-color: #ecedf4;
+}
+
+/* Sidebar Stats Grid */
+.stats-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6f7894;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.stat-grid-item {
+    text-align: center;
+    padding: 16px 8px;
+    border: 1px solid #ecedf4;
+    border-radius: 12px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.stat-grid-item .icon {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.stat-grid-item.v-1 i { color: #5b6df6; }
+.stat-grid-item.v-2 i { color: #2ecc71; }
+.stat-grid-item.v-3 i { color: #f1c40f; }
+.stat-grid-item.v-4 i { color: #9b59b6; }
+
+.stat-grid-item .number {
+    font-family: 'Jua', sans-serif;
+    font-size: 18px;
+    color: #1f2333;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+.stat-grid-item .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: #6f7894;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Main Forms Area */
+.section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.section-icon {
+    width: 42px;
+    height: 42px;
+    background-color: #edf0ff;
+    color: #5b6df6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+
+.form-label-custom {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6f7894;
+    margin-bottom: 8px;
+}
+.form-control-custom {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #1f2333;
+    background-color: white;
+    border: 1px solid #ecedf4;
+    border-radius: 12px;
+    padding: 12px 16px;
+    width: 100%;
+}
+.form-control-custom:focus {
+    outline: none;
+    border-color: #5b6df6;
+    box-shadow: 0 0 0 3px rgba(91, 109, 246, 0.1);
+}
+textarea.form-control-custom {
+    resize: none;
+}
+
+/* Experience List */
+.btn-add {
+    background-color: #edf0ff;
+    color: #5b6df6;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+.btn-add:hover {
+    background-color: #e0e6ff;
+}
+
+.exp-box {
+    border: 1px solid #ecedf4;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+.exp-box:last-child {
+    margin-bottom: 0;
+}
+
+.exp-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2333;
+    margin-bottom: 4px;
+}
+.exp-company {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #5b6df6;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.exp-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #6f7894;
+    margin-bottom: 12px;
+}
+.exp-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #6f7894;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Education List */
+.edu-item {
+    border-bottom: 1px solid #ecedf4;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+.edu-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.edu-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2333;
+    margin-bottom: 4px;
+}
+.edu-school {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #5b6df6;
+    margin-bottom: 4px;
+}
+.edu-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #6f7894;
+}
+
+/* Skills */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.skill-badge {
+    background-color: #edf0ff;
+    color: #5b6df6;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* Alertas de empleo */
+.alert-box {
+    border: 1px solid #ecedf4;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.checkbox-group {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #1f2333;
+    cursor: pointer;
+}
+.custom-checkbox input {
+    accent-color: #1f2333;
+    width: 16px;
+    height: 16px;
+}
+
+.switch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #5b6df6;
+}
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+.switch-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #6f7894;
+    text-transform: uppercase;
+}
+
+/* Action Buttons */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+.btn-cancel {
+    background-color: transparent;
+    color: #6f7894;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 24px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+.btn-cancel:hover {
+    background-color: #ecedf4;
+}
+.btn-save {
+    background-color: #5b6df6;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 32px;
+    border: none;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+.btn-save:hover {
+    background-color: #4a5ae0;
+}
+
+/* Modals */
+.modal-content-custom {
+    border-radius: 24px;
+    border: none;
+    padding: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+.modal-header-custom {
+    border-bottom: none;
+    padding-bottom: 0px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.modal-body-custom {
+    padding-top: 0px;
+}
+.modal-footer-custom {
+    border-top: none;
+    padding-top: 0px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+.modal-icon-circle {
+    width: 42px;
+    height: 42px;
+    background-color: #edf0ff;
+    color: #5b6df6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+.modal-title-custom {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #1f2333;
+    margin-bottom: 4px;
+}
+.modal-subtitle-custom {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #6f7894;
+    margin: 0;
+}

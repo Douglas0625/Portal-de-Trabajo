@@ -1,0 +1,333 @@
+/* ===== DASHBOARD USUARIO STYLES ===== */
+
+body {
+    background-color: #f4f5f8;
+}
+
+/* User Navbar adjustments */
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-profile img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    text-align: right;
+}
+
+.profile-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2333;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.profile-role {
+    font-size: 12px;
+    color: #6f7894;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.bell-icon {
+    position: relative;
+    font-size: 20px;
+    color: #1f2333;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.bell-icon .badge {
+    position: absolute;
+    top: 0px;
+    right: -2px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    padding: 0;
+}
+
+.logout-icon {
+    font-size: 20px;
+    color: #6f7894;
+    cursor: pointer;
+}
+
+/* Cards */
+.top-stat-card {
+    background-color: white;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.icon-box {
+    background-color: #f4f5f8;
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #1f2333;
+}
+
+.stat-info .stat-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #6f7894;
+    margin-bottom: 2px;
+    font-weight: 500;
+}
+
+.stat-info .stat-value {
+    font-family: 'Jua', sans-serif;
+    font-size: 24px;
+    color: #1f2333;
+    margin: 0;
+}
+
+/* Profile Card Area */
+.profile-card-full {
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.profile-card-full img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-badge-status {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background-color: #2ecc71;
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+.btn-secondary-custom {
+    background-color: #ecedf4;
+    color: #1f2333;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 12px;
+    padding: 10px 24px;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+.btn-secondary-custom:hover {
+    background-color: #e2e4ef;
+}
+
+.btn-primary-custom {
+    background-color: #5b6df6;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 12px;
+    padding: 10px 24px;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+    transition: 0.2s;
+}
+
+.btn-primary-custom:hover {
+    background-color: #4a5ae0;
+}
+
+/* Mis Postulaciones */
+.postulacion-item {
+    padding: 15px;
+    border: 1px solid #ecedf4;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.postulacion-item:last-child {
+    margin-bottom: 0;
+}
+
+.postulacion-title {
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #1f2333;
+    margin: 0;
+}
+
+.postulacion-company {
+    font-size: 12px;
+    color: #6f7894;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.postulacion-date {
+    font-size: 11px;
+    color: #6f7894;
+    font-family: 'Inter', sans-serif;
+}
+
+.badge-status {
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+.badge-proceso {
+    background-color: #4a90e2;
+    color: white;
+}
+.badge-aplicado {
+    background-color: #f1c40f;
+    color: #fff;
+}
+.badge-rechazado {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Foro Card */
+.foro-card-wrap {
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.forum-item {
+    border-bottom: 1px solid #ecedf4;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.forum-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.forum-tag {
+    background-color: #edf0ff;
+    color: #5b6df6;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.forum-date {
+    font-size: 12px;
+    color: #1f2333;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+.forum-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #1f2333;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+}
+
+.forum-author img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+/* Para Ti Card */
+.para-ti-card-wrap {
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.job-rec-item {
+    border-bottom: 1px solid #ecedf4;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.job-rec-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.job-rec-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #1f2333;
+    font-size: 16px;
+    margin: 0 0 4px 0;
+}
+.job-rec-company {
+    font-size: 14px;
+    color: #6f7894;
+    margin: 0 0 12px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.tag-job {
+    border: 1px solid #ecedf4;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 11px;
+    color: #6f7894;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.btn-outline-custom {
+    border: 1px solid #c9cffb;
+    color: #5b6df6;
+    background-color: #f4f6ff;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: 500;
+    font-size: 14px;
+    width: 100%;
+    transition: 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+.btn-outline-custom:hover {
+    background-color: #edf0ff;
+}
+

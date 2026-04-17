@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EmpleaLink - Mis Postulaciones</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/componentes.css">
+    <link rel="stylesheet" href="./css/misPostulaciones.css">
+    <!-- iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  </head>
+  <body class="bg-fondo">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container">
+            <div class="nav-gap d-flex align-items-center">
+                <a class="navbar-brand m-0 p-0" href="dashboardUsuario.html">
+                    <img src="./media/Frame.svg" alt="EmpleaLink" width="130">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNavAltMarkup">
+                    <div class="navbar-nav nav-link-gap">
+                        <a class="nav-link" href="#">Empleos</a>
+                        <a class="nav-link active" href="dashboardUsuario.html">Dashboard</a>
+                        <a class="nav-link" href="#">Foro</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-profile ms-auto">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="profile-info d-none d-md-block text-end">
+                        <p class="profile-name">Gabriela Rojas</p>
+                        <p class="profile-role">UX/UI Designer</p>
+                    </div>
+                    <img src="./media/fotoPerfilChiquita.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=Gabriela+Rojas&background=random'">
+                </div>
+                <div class="logout-icon ms-3">
+                    <i class="bi bi-box-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-5 pb-4">
+        <div class="container">
+            <a href="dashboardUsuario.html" class="text-azul text-decoration-none d-flex align-items-center mb-3 text-volver">
+                <i class="bi bi-arrow-left me-2"></i> Volver al Dashboard
+            </a>
+            
+            <div class="d-flex justify-content-between align-items-end flex-wrap gap-3">
+                <div class="header-content">
+                    <h1 class="titulos mb-2 fw-bold" style="font-size: 32px;">Mis <span class="text-azul">Postulaciones</span></h1>
+                    <p class="subtitulos fuente-inter mb-0 d-block" style="max-width: 500px; color: #64748b;">Realiza el seguimiento de tus aplicaciones y mantente al tanto de cada paso en tu proceso de selección.</p>
+                </div>
+                <button class="btn-primary-custom m-0 px-4 py-2" style="font-weight: 500;">Explorar nuevos empleos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="pb-5">
+        <div class="container">
+            
+            <!-- Statistics Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-box">
+                        <div class="icon-wrap bg-icon-blue">
+                            <i class="bi bi-briefcase text-azul"></i>
+                        </div>
+                        <div>
+                            <p class="stat-label">TOTAL POSTULACIONES</p>
+                            <h3 class="stat-val">12</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-box">
+                        <div class="icon-wrap bg-icon-blue">
+                            <i class="bi bi-clock text-azul"></i>
+                        </div>
+                        <div>
+                            <p class="stat-label">EN PROCESO</p>
+                            <h3 class="stat-val">5</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-box">
+                        <div class="icon-wrap bg-icon-green">
+                            <i class="bi bi-calendar-check text-green"></i>
+                        </div>
+                        <div>
+                            <p class="stat-label">ENTREVISTAS</p>
+                            <h3 class="stat-val">2</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-box">
+                        <div class="icon-wrap bg-icon-red">
+                            <i class="bi bi-x-circle text-red"></i>
+                        </div>
+                        <div>
+                            <p class="stat-label">RECHAZADAS</p>
+                            <h3 class="stat-val">3</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Left Sidebar Filters -->
+                <div class="col-lg-3">
+                    <div class="filter-card p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="bi bi-funnel text-dark me-2 fs-5"></i>
+                            <h4 class="m-0 fw-bold fs-6">Filtrar búsqueda</h4>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted fs-small">Puesto o Empresa</label>
+                            <div class="input-icon">
+                                <i class="bi bi-search"></i>
+                                <input type="text" class="form-control simple-input" placeholder="Buscar...">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted fs-small">Estado</label>
+                            <select class="form-select simple-select">
+                                <option>En proceso</option>
+                                <option>Aplicado</option>
+                                <option>Entrevista</option>
+                                <option>Rechazado</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-muted fs-small">Ordenar por</label>
+                            <select class="form-select simple-select">
+                                <option>Más recientes</option>
+                                <option>Más antiguas</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="#" class="text-azul text-decoration-none fw-bold" style="font-size: 14px;">Limpiar filtros</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right List Applications -->
+                <div class="col-lg-9">
+                    <div class="d-flex flex-column gap-3">
+                        
+                        <!-- Card 1 -->
+                        <div class="application-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="company-logo cl-globant">G</div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h4 class="app-title m-0">Senior Product Designer</h4>
+                                        <span class="badge bdg-proceso">En proceso</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-4 mb-3 app-meta">
+                                        <span class="d-flex align-items-center"><i class="bi bi-building me-1"></i> Globant</span>
+                                        <span class="d-flex align-items-center"><i class="bi bi-geo-alt me-1"></i> Remoto</span>
+                                        <span class="d-flex align-items-center"><i class="bi bi-calendar3 me-1"></i> Aplicado el 12 Feb 2024</span>
+                                    </div>
+                                    <p class="app-desc m-0">Diseño de interfaces para el sector financiero internacional.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="application-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="company-logo cl-techflow">TF</div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h4 class="app-title m-0">Frontend Developer (React)</h4>
+                                        <span class="badge bdg-aplicado">Aplicado</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-4 mb-3 app-meta">
+                                        <span class="d-flex align-items-center"><i class="bi bi-building me-1"></i> TechFlow</span>
+                                        <span class="d-flex align-items-center"><i class="bi bi-geo-alt me-1"></i> Híbrido</span>
+                                        <span class="d-flex align-items-center"><i class="bi bi-calendar3 me-1"></i> Aplicado el 10 Feb 2024</span>
+                                    </div>
+                                    <p class="app-desc m-0">Desarrollo de nuevas funcionalidades con Next.js y Tailwind.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="application-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="company-logo cl-ml">ML</div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h4 class="app-title m-0">UX Researcher</h4>
+                                        <span class="badge bdg-rechazado">Rechazado</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-4 mb-3 app-meta">
+                                        <span class="d-flex align-items-center"><i class="bi bi-building me-1"></i> Mercado Libre</span>
+                                        <span class="d-flex align-items-center"><i class="bi bi-geo-alt me-1"></i> Buenos Aires</span>
+                                        <span class="d-flex align-items-center"><i class="bi bi-calendar3 me-1"></i> Aplicado el 05 Feb 2024</span>
+                                    </div>
+                                    <p class="app-desc m-0">Investigación de usuarios para el flujo de pagos.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="application-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="company-logo cl-devcloud">DC</div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h4 class="app-title m-0">Fullstack Engineer</h4>
+                                        <span class="badge bdg-entrevista">Entrevista</span>
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-4 mb-3 app-meta">
+                                        <span class="d-flex align-items-center"><i class="bi bi-building me-1"></i> DevCloud</span>
+                                        <span class="d-flex align-items-center"><i class="bi bi-geo-alt me-1"></i> Remoto</span>
+                                        <span class="d-flex align-items-center"><i class="bi bi-calendar3 me-1"></i> Aplicado el 20 Ene 2024</span>
+                                    </div>
+                                    <p class="app-desc m-0">Mantenimiento de microservicios en Node.js.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-top mt-5">
+        <div class="container py-5">
+            <div class="row mb-4 gap-4 py-2">
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="./media/Frame.svg" width="130">
+                    </div>
+
+                    <p class="subtexto" style="font-size: 14px;">
+                        Transformamos el futuro laboral conectando el talento adecuado con el lugar perfecto.
+                    </p>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><strong style="font-size: 12px; font-weight: 700; color: #1f2333;">FB</strong></span>
+                        <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><strong style="font-size: 12px; font-weight: 700; color: #1f2333;">TW</strong></span>
+                        <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><strong style="font-size: 12px; font-weight: 700; color: #1f2333;">IG</strong></span>
+                        <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><strong style="font-size: 12px; font-weight: 700; color: #1f2333;">LI</strong></span>
+                    </div>
+                </div>
+                <!-- Candidatos -->
+                <div class="col">
+                    <h6 class="titulo-seccion mb-3" style="font-size: 16px;">Para Candidatos</h6>
+                    <ul class="lista-footer text-muted" style="font-size: 14px; list-style: none; padding: 0; line-height: 2.2;">
+                        <li>Explorar Empleos</li>
+                        <li>Subir mi CV</li>
+                        <li>Consejos de Carrera</li>
+                    </ul>
+                </div>
+                <!-- Empresas -->
+                <div class="col">
+                    <h6 class="titulo-seccion mb-3" style="font-size: 16px;">Para Empresas</h6>
+                    <ul class="lista-footer text-muted" style="font-size: 14px; list-style: none; padding: 0; line-height: 2.2;">
+                        <li>Publicar Vacante</li>
+                        <li>Crear perfil</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr style="border-color: #ecedf4; margin-top: 30px; margin-bottom: 20px;">
+
+            <div class="d-flex justify-content-between flex-wrap text-muted" style="font-size: 13px;">
+                <span>© 2026 EmpleaLink. Todos los derechos reservados. Douglas Leon y Luis Barrera</span>
+                <span>Hecho con ❤ para tu futuro</span>
+            </div>
+
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

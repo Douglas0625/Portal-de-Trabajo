@@ -1,4 +1,4 @@
-/* ===== BODY ===== */
+/* BODY */
 body {
     font-family: 'Jua', sans-serif;
     background-color: #ffffff;
@@ -6,7 +6,7 @@ body {
     line-height: 1.6;
 }
 
-/* ===== TIPOGRAFÍA BASE ===== */
+/* TIPOGRAFÍA BASE */
 .titulos {
     font-family: 'Jua', sans-serif;
     font-size: 36px;
@@ -15,8 +15,12 @@ body {
     color: #1f2333;
 }
 
+.titulo-grande{
+    font-size: 74px;
+    line-height: 1.1;
+}
+
 .subtitulos {
-    font-family: 'Jua', sans-serif;
     font-size: 20px;
     font-weight: 400;
     line-height: 1.6;
@@ -31,7 +35,7 @@ body {
     color: #6f7894;
 }
 
-/* ===== VARIANTES DE TEXTO ===== */
+/* VARIANTES DE TEXTO */
 .titulo-seccion {
     font-family: 'Jua', sans-serif;
     font-size: 18px;
@@ -58,7 +62,7 @@ body {
 
 .texto-mini {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
     color: #6f7894;
@@ -84,27 +88,56 @@ body {
     font-style: italic;
 }
 
-/* ===== COLOR ===== */
+.f-20{
+    font-size: 20px;
+}
+
+.f-24{
+    font-size: 24px;
+}
+
+/* COLOR */
 .text-azul {
     color: #5b6df6;
 }
 
-/* ===== FONDOS ===== */
+/* FONDOS */
 .bg-gris {
     background-color: #ecedf4;
 }
 
-/* ===== CONTENEDORES ===== */
+/* CONTENEDORES */
 .cards-container {
     border-radius: 18px;
     padding: 28px;
 }
 
-/* ===== FUENTES AUXILIARES ===== */
+/* FUENTES AUXILIARES */
 .fuente-inter {
     font-family: 'Inter', sans-serif;
 }
 
 .fuente-titulos {
     font-family: 'Jua', sans-serif;
+}
+
+.candidatos-expandido {
+    padding-top: 10px;
+}
+
+.avatar-comentario {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.auth-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5b6df6;
+    background-color: #e8ebff;
+    padding: 6px 14px;
+    border-radius: 999px;
 }

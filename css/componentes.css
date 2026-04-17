@@ -48,6 +48,7 @@
     font-family: 'Inter', sans-serif;
     border: none;
     background: #ffffff;
+    border-radius: 18px;
     color: #1f2333;
     font-size: 14px;
     padding: 10px 24px;
@@ -56,6 +57,50 @@
 
 .boton-secundario:hover {
     background: #f4f6ff;
+}
+
+.boton-primario-grande {
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    background: #5b6df6;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+}
+
+.boton-primario-grande:hover {
+    background: #4a5ae0;
+    color: #ffffff;
+}
+
+.boton-secundario-grande {
+    border:1px solid #554DEF; 
+    color:#554DEF; 
+    border-radius: 10px;
+    background-color:#ECEDF4;
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+.boton-secundario-grande:hover {
+    background-color: #d9dbf1;
+}
+
+.boton-rojo-grande {
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    background: #ECEDF4;
+    color:#ef4444;
+    font-weight: bold;
+    border:1px solid #ffb8b8; 
+}
+
+.boton-rojo-grande:hover {
+    background: #ef4444;
+    color: #ffffff;
 }
 
 /* ===== FOOTER ===== */
@@ -76,3 +121,5 @@
 .lista-footer li:hover {
     color: #5b6df6;
 }
+
+/* nav administrador */
