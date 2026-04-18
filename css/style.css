@@ -141,3 +141,32 @@ body {
     padding: 6px 14px;
     border-radius: 999px;
 }
+
+.btn-cancel {
+    background-color: transparent;
+    color: #6f7894;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 24px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+.btn-cancel:hover {
+    background-color: #ecedf4;
+}
+.btn-save {
+    background-color: #5b6df6;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 32px;
+    border: none;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+.btn-save:hover {
+    background-color: #4a5ae0;
+}

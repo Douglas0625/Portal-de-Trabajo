@@ -81,7 +81,12 @@
                             <div class="d-inline-block position-relative">
                                 <span class="sidebar-badge-active">Activa</span>
                                 <img src="./media/fotoPerfilChiquita.jpg" alt="Gabriela Rojas" class="sidebar-profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Gabriela+Rojas&background=random'">
-                                <div class="sidebar-edit-icon">
+                                <div 
+                                    class="sidebar-edit-icon" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#modalFotoPerfil"
+                                    style="cursor: pointer;"
+                                >
                                     <i class="bi bi-plus" style="font-size: 20px;"></i>
                                 </div>
                             </div>
@@ -464,6 +469,62 @@
         </div>
     </div>
 
+    <!-- modal -->
+     <!-- Modal Foto de Perfil por URL -->
+    <div class="modal fade" id="modalFotoPerfil" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header modal-header-custom">
+                    <div class="d-flex align-items-center gap-3 w-100">
+                        <div class="modal-icon-circle">
+                            <i class="bi bi-image"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title-custom">Actualizar foto de perfil</h5>
+                            <p class="modal-subtitle-custom">
+                                Pega el enlace de una imagen para usarla como foto de perfil.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="http://localhost:3000/profiles/1/photo-url" method="POST">
+                    <div class="modal-body modal-body-custom">
+                        <div class="text-center mb-4">
+                            <img 
+                                src="./media/fotoPerfilChiquita.jpg" 
+                                alt="Vista previa"
+                                class="rounded-circle"
+                                style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #eef2ff;"
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profileImageUrl" class="form-label-custom">URL de la imagen</label>
+                            <input 
+                                type="url"
+                                class="form-control"
+                                id="profileImageUrl"
+                                name="profile_image_url"
+                                placeholder="https://ejemplo.com/mi-foto.jpg"
+                                required
+                            >
+                        </div>
+
+                        <p class="subtexto fuente-inter mb-0" style="font-size: 13px;">
+                            Usa un enlace directo a una imagen JPG, PNG o WEBP.
+                        </p>
+                    </div>
+
+                    <div class="modal-footer modal-footer-custom">
+                        <button type="button" class="btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn-save">Guardar foto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-white border-top">
         <div class="container py-5">
@@ -515,6 +576,7 @@
         </div>
     </footer>
     
+    <script type="module" src="./js/perfilUsuario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
