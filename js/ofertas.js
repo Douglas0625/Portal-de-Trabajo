@@ -1,7 +1,11 @@
 import { obtenerDatos } from "./api.js";
 import { renderizarNavbar } from "./navbar.js";
 
-renderizarNavbar();
+document.addEventListener("DOMContentLoaded", () => {
+  renderizarNavbar();
+  activarEventos();
+  cargarOfertas();
+});
 
 // -------------------------
 // Elementos del HTML
@@ -25,9 +29,10 @@ const filtroSalario = document.getElementById("filtro-salario");
 const botonLimpiar = document.getElementById("boton-limpiar");
 
 let ofertasOriginales = [];
+let empresasOriginales = [];
 
 // -------------------------
-// Cargar ofertas
+// Cargar ofertas + empresas
 // -------------------------
 async function cargarOfertas() {
   if (!contenedorOfertas) return;
@@ -35,15 +40,28 @@ async function cargarOfertas() {
   contenedorOfertas.innerHTML = "<p>Cargando ofertas...</p>";
 
   try {
-    const ofertasApi = await obtenerDatos("/job-posts");
-    const listaOfertas = Array.isArray(ofertasApi) ? ofertasApi : ofertasApi.data || [];
+    const [ofertasApi, empresasApi] = await Promise.all([
+      obtenerDatos("/job-posts"),
+      obtenerDatos("/company-profiles")
+    ]);
 
-    ofertasOriginales = listaOfertas.map(prepararOferta);
+    const listaOfertas = Array.isArray(ofertasApi) ? ofertasApi : ofertasApi.data || [];
+    const listaEmpresas = Array.isArray(empresasApi) ? empresasApi : empresasApi.data || [];
+
+    empresasOriginales = listaEmpresas;
+
+    ofertasOriginales = listaOfertas
+      .filter((oferta) => Number(oferta.status_id) === 2) // solo publicadas
+      .map(prepararOferta);
 
     mostrarOfertas(ofertasOriginales);
   } catch (error) {
     console.error("Error al cargar ofertas:", error);
-    textoCantidad.textContent = "0";
+
+    if (textoCantidad) {
+      textoCantidad.textContent = "0";
+    }
+
     contenedorOfertas.innerHTML = "<p>Ocurrió un error al cargar las ofertas.</p>";
   }
 }
@@ -52,10 +70,15 @@ async function cargarOfertas() {
 // Preparar oferta
 // -------------------------
 function prepararOferta(oferta) {
+  const empresa = empresasOriginales.find(
+    (empresaItem) => Number(empresaItem.id) === Number(oferta.company_profile_id)
+  );
+
   return {
     id: oferta.id,
     company_profile_id: oferta.company_profile_id,
-    company_name: `Empresa #${oferta.company_profile_id || "N/D"}`,
+    company_name: empresa?.company_name || "Empresa no disponible",
+    company_logo: empresa?.logo_url || "",
     title: oferta.title || "Sin título",
     description: oferta.description || "Sin descripción",
     min_salary: Number(oferta.min_salary) || 0,
@@ -64,8 +87,8 @@ function prepararOferta(oferta) {
     location: oferta.location || "No especificada",
     modality: traducirModalidad(oferta.modality),
     job_type: traducirTipoTrabajo(oferta.job_type),
-    rawModality: oferta.modality || "",
-    rawJobType: oferta.job_type || ""
+    rawModality: (oferta.modality || "").toLowerCase(),
+    rawJobType: (oferta.job_type || "").toLowerCase()
   };
 }
 
@@ -82,11 +105,7 @@ function mostrarOfertas(ofertas) {
     return;
   }
 
-  contenedorOfertas.innerHTML = "";
-
-  ofertas.forEach((oferta) => {
-    contenedorOfertas.innerHTML += crearTarjetaOferta(oferta);
-  });
+  contenedorOfertas.innerHTML = ofertas.map(crearTarjetaOferta).join("");
 }
 
 // -------------------------
@@ -95,13 +114,16 @@ function mostrarOfertas(ofertas) {
 function crearTarjetaOferta(oferta) {
   const titulo = oferta.title;
   const descripcion = recortarTexto(oferta.description, 140);
-  const salarioMin = formatearMoneda(oferta.min_salary);
-  const salarioMax = formatearMoneda(oferta.max_salary);
+  const salario = obtenerTextoSalario(oferta.min_salary, oferta.max_salary);
   const empresa = oferta.company_name;
   const ubicacion = oferta.location;
   const modalidad = oferta.modality;
   const tipoTrabajo = oferta.job_type;
   const fecha = calcularTiempo(oferta.creation_date);
+
+  const logo = oferta.company_logo
+    ? `<img src="${oferta.company_logo}" alt="${empresa}" class="img-fluid rounded-circle" style="width: 60px; height: 60px; object-fit: cover;">`
+    : obtenerIniciales(empresa);
 
   return `
     <div class="bg-white cards-container borde-card-empleo mb-3">
@@ -109,15 +131,15 @@ function crearTarjetaOferta(oferta) {
         
         <div class="col-lg-9">
           <div class="d-flex gap-3">
-            <div class="logo-empleo d-flex align-items-center justify-content-center">
-              ${obtenerIniciales(titulo)}
+            <div class="logo-empleo d-flex align-items-center justify-content-center overflow-hidden">
+              ${logo}
             </div>
 
             <div class="flex-grow-1">
-              <div class="d-flex gap-5 align-items-center flex-wrap">
+              <div class="d-flex gap-3 align-items-center flex-wrap">
                 <h3 class="titilos f-20 mb-2">${titulo}</h3>
                 <div class="badge rounded-pill fondo-badge-azul text-azul fuente-inter fw-semibold px-3 py-2 align-self-start">
-                  ${salarioMin} - ${salarioMax}
+                  ${salario}
                 </div>
               </div>
 
@@ -185,7 +207,7 @@ function aplicarFiltros() {
 
   if (modalidadesMarcadas.length > 0) {
     resultado = resultado.filter((oferta) =>
-      modalidadesMarcadas.includes((oferta.rawModality || "").toLowerCase())
+      modalidadesMarcadas.includes(oferta.rawModality)
     );
   }
 
@@ -196,7 +218,7 @@ function aplicarFiltros() {
 
   if (tiposMarcados.length > 0) {
     resultado = resultado.filter((oferta) =>
-      tiposMarcados.includes((oferta.rawJobType || "").toLowerCase())
+      tiposMarcados.includes(oferta.rawJobType)
     );
   }
 
@@ -276,13 +298,14 @@ function traducirTipoTrabajo(valor) {
 }
 
 function obtenerIniciales(texto) {
-  const palabras = texto.split(" ");
+  const palabras = (texto || "").trim().split(" ");
   const primera = palabras[0]?.charAt(0) || "";
   const segunda = palabras[1]?.charAt(0) || "";
   return (primera + segunda).toUpperCase();
 }
 
 function recortarTexto(texto, limite) {
+  if (!texto) return "";
   if (texto.length <= limite) return texto;
   return texto.slice(0, limite) + "...";
 }
@@ -303,6 +326,13 @@ function calcularTiempo(fechaTexto) {
   return `Hace ${diferenciaDias} días`;
 }
 
+function obtenerTextoSalario(min, max) {
+  if (!min && !max) return "Salario a convenir";
+  if (min && max) return `${formatearMoneda(min)} - ${formatearMoneda(max)}`;
+  if (min) return `Desde ${formatearMoneda(min)}`;
+  return `Hasta ${formatearMoneda(max)}`;
+}
+
 function formatearMoneda(valor) {
   const numero = Number(valor) || 0;
   return numero.toLocaleString("en-US", {
@@ -318,6 +348,3 @@ function normalizarTexto(texto) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
-
-activarEventos();
-cargarOfertas();
