@@ -22,50 +22,50 @@ let usuariosOriginales = [];
 // -------------------------
 // 4. Datos de prueba
 // -------------------------
-const usuariosPrueba = [
-  {
-    id: 1,
-    nombre: "Gabriela Rojas",
-    profesion: "UX/UI Designer",
-    email: "gabriela.rojas@email.com",
-    is_bloqued: false
-  },
-  {
-    id: 2,
-    nombre: "Carlos Méndez",
-    profesion: "Backend Developer",
-    email: "carlos@email.com",
-    is_bloqued: true
-  },
-  {
-    id: 3,
-    nombre: "Ana López",
-    profesion: "Frontend Developer",
-    email: "ana@email.com",
-    is_bloqued: false
-  },
-  {
-    id: 4,
-    nombre: "Ana López",
-    profesion: "Frontend Developer",
-    email: "ana@email.com",
-    is_bloqued: false
-  },
-  {
-    id: 5,
-    nombre: "Ana López",
-    profesion: "Frontend Developer",
-    email: "ana@email.com",
-    is_bloqued: false
-  },
-  {
-    id: 6,
-    nombre: "Ana López",
-    profesion: "Frontend Developer",
-    email: "ana@email.com",
-    is_bloqued: false
-  }
-];
+// const usuariosPrueba = [
+//   {
+//     id: 1,
+//     nombre: "Gabriela Rojas",
+//     profesion: "UX/UI Designer",
+//     email: "gabriela.rojas@email.com",
+//     is_bloqued: false
+//   },
+//   {
+//     id: 2,
+//     nombre: "Carlos Méndez",
+//     profesion: "Backend Developer",
+//     email: "carlos@email.com",
+//     is_bloqued: true
+//   },
+//   {
+//     id: 3,
+//     nombre: "Ana López",
+//     profesion: "Frontend Developer",
+//     email: "ana@email.com",
+//     is_bloqued: false
+//   },
+//   {
+//     id: 4,
+//     nombre: "Ana López",
+//     profesion: "Frontend Developer",
+//     email: "ana@email.com",
+//     is_bloqued: false
+//   },
+//   {
+//     id: 5,
+//     nombre: "Ana López",
+//     profesion: "Frontend Developer",
+//     email: "ana@email.com",
+//     is_bloqued: false
+//   },
+//   {
+//     id: 6,
+//     nombre: "Ana López",
+//     profesion: "Frontend Developer",
+//     email: "ana@email.com",
+//     is_bloqued: false
+//   }
+// ];
 
 // -------------------------
 // 5. Cargar usuarios
@@ -76,35 +76,56 @@ async function cargarUsuarios() {
   contenedorUsuarios.innerHTML = "<p>Cargando usuarios...</p>";
 
   try {
+    const perfiles = await obtenerDatos("/profiles");
     const usuarios = await obtenerDatos("/users");
 
-    const lista = Array.isArray(usuarios) ? usuarios : usuarios.data || [];
+    const listaPerfiles = Array.isArray(perfiles) ? perfiles : perfiles.data || [];
+    const listaUsuarios = Array.isArray(usuarios) ? usuarios : usuarios.data || [];
 
-    if (lista.length === 0) {
-      usuariosOriginales = usuariosPrueba;
-    } else {
-      usuariosOriginales = lista.map(prepararUsuario);
+    if (listaPerfiles.length === 0 || listaUsuarios.length === 0) {
+      throw new Error("API vacía o falló");
     }
 
+    // crear un mapa de usuarios por ID para acceso rápido
+    const mapaUsuarios = Object.fromEntries(
+      listaUsuarios.map(u => [u.id, u])
+    );
+
+    // uso de la función prepararUsuario para transformar los datos al formato necesario
+    usuariosOriginales = listaPerfiles.map(profile =>
+      prepararUsuario(profile, mapaUsuarios[profile.user_id])
+    );
+
     mostrarUsuarios(usuariosOriginales);
+    console.log("Perfiles:", perfiles);
+    console.log("Usuarios:", usuarios);
 
   } catch (error) {
-    console.warn("API no disponible, usando datos de prueba");
-    usuariosOriginales = usuariosPrueba;
-    mostrarUsuarios(usuariosOriginales);
+    console.error("Error cargando usuarios:", error);
+    contenedorUsuarios.innerHTML = "<p>Error al cargar usuarios</p>";
   }
 }
+
+
 
 // -------------------------
 // 6. Preparar usuario
 // -------------------------
-function prepararUsuario(usuario) {
+function prepararUsuario(profile, user) {
+  console.log("PROFILE:", profile.user_id, "USER:", user);
   return {
-    id: usuario.id,
-    nombre: `Usuario #${usuario.id}`,
-    profesion: "Sin profesión",
-    email: usuario.email,
-    is_bloqued: usuario.is_bloqued
+    id: profile.id,
+    user_id: profile.user_id,
+
+    nombre: `${profile.first_name} ${profile.last_name}`,
+    profesion: profile.professional_title || "Sin profesión",
+
+    telefono: profile.phone || "No disponible",
+    email: user?.email || "Sin email",
+
+    foto: profile.profile_image_url || "media/fotoPerfilChiquita.jpg",
+
+    is_blocked: user?.is_blocked ?? false
   };
 }
 
@@ -131,8 +152,8 @@ function mostrarUsuarios(lista) {
 // -------------------------
 function crearCardUsuario(usuario) {
 
-  const estadoTexto = usuario.is_bloqued ? "Bloqueado" : "Activo";
-  const colorEstado = usuario.is_bloqued ? "#EF4444" : "#22C55E";
+  const estadoTexto = usuario.is_blocked ? "Bloqueado" : "Activo";
+  const colorEstado = usuario.is_blocked ? "#EF4444" : "#22C55E";
 
   return `
     <div class="card border-0 rounded-4 p-4" style="width:420px; background:#f8f8fb;">
@@ -167,7 +188,7 @@ function crearCardUsuario(usuario) {
 
         <button class="btn flex-fill rounded-4 py-3 fw-bold text-secondary border-0 btn-bloquear" data-id="${usuario.id}">
           <i class="bi bi-lock me-2"></i>
-          ${usuario.is_bloqued ? "Desbloquear" : "Bloquear"}
+          ${usuario.is_blocked ? "Desbloquear" : "Bloquear"}
         </button>
       </div>
     </div>
@@ -193,11 +214,11 @@ function aplicarFiltros() {
 
   // estado
   if (estado === "activo") {
-    resultado = resultado.filter(u => !u.is_bloqued);
+    resultado = resultado.filter(u => !u.is_blocked);
   }
 
   if (estado === "bloqueado") {
-    resultado = resultado.filter(u => u.is_bloqued);
+    resultado = resultado.filter(u => u.is_blocked);
   }
 
   mostrarUsuarios(resultado);
@@ -236,22 +257,19 @@ function activarBotones() {
         btn.addEventListener("click", async () => {
             const id = btn.dataset.id;
 
-            // Buscar usuario actual
             const usuario = usuariosOriginales.find(u => u.id == id);
-
             if (!usuario) return;
 
-            const nuevoEstado = !usuario.is_bloqued;
+            const nuevoEstado = !usuario.is_blocked;
 
             try {
-                await actualizarUsuario(`/users/${id}`, {
-                    is_bloqued: nuevoEstado
+                await actualizarUsuario(`/users/${usuario.user_id}`, {
+                    is_blocked: nuevoEstado
                 });
+                
 
-                // actualizar en memoria
-                usuario.is_bloqued = nuevoEstado;
+                usuario.is_blocked = nuevoEstado;
 
-                // volver a renderizar
                 mostrarUsuarios(usuariosOriginales);
 
             } catch (error) {
@@ -271,7 +289,7 @@ function activarBotones() {
             localStorage.setItem("usuarioSeleccionado", id);
 
             // Redirigir
-            window.location.href = "perfilUsuario.html";
+            window.location.href = "perfilDeCandidato.html";
         });
     });
 }
