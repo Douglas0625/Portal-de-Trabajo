@@ -21,40 +21,7 @@
     </head>
     <body>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <!-- Izquierda -->
-                <div class="nav-gap d-flex">
-                    <a class="navbar-brand" href="#">
-                        <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
-                    </a>
-                    
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-        
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav nav-link-gap">
-                            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-                            <a class="nav-link" href="moderacionReportes.html">Moderacion</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Derecha -->
-                <div class="d-flex gap-3 align-items-center">
-                    <i class="bi bi-bell subtitulos text-dark fw-bold"></i>
-                    <hr class="vr" style="height: 30px; margin: 0 15px;">
-                    <div class="d-flex flex-column align-items-end">
-                        <p class="mb-0 parrafos fuente-inter text-dark fw-bold" >Admin Central</p>
-                        <small class="text-muted texto-mini">Moderador Jefe</small>
-                    </div>
-                    <a class="nav-link avatar-comentario d-flex align-items-center justify-content-center bg-primary bg-opacity-10 fw-bold rounded-circle" href="perfilUsuario.html" style="width: 45px; height: 45px; color: #554DEF;">
-                        <img src="./media/fotoPerfilChiquita.jpg" alt="Usuario" class="img-fluid rounded-circle">
-                    </a>
-                    <a href="index.html"><i class="bi bi-box-arrow-right subtitulos text-dark fw-bold"></i></a>
-                </div>
-            </div>
-        </nav>
+        <div id="navbar-container"></div>
 
         <!-- base del titulo -->
         <section class="pb-5" style="background-color: #ECEDF4">
@@ -80,7 +47,7 @@
                         <!-- Texto -->
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">USUARIOS TOTALES</small>
-                            <h2 class=" mb-0">12,456</h2>
+                            <h2 class=" mb-0" id="total-usuarios">12,456</h2>
                             <small class="" style="color: #22C55E;" >+12% este mes</small>
                         </div>
                     </div>
@@ -99,7 +66,7 @@
                         <!-- Texto -->
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">EMPRESAS ACTIVAS</small>
-                            <h2 class=" mb-0">1,240</h2>
+                            <h2 class=" mb-0" id="total-empresas">1,240</h2>
                             <small class="" style="color: #22C55E;" >+5% este mes</small>
                         </div>
                     </div>
@@ -118,7 +85,7 @@
                         <!-- Texto -->
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">VACANTES ACTIVAS</small>
-                            <h2 class=" mb-0">842</h2>
+                            <h2 class=" mb-0" id="total-vacantes">842</h2>
                             <small class="" style="color: #22C55E;" >+18% este mes</small>
                         </div>
                     </div>
@@ -137,7 +104,7 @@
                         <!-- Texto -->
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">REPORTES PENDIENTES</small>
-                            <h2 class=" mb-0">14</h2>
+                            <h2 class=" mb-0" id="total-reportes">14</h2>
                             <small class="" style="color: #22C55E;" >-2% desde ayer</small>
                         </div>
                     </div>
@@ -212,67 +179,7 @@
                                         <th class="text-center">ACCIONES</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center gap-3">
-                                                <div class="rounded-circle d-flex justify-content-center align-items-center fw-bold" style="width:40px; height:40px; background:rgba(85,77,239,0.1); color:#554DEF;">Ga
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-0 fw-bold">Gabriela Rojas</h6>
-                                                    <small class="text-secondary">gabriela.rojas@email.com</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge rounded-pill px-3" style="background-color: #22C55E;">Activo</span></td>
-                                        <td><small class="text-secondary">20 Feb 2024</small></td>
-                                        <td class="text-center" style="color:#554DEF;">
-                                            <i class="bi bi-eye me-3"></i>
-                                            <i class="bi bi-lock"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center gap-3">
-                                                <div class="rounded-circle d-flex justify-content-center align-items-center fw-bold"
-                                                    style="width:40px; height:40px; background:rgba(85,77,239,0.1); color:#554DEF;">
-                                                    Ma
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-0 fw-bold">Marcos Soler</h6>
-                                                    <small class="text-secondary">m.soler@gmail.com</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge rounded-pill  px-3" style="background-color: #22C55E;">Activo</span></td>
-                                        <td><small class="text-secondary">19 Feb 2024</small></td>
-                                        <td class="text-center" style="color:#554DEF;">
-                                            <i class="bi bi-eye me-3"></i>
-                                            <i class="bi bi-lock"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center gap-3">
-                                                <div class="rounded-circle d-flex justify-content-center align-items-center fw-bold"
-                                                    style="width:40px; height:40px; background:rgba(85,77,239,0.1); color:#554DEF;">
-                                                    El
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-0 fw-bold">Elena Méndez</h6>
-                                                    <small class="text-secondary">e.mendez@outlook.com</small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge rounded-pill px-3"style="background-color: #ef4444;">Bloqueado</span></td>
-                                        <td><small class="text-secondary">18 Feb 2024</small></td>
-                                        <td class="text-center" style="color:#554DEF;">
-                                            <i class="bi bi-eye me-3"></i>
-                                            <i class="bi bi-lock"></i>
-                                        </td>
-                                    </tr>
+                                <tbody id="tabla-usuarios">
                                 </tbody>
                             </table>
                         </div>
@@ -291,7 +198,7 @@
                                 </div>
                                 <p class="ps-3">Empresas y reclutadores registrados</p>
                             </div>
-                            <a href="gestionDeUsuarios.html">
+                            <a href="gestionDeEmpresas.html">
                                 <button class="btn rounded-4 fw-bold" style="max-height: 40px ; background-color: #ECEDF4;">Ver todas</button>
                             </a>
                         </div>
@@ -305,42 +212,7 @@
                                         <th class="text-center">ACCIONES</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr style="height: 65px;">
-                                        <td>
-                                            <h6>TechFLow Solutions</h6>
-                                        </td>
-                                        <td><small class="text-secondary">Tecmologia</small></td>
-                                        <td><span class="badge rounded-pill px-3" style="background-color: #22C55E;">Activa</span></td>
-                                        <td class="text-center" style="color:#554DEF;">
-                                            <i class="bi bi-eye me-3"></i>
-                                            <i class="bi bi-lock"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr style="height: 65px;">
-                                        <td>
-                                            <h6>Creative Pulse</h6>
-                                        </td>
-                                        <td><small class="text-secondary">Diseño</small></td>
-                                        <td><span class="badge rounded-pill px-3" style="background-color: #EAB308;">Pendiente</span></td>
-                                        <td class="text-center" style="color:#554DEF;">
-                                            <i class="bi bi-eye me-3"></i>
-                                            <i class="bi bi-lock"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr style="height: 65px;">
-                                        <td>
-                                            <h6>Global Finance</h6>
-                                        </td>
-                                        <td><small class="text-secondary">Finanzas</small></td>
-                                        <td><span class="badge rounded-pill px-3" style="background-color:#ef4444;">Bloqueada</span></td>
-                                        <td class="text-center" style="color:#554DEF;">
-                                            <i class="bi bi-eye me-3"></i>
-                                            <i class="bi bi-lock"></i>
-                                        </td>
-                                    </tr>
+                                <tbody id="tabla-empresas">
                                 </tbody>
                             </table>
                         </div>
@@ -350,7 +222,7 @@
                     <!-- TABLA DE GESTION DE VACANTES -->
 
 
-                    <div class="card border-0 rounded-5 p-5 my-5 gap-3">
+                    <div class="card border-0 rounded-5 p-5 my-5 gap-3" >
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="d-flex pt-3 ps-3">
@@ -359,54 +231,11 @@
                                 </div>
                                 <p class="ps-3">Últimas ofertas publicadas en el portal</p>
                             </div>
-                            <a href="gestionDeUsuarios.html">
+                            <a href="gestionDeVacantes.html">
                                 <button class="btn rounded-4 fw-bold" style="max-height: 40px ; background-color: #ECEDF4;">Ver todas</button>
                             </a>
                         </div>
-                        <div class="card rounded-4 ps-3 d-flex justify-content-center" style="height: 65px;">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="rounded-4 d-flex justify-content-center align-items-center fw-bold" style="width:40px; height:40px; background:rgba(85,77,239,0.1); color:#554DEF;">G</div>
-                                    <div>
-                                        <h6 class="mb-0 fw-bold">Senior Product Designer</h6>
-                                        <small class="text-secondary">Globant • 48 postulantes</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex">
-                                    <span class="badge rounded-pill px-3 d-flex justify-content-center align-items-center" style="background-color: #22C55E;">Activa</span>
-                                    <button class="btn"><i class="bi bi-three-dots-vertical"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card rounded-4 ps-3 d-flex justify-content-center" style="height: 65px;">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="rounded-4 d-flex justify-content-center align-items-center fw-bold" style="width:40px; height:40px; background:rgba(85,77,239,0.1); color:#554DEF;">T</div>
-                                    <div>
-                                        <h6 class="mb-0 fw-bold">Frontend Developer</h6>
-                                        <small class="text-secondary">TechFlow • 124 postulantes</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex">
-                                    <span class="badge rounded-pill px-3 d-flex justify-content-center align-items-center" style="background-color: #22C55E;">Activa</span>
-                                    <button class="btn"><i class="bi bi-three-dots-vertical"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card rounded-4 ps-3 d-flex justify-content-center" style="height: 65px;">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="rounded-4 d-flex justify-content-center align-items-center fw-bold" style="width:40px; height:40px; background:rgba(85,77,239,0.1); color:#554DEF;">M</div>
-                                    <div>
-                                        <h6 class="mb-0 fw-bold">UX Researcher</h6>
-                                        <small class="text-secondary">Mercado Libre • 89 postulantes</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex">
-                                    <span class="badge rounded-pill px-3 d-flex justify-content-center align-items-center" style="background-color:#ef4444;">Cerrada</span>
-                                    <button class="btn"><i class="bi bi-three-dots-vertical"></i></button>
-                                </div>
-                            </div>
+                        <div class="gap-3 d-flex flex-column" id="tabla-vacantes">
                         </div>
                     </div>
                 </div>
@@ -595,6 +424,8 @@
 
             </div>
         </footer>
+        <script type="module" src="./js/navbar.js"></script>
+        <script type="module" src="./js/dashboardAdmin.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 </html>
