@@ -1,5 +1,26 @@
+function obtenerSesion() {
+  const sesionGuardada = localStorage.getItem("usuarioLoggeado");
+
+  if (!sesionGuardada) return null;
+
+  try {
+    return JSON.parse(sesionGuardada);
+  } catch (error) {
+    console.error("Error al leer la sesión:", error);
+    return null;
+  }
+}
+
 function obtenerRol() {
-  return localStorage.getItem("rol") || "publico";
+  const sesion = obtenerSesion();
+
+  if (!sesion) return "publico";
+
+  if (sesion.role_name === "candidate") return "candidato";
+  if (sesion.role_name === "company") return "empresa";
+  if (sesion.role_name === "admin") return "admin";
+
+  return "publico";
 }
 
 function navbarPublica() {
@@ -8,7 +29,7 @@ function navbarPublica() {
       <div class="container">
         <div class="nav-gap d-flex">
           <a class="navbar-brand" href="index.html">
-            <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
+            <img src="./media/Frame.svg" alt="EmpleaLink" width="150" height="40">
           </a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +59,12 @@ function navbarPublica() {
 }
 
 function navbarCandidato() {
+  const sesion = obtenerSesion();
+  const nombre = sesion?.displayName || "Usuario";
+  const titulo = sesion?.professional_title || "Candidato";
+  const foto = sesion?.profile_image_url || "";
+  const fotoFinal = foto || `https://ui-avatars.com/api/?name=${encodeURIComponent(nombre)}&background=random`;
+
   return `
     <nav class="navbar navbar-expand-lg bg-white">
       <div class="container">
@@ -49,7 +76,7 @@ function navbarCandidato() {
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
+  
           <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNavAltMarkup">
             <div class="navbar-nav nav-link-gap">
               <a class="nav-link" href="ofertas.html">Empleos</a>
@@ -66,12 +93,19 @@ function navbarCandidato() {
           </div>
           <div class="d-flex align-items-center gap-3">
             <div class="profile-info d-none d-md-block">
-              <p class="profile-name">Gabriela Rojas</p>
-              <p class="profile-role">UX/UI Designer</p>
+              <p class="profile-name">${nombre}</p>
+              <p class="profile-role">${titulo}</p>
             </div>
-            <img src="./media/fotoPerfilChiquita.jpg" alt="Profile" width="40" height="40">
+            <img 
+              src="${fotoFinal}" 
+              alt="${nombre}" 
+              width="40" 
+              height="40"
+              class="rounded-circle"
+              style="object-fit: cover;"
+            >
           </div>
-          <div class="logout-icon ms-2" id="btn-logout">
+          <div class="logout-icon ms-2" id="btn-logout" style="cursor: pointer;">
             <i class="bi bi-box-arrow-right"></i>
           </div>
         </div>
@@ -81,12 +115,21 @@ function navbarCandidato() {
 }
 
 function navbarEmpresa() {
+  const sesion = obtenerSesion();
+  const nombreEmpresa = sesion?.displayName || "Empresa";
+  const logo = sesion?.logo_url || "";
+  const iniciales = obtenerIniciales(nombreEmpresa);
+
+  const avatarEmpresa = logo
+    ? `<img src="${logo}" alt="${nombreEmpresa}" class="img-fluid rounded-circle" style="width: 45px; height: 45px; object-fit: cover;">`
+    : iniciales;
+
   return `
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <div class="nav-gap d-flex">
           <a class="navbar-brand" href="dashboardEmpresa.html">
-            <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
+            <img src="./media/Frame.svg" alt="EmpleaLink" width="150" height="40">
           </a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,11 +149,11 @@ function navbarEmpresa() {
           <i class="bi bi-bell"></i>
           <hr class="vr" style="height: 30px; margin: 0 15px;">
           <div class="d-flex flex-column align-items-end">
-            <p class="mb-0 fw-bold" style="font-family: sans-serif;">TechFlow Solutions</p>
-            <small class="text-muted" style="font-family: sans-serif;">Empresa Premium</small>
+            <p class="mb-0 fw-bold" style="font-family: sans-serif;">${nombreEmpresa}</p>
+            <small class="text-muted" style="font-family: sans-serif;">Cuenta de Empresa</small>
           </div>
-          <a class="nav-link d-flex align-items-center justify-content-center bg-primary bg-opacity-10 fw-bold rounded-circle" href="perfilDeEmpresa.html" style="width: 45px; height: 45px; color: #554DEF;">
-            TF
+          <a class="nav-link d-flex align-items-center justify-content-center bg-primary bg-opacity-10 fw-bold rounded-circle overflow-hidden" href="perfilDeEmpresa.html" style="width: 45px; height: 45px; color: #554DEF;">
+            ${avatarEmpresa}
           </a>
           <div id="btn-logout" style="cursor: pointer;">
             <i class="bi bi-box-arrow-right"></i>
@@ -127,7 +170,7 @@ function navbarAdmin() {
       <div class="container">
         <div class="nav-gap d-flex">
           <a class="navbar-brand" href="dashboardAdmin.html">
-            <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
+            <img src="./media/Frame.svg" alt="EmpleaLink" width="150" height="40">
           </a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,7 +180,7 @@ function navbarAdmin() {
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav nav-link-gap">
               <a class="nav-link active" aria-current="page" href="dashboardAdmin.html">Dashboard</a>
-              <a class="nav-link" href="moderacionReportes.html">Moderacion</a>
+              <a class="nav-link" href="moderacionReportes.html">Moderación</a>
             </div>
           </div>
         </div>
@@ -185,11 +228,17 @@ function activarLogout() {
 
   if (botonLogout) {
     botonLogout.addEventListener("click", () => {
-      localStorage.removeItem("rol");
-      localStorage.removeItem("usuario");
+      localStorage.removeItem("usuarioLoggeado");
       window.location.href = "index.html";
     });
   }
+}
+
+function obtenerIniciales(texto) {
+  const palabras = (texto || "").trim().split(" ");
+  const primera = palabras[0]?.charAt(0) || "";
+  const segunda = palabras[1]?.charAt(0) || "";
+  return (primera + segunda).toUpperCase();
 }
 
 export { renderizarNavbar };

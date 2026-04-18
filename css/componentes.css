@@ -122,4 +122,58 @@
     color: #5b6df6;
 }
 
-/* nav administrador */
+/* nav usuario */
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-profile img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    text-align: right;
+}
+
+.profile-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2333;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.profile-role {
+    font-size: 12px;
+    color: #6f7894;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.bell-icon {
+    position: relative;
+    font-size: 20px;
+    color: #1f2333;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.bell-icon .badge {
+    position: absolute;
+    top: 0px;
+    right: -2px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    padding: 0;
+}
+
+.logout-icon {
+    font-size: 20px;
+    color: #6f7894;
+    cursor: pointer;
+}

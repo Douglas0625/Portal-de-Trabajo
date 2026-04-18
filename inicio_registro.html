@@ -105,22 +105,19 @@
                             <!-- Tab Login -->
                             <div class="tab-pane fade show active" id="login-pane" role="tabpanel" aria-labelledby="login-tab">
 
-                                <form action="dashboardUsuario.html" method="get">
+                                <form id="form-login">
                                     <div class="mb-3">
                                         <label class="texto-etiqueta mb-2">Correo electrónico</label>
-                                        <input type="email" class="form-control input-auth" placeholder="ejemplo@correo.com">
+                                        <input type="email" class="form-control input-auth" id="login-email" placeholder="ejemplo@correo.com">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="texto-etiqueta mb-2">Contraseña</label>
-                                        <input type="password" class="form-control input-auth" placeholder="********">
+                                        <input type="password" class="form-control input-auth" id="login-password" placeholder="********">
                                     </div>
-                                
-                                    <a href="recuperar_contrasena.html" class="texto-mini text-decoration-none text-azul fw-bold">
-                                        ¿Olvidaste tu contraseña?
-                                    </a>
 
-                                    <button type="submit" class="boton-primario w-100 my-3">Entrar</button>
+                                    <button type="submit" class="boton-primario w-100 my-3" id="btn-login">Entrar</button>
+                                    <p class="texto-mini text-center text-danger mb-2" id="login-mensaje"></p>
 
                                     <p class="texto-mini text-center mb-0">
                                         ¿Aún no tienes cuenta?
@@ -245,6 +242,7 @@
         </div>
     </section>
 
+    <script type="module" src="./js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

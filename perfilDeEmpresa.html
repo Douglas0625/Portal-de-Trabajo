@@ -92,7 +92,7 @@
                                 </div>
 
                                 <!-- Botón cámara -->
-                                <button class="btn rounded-circle d-flex justify-content-center align-items-center position-absolute" style="width:36px; height:36px; background:#554DEF; color:white; bottom:0; right:0; border:3px solid white;">
+                                <button data-bs-toggle="modal" data-bs-target="#modalFotoPerfil" class="btn rounded-circle d-flex justify-content-center align-items-center position-absolute" style="width:36px; cursor: pointer; height:36px; background:#554DEF; color:white; bottom:0; right:0; border:3px solid white;">
                                     <i class="bi bi-camera"></i>
                                 </button>
                             </div>
@@ -333,6 +333,62 @@
         </section>  
         
         
+         <!-- Modal Foto de Perfil por URL -->
+        <div class="modal fade" id="modalFotoPerfil" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-content-custom">
+                    <div class="modal-header modal-header-custom">
+                        <div class="d-flex align-items-center gap-3 w-100">
+                            <div class="modal-icon-circle">
+                                <i class="bi bi-image"></i>
+                            </div>
+                            <div>
+                                <h5 class="modal-title-custom">Actualizar foto de perfil</h5>
+                                <p class="modal-subtitle-custom">
+                                    Pega el enlace de una imagen para usarla como foto de perfil.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="http://localhost:3000/profiles/1/photo-url" method="POST">
+                        <div class="modal-body modal-body-custom">
+                            <div class="text-center mb-4">
+                                <img 
+                                    src="./media/fotoPerfilChiquita.jpg" 
+                                    alt="Vista previa"
+                                    class="rounded-circle"
+                                    style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #eef2ff;"
+                                >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="profileImageUrl" class="form-label-custom">URL de la imagen</label>
+                                <input 
+                                    type="url"
+                                    class="form-control"
+                                    id="profileImageUrl"
+                                    name="profile_image_url"
+                                    placeholder="https://ejemplo.com/mi-foto.jpg"
+                                    required
+                                >
+                            </div>
+
+                            <p class="subtexto fuente-inter mb-0" style="font-size: 13px;">
+                                Usa un enlace directo a una imagen JPG, PNG o WEBP.
+                            </p>
+                        </div>
+
+                        <div class="modal-footer modal-footer-custom">
+                            <button type="button" class="btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn-save">Guardar foto</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
         <!-- FOOTER -->
 
 
