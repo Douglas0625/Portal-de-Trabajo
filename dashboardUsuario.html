@@ -25,7 +25,7 @@
     <!-- Header Section -->
     <section class="pt-4 pb-3">
         <div class="container">
-            <h1 class="titulos mb-2">¡Hola, <span class="text-azul">Gabriela</span>!</h1>
+            <h1 class="titulos mb-2">¡Hola, <span class="text-azul" id="saludo-nombre">...</span>!</h1>
             <p class="subtitulos fuente-inter">Gestiona tu perfil, revisa tus postulaciones y descubre nuevas oportunidades profesionales.</p>
         </div>
     </section>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="stat-info">
                             <p class="stat-title">Postulaciones</p>
-                            <p class="stat-value">12</p>
+                            <p class="stat-value" id="stat-postulaciones">0</p>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="stat-info">
                             <p class="stat-title">Entrevistas</p>
-                            <p class="stat-value">3</p>
+                            <p class="stat-value" id="stat-entrevistas">0</p>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="stat-info">
                             <p class="stat-title">Ofertas Guardadas</p>
-                            <p class="stat-value">24</p>
+                            <p class="stat-value" id="stat-ofertas-guardadas">0</p>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="stat-info">
                             <p class="stat-title">Visitas al Perfil</p>
-                            <p class="stat-value">156</p>
+                            <p class="stat-value">—</p>
                         </div>
                     </div>
                 </div>
@@ -96,59 +96,27 @@
                     <!-- Profile Card -->
                     <div class="profile-card-full mb-4">
                         <div class="profile-img-container">
-                            <img src="./media/fotoPerfilChiquita.jpg" alt="Gabriela Rojas" onerror="this.src='https://ui-avatars.com/api/?name=Gabriela+Rojas&background=random'">
+                            <img id="perfil-foto" src="https://ui-avatars.com/api/?name=...&background=random" alt="Foto de perfil">
                             <div class="profile-badge-status"></div>
                         </div>
-                        <h3 class="titulo-card mb-1 pb-1" style="font-weight: 600;">Gabriela Rojas</h3>
-                        <p class="parrafos mb-4" style="font-size: 13px;">UX/UI Designer • Buenos Aires, ARG</p>
+                        <h3 class="titulo-card mb-1 pb-1" style="font-weight: 600;" id="perfil-nombre">Cargando...</h3>
+                        <p class="parrafos mb-4" style="font-size: 13px;" id="perfil-ubicacion">...</p>
                         
-                        <button class="btn-primary-custom"><i class="bi bi-person me-2"></i> Editar mi Perfil</button>
-                        <button class="btn-secondary-custom m-0"><i class="bi bi-file-earmark-text me-2"></i> Ver mi CV</button>
+                        <a href="perfilUsuario.html" class="btn-primary-custom d-block text-center text-decoration-none"><i class="bi bi-person me-2"></i> Editar mi Perfil</a>
+                        <a href="#" id="btn-ver-cv" class="btn-secondary-custom m-0 d-block text-center text-decoration-none"><i class="bi bi-file-earmark-text me-2"></i> Ver mi CV</a>
                     </div>
 
                     <!-- Mis Postulaciones -->
                     <div class="profile-card-full p-4 text-start">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h3 class="titulo-card mb-0" style="font-weight: 600;">Mis Postulaciones</h3>
-                            <a href="#" class="text-azul text-decoration-none" style="font-size: 12px; font-weight: 500; font-family: 'Inter', sans-serif;">Ver todas</a>
+                            <a href="misPostulaciones.html" class="text-azul text-decoration-none" style="font-size: 12px; font-weight: 500; font-family: 'Inter', sans-serif;">Ver todas</a>
                         </div>
 
-                        <!-- Postulacion 1 -->
-                        <div class="postulacion-item">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <p class="postulacion-title">Senior Product Designer</p>
-                                <span class="badge-status badge-proceso">En proceso</span>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="postulacion-company">Globant</span>
-                                <span class="postulacion-date"><i class="bi bi-clock me-1"></i> 12 Feb 2024</span>
-                            </div>
+                        <!-- Se llena dinámicamente -->
+                        <div id="postulaciones-recientes">
+                            <p class="parrafos text-center py-3" style="font-size:13px;">Cargando...</p>
                         </div>
-
-                        <!-- Postulacion 2 -->
-                        <div class="postulacion-item">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <p class="postulacion-title">Frontend Developer</p>
-                                <span class="badge-status badge-aplicado">Aplicado</span>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="postulacion-company">TechFlow</span>
-                                <span class="postulacion-date"><i class="bi bi-clock me-1"></i> 10 Feb 2024</span>
-                            </div>
-                        </div>
-
-                        <!-- Postulacion 3 -->
-                        <div class="postulacion-item border-0 pb-0">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <p class="postulacion-title">UX Researcher</p>
-                                <span class="badge-status badge-rechazado">Rechazado</span>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="postulacion-company">Mercado Libre</span>
-                                <span class="postulacion-date"><i class="bi bi-clock me-1"></i> 05 Feb 2024</span>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -158,37 +126,14 @@
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <div>
                                 <h3 class="titulo-card mb-1" style="font-weight: 600; font-size: 20px;">Foro EmpleaLink</h3>
-                                <p class="parrafos mb-0" style="font-size: 13px;">Novedades y avisos oficiales</p>
+                                <p class="parrafos mb-0" style="font-size: 13px;">Novedades y avisos recientes</p>
                             </div>
-                            <button class="btn-outline-custom w-auto py-1 px-3">Ir al Foro</button>
+                            <a href="foro.html" class="btn-outline-custom w-auto py-1 px-3 text-decoration-none text-center">Ir al Foro</a>
                         </div>
 
-                        <!-- Foro Item 1 -->
-                        <div class="forum-item">
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <span class="forum-tag">OFICIAL</span>
-                                <span class="forum-date">15 Feb</span>
-                            </div>
-                            <h4 class="titulo-card" style="font-weight: 600; font-size: 16px;">Nuevas leyes de teletrabajo en LATAM 2024</h4>
-                            <p class="parrafos mb-3">Todo lo que necesitas saber sobre los beneficios obligatorios que deben ofrecer las empresas.</p>
-                            <div class="forum-author">
-                                <img src="./media/logo.png" alt="Admin" onerror="this.src='https://ui-avatars.com/api/?name=Admin&background=random'">
-                                <span>Admin EmpleaLink</span>
-                            </div>
-                        </div>
-
-                        <!-- Foro Item 2 -->
-                        <div class="forum-item border-0 pb-0">
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <span class="forum-tag">OFICIAL</span>
-                                <span class="forum-date">12 Feb</span>
-                            </div>
-                            <h4 class="titulo-card" style="font-weight: 600; font-size: 16px;">Top 10 habilidades más buscadas este trimestre</h4>
-                            <p class="parrafos mb-3">Las habilidades de gestión de datos y liderazgo dominan el mercado actual.</p>
-                            <div class="forum-author">
-                                <img src="./media/logo.png" alt="Admin" onerror="this.src='https://ui-avatars.com/api/?name=Admin&background=random'">
-                                <span>Admin EmpleaLink</span>
-                            </div>
+                        <!-- Se llena dinámicamente -->
+                        <div id="foro-posts">
+                            <p class="parrafos text-center py-3" style="font-size:13px;">Cargando...</p>
                         </div>
                     </div>
                 </div>
@@ -197,25 +142,14 @@
                 <div class="col-lg-4">
                     <div class="para-ti-card-wrap">
                         <h3 class="titulo-card mb-1" style="font-weight: 600; font-size: 20px;">Para ti</h3>
-                        <p class="parrafos mb-4" style="font-size: 13px;">Basado en tu perfil</p>
+                        <p class="parrafos mb-4" style="font-size: 13px;">Ofertas activas disponibles</p>
 
-                        <!-- Job Rec 1 -->
-                        <div class="job-rec-item">
-                            <h4 class="job-rec-title">UI Engineer</h4>
-                            <p class="job-rec-company">Creative Pulse • Remoto</p>
-                            <span class="tag-job mb-3">Full-time</span>
-                            <button class="btn-primary-custom w-100 m-0">Ver oferta</button>
-                        </div>
-
-                        <!-- Job Rec 2 -->
-                        <div class="job-rec-item">
-                            <h4 class="job-rec-title">Product Manager</h4>
-                            <p class="job-rec-company">Fintech Global • Híbrido</p>
-                            <span class="tag-job mb-3">Full-time</span>
-                            <button class="btn-primary-custom w-100 m-0">Ver oferta</button>
+                        <!-- Se llena dinámicamente -->
+                        <div id="recomendaciones-container">
+                            <p class="parrafos text-center py-3" style="font-size:13px;">Cargando...</p>
                         </div>
                         
-                        <button class="btn-secondary-custom w-100 mb-0 mt-2 bg-transparent text-azul" style="border: 1px solid #c9cffb; background-color: #f4f6ff !important;">Explorar todas</button>
+                        <a href="ofertas.html" class="btn-secondary-custom w-100 mb-0 mt-2 d-block text-center text-decoration-none" style="border: 1px solid #c9cffb; background-color: #f4f6ff !important; color: #554DEF;">Explorar todas</a>
                     </div>
                 </div>
 
@@ -274,7 +208,7 @@
         </div>
     </footer>
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYnv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script type="module" src="./js/dashboardUsuario.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
