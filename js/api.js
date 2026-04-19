@@ -8,10 +8,31 @@ export async function obtenerDatos(endpoint) {
       throw new Error(`Error ${respuesta.status}: ${respuesta.statusText}`);
     }
 
-    const datos = await respuesta.json();
-    return datos;
+    return await respuesta.json();
   } catch (error) {
     console.error("Error en la petición:", error);
+    throw error;
+  }
+}
+
+export async function postDatos(endpoint, body) {
+  try {
+    const respuesta = await fetch(`${API_URL}${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!respuesta.ok) {
+      const textoError = await respuesta.text();
+      throw new Error(`Error ${respuesta.status}: ${textoError}`);
+    }
+
+    return await respuesta.json();
+  } catch (error) {
+    console.error("Error en la petición POST:", error);
     throw error;
   }
 }

@@ -1,4 +1,4 @@
-import { obtenerDatos } from "./api.js";
+import { obtenerDatos, postDatos } from "./api.js";
 import { renderizarNavbar } from "./navbar.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,9 +23,19 @@ async function cargarDetalleOferta() {
 
     const empresa = buscarEmpresaDeOferta(oferta, empresas);
 
-        llenarDetalleOferta(oferta, empresa);
-        await cargarValoracionesEmpresa(empresa);
-        configurarBotones(oferta, empresa);
+    let aplicaciones = [];
+
+    try {
+      const aplicacionesApi = await obtenerDatos("/applications");
+      aplicaciones = Array.isArray(aplicacionesApi) ? aplicacionesApi : aplicacionesApi.data || [];
+    } catch (error) {
+      console.warn("No se pudieron cargar las postulaciones:", error);
+      aplicaciones = [];
+    }
+
+    llenarDetalleOferta(oferta, empresa);
+    await cargarValoracionesEmpresa(empresa);
+    configurarBotones(oferta, empresa, aplicaciones);
   } catch (error) {
     console.error("Error al cargar detalle de oferta:", error);
     mostrarError("No se pudo cargar la oferta.");
@@ -83,14 +93,101 @@ function llenarDetalleOferta(oferta, empresa) {
   actualizarTitlePagina(titulo, nombreEmpresa);
 }
 
-function configurarBotones(oferta, empresa) {
+function configurarBotones(oferta, empresa, aplicaciones = []) {
   const btnAplicar = document.getElementById("btn-aplicar-oferta");
   const btnEmpresa = document.getElementById("btn-ver-empresa");
 
+  const sesionGuardada = localStorage.getItem("usuarioLoggeado");
+  let sesion = null;
+
+  try {
+    sesion = sesionGuardada ? JSON.parse(sesionGuardada) : null;
+  } catch (error) {
+    sesion = null;
+  }
+
+  const yaPostulo = sesion?.profile_id
+    ? aplicaciones.some(
+        (item) =>
+          Number(item.profile_id) === Number(sesion.profile_id) &&
+          Number(item.job_post_id) === Number(oferta.id)
+      )
+    : false;
+
+  if (btnAplicar && yaPostulo) {
+    btnAplicar.textContent = "Ya postulaste";
+    btnAplicar.classList.add("disabled");
+    btnAplicar.style.pointerEvents = "none";
+  }
+
   if (btnAplicar) {
-    btnAplicar.addEventListener("click", (event) => {
+    btnAplicar.addEventListener("click", async (event) => {
       event.preventDefault();
-      alert("La postulación se conectará después con login y aplicaciones.");
+
+      const sesionGuardada = localStorage.getItem("usuarioLoggeado");
+
+      if (!sesionGuardada) {
+        alert("Debes iniciar sesión para postularte.");
+        window.location.href = "inicio_registro.html";
+        return;
+      }
+
+      let sesion;
+
+      try {
+        sesion = JSON.parse(sesionGuardada);
+      } catch (error) {
+        console.error("Error al leer la sesión:", error);
+        alert("Tu sesión no es válida. Inicia sesión de nuevo.");
+        localStorage.removeItem("usuarioLoggeado");
+        window.location.href = "inicio_registro.html";
+        return;
+      }
+
+      if (sesion.role_name !== "candidate") {
+        alert("Solo los candidatos pueden postularse a ofertas.");
+        return;
+      }
+
+      if (!sesion.profile_id) {
+        alert("No se encontró tu perfil de candidato.");
+        return;
+      }
+
+      if (yaPostulo) {
+        alert("Ya te postulaste a esta oferta.");
+        return;
+      }
+
+      try {
+        await postDatos("/applications", {
+          profile_id: sesion.profile_id,
+          job_post_id: oferta.id,
+          application_status: "submitted",
+          notes: "Postulación desde EmpleaLink"
+        });
+
+        alert("Tu postulación fue enviada con éxito.");
+        btnAplicar.textContent = "Ya postulaste";
+        btnAplicar.classList.add("disabled");
+        btnAplicar.style.pointerEvents = "none";
+      } catch (error) {
+        console.error("Error al postularse:", error);
+
+        if (
+          error.message.includes("409") ||
+          error.message.toLowerCase().includes("duplicate") ||
+          error.message.toLowerCase().includes("unique")
+        ) {
+          alert("Ya te postulaste a esta oferta.");
+          btnAplicar.textContent = "Ya postulaste";
+          btnAplicar.classList.add("disabled");
+          btnAplicar.style.pointerEvents = "none";
+          return;
+        }
+
+        alert("No se pudo enviar tu postulación.");
+      }
     });
   }
 
