@@ -153,34 +153,35 @@
 
                                     <!-- Registro Usuario -->
                                     <div class="tab-pane fade show active" id="registro-usuario-pane" role="tabpanel" aria-labelledby="registro-usuario-tab">
-                                        <form action="dashboardUsuario.html" method="get">
+                                        <form id="form-registro-candidato">
                                             <div class="row">
                                                 <div class="col mb-3">
                                                     <label class="texto-etiqueta mb-2">Nombre</label>
-                                                    <input type="text" class="form-control input-auth" placeholder="Nombre">
+                                                    <input type="text" class="form-control input-auth" id="registro-candidato-nombre" placeholder="Nombre">
                                                 </div>
                                                 <div class="col mb-3">
                                                     <label class="texto-etiqueta mb-2">Apellido</label>
-                                                    <input type="text" class="form-control input-auth" placeholder="Apellido">
+                                                    <input type="text" class="form-control input-auth" id="registro-candidato-apellido" placeholder="Apellido">
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="texto-etiqueta mb-2">Correo Electrónico</label>
-                                                <input type="email" class="form-control input-auth" placeholder="nombre@ejemplo.com">
+                                                <input type="email" class="form-control input-auth" id="registro-candidato-email" placeholder="nombre@ejemplo.com">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="texto-etiqueta mb-2">Contraseña</label>
-                                                <input type="password" class="form-control input-auth" placeholder="********">
+                                                <input type="password" class="form-control input-auth" id="registro-candidato-password" placeholder="********">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label class="texto-etiqueta mb-2">Confirmar</label>
-                                                <input type="password" class="form-control input-auth" placeholder="********">
+                                                <input type="password" class="form-control input-auth" id="registro-candidato-confirmar" placeholder="********">
                                             </div>
 
                                             <button type="submit" class="boton-primario w-100 mb-3">Crear mi cuenta gratis</button>
+                                            <p class="texto-mini text-center text-danger mb-2" id="registro-candidato-mensaje"></p>
 
                                             <p class="texto-mini text-center mb-0">
                                                 ¿Ya eres miembro?
@@ -193,34 +194,35 @@
 
                                     <!-- Registro Empresa -->
                                     <div class="tab-pane fade" id="registro-empresa-pane" role="tabpanel" aria-labelledby="registro-empresa-tab">
-                                        <form action="dashboardEmpresa.html" method="get">
+                                        <form id="form-registro-empresa">
 
                                             <div class="mb-3">
                                                 <label class="texto-etiqueta mb-2">Nombre de la Empresa</label>
-                                                <input type="text" class="form-control input-auth" placeholder="Ej. Tech Solutions S.A.">
+                                                <input type="text" class="form-control input-auth" id="registro-empresa-nombre" placeholder="Ej. Tech Solutions S.A.">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="texto-etiqueta mb-2">Correo Empresarial</label>
-                                                <input type="email" class="form-control input-auth" placeholder="reclutamiento@empresa.com">
+                                                <input type="email" class="form-control input-auth" id="registro-empresa-email" placeholder="reclutamiento@empresa.com">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="texto-etiqueta mb-2">Contraseña</label>
-                                                <input type="password" class="form-control input-auth" placeholder="********">
+                                                <input type="password" class="form-control input-auth" id="registro-empresa-password" placeholder="********">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label class="texto-etiqueta mb-2">Confirmar</label>
-                                                <input type="password" class="form-control input-auth" placeholder="********">
+                                                <input type="password" class="form-control input-auth" id="registro-empresa-confirmar" placeholder="********">
                                             </div>
 
                                             <div class="mb-4">
                                                 <label class="texto-etiqueta mb-2">Nombre del Responsable o Contacto</label>
-                                                <input type="text" class="form-control input-auth" placeholder="Nombre completo del contacto">
+                                                <input type="text" class="form-control input-auth" id="registro-empresa-contacto" placeholder="Nombre completo del contacto">
                                             </div>
 
                                             <button type="submit" class="boton-primario w-100 mb-3">Registrar mi Empresa</button>
+                                            <p class="texto-mini text-center text-danger mb-2" id="registro-empresa-mensaje"></p>
 
                                             <p class="texto-mini text-center mb-0">
                                                 ¿Ya eres miembro?
