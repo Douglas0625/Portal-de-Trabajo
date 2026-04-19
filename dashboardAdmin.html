@@ -37,7 +37,7 @@
             <div class="container d-flex justify-content-center gap-5 pb-5">
                 <div class="card border-0 rounded-4 p-3" style="width: 280px; background-color:#f8f8fb;">
                     
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-3 pt-3">
                         
                         <!-- Icono -->
                         <div class="d-flex justify-content-center align-items-center rounded-3" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
@@ -48,7 +48,6 @@
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">USUARIOS TOTALES</small>
                             <h2 class=" mb-0" id="total-usuarios">12,456</h2>
-                            <small class="" style="color: #22C55E;" >+12% este mes</small>
                         </div>
                     </div>
                 </div>
@@ -56,7 +55,7 @@
 
                 <div class="card border-0 rounded-4 p-3" style="width: 280px; background-color:#f8f8fb;">
                     
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-3 pt-3">
                         
                         <!-- Icono -->
                         <div class="d-flex justify-content-center align-items-center rounded-3" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
@@ -67,7 +66,6 @@
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">EMPRESAS ACTIVAS</small>
                             <h2 class=" mb-0" id="total-empresas">1,240</h2>
-                            <small class="" style="color: #22C55E;" >+5% este mes</small>
                         </div>
                     </div>
                 </div>
@@ -75,7 +73,7 @@
 
                 <div class="card border-0 rounded-4 p-3" style="width: 280px; background-color:#f8f8fb;">
                     
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-3 pt-3">
                         
                         <!-- Icono -->
                         <div class="d-flex justify-content-center align-items-center rounded-3" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
@@ -86,7 +84,6 @@
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">VACANTES ACTIVAS</small>
                             <h2 class=" mb-0" id="total-vacantes">842</h2>
-                            <small class="" style="color: #22C55E;" >+18% este mes</small>
                         </div>
                     </div>
                 </div>
@@ -94,7 +91,7 @@
 
                 <div class="card border-0 rounded-4 p-3" style="width: 280px; background-color:#f8f8fb;">
                     
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-3 pt-3">
                         
                         <!-- Icono -->
                         <div class="d-flex justify-content-center align-items-center rounded-3" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
@@ -105,7 +102,6 @@
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">REPORTES PENDIENTES</small>
                             <h2 class=" mb-0" id="total-reportes">14</h2>
-                            <small class="" style="color: #22C55E;" >-2% desde ayer</small>
                         </div>
                     </div>
                 </div>
@@ -248,60 +244,20 @@
 
                 <div class="col-4">
                     <div class="py-4 rounded-4" style="max-height: 525px; background-color: white; font-family: sans-serif;">
-                        <div class="container px-4">
-                            <!-- Header -->
-                            <div class="mb-4">
-                                <h4 class="fw-bold d-flex align-items-center gap-2" ><i class="bi bi-exclamation-circle" style="color: #ef4444;"></i>Moderación</h4>
-                                <p class="text-secondary mb-0">Contenido reportado por usuarios</p>
-                            </div>
+                        <!-- Header -->
+                        <div class="mb-4 px-4">
+                            <h4 class="fw-bold d-flex align-items-center gap-2" ><i class="bi bi-exclamation-circle" style="color: #ef4444;"></i>Moderación</h4>
+                            <p class="text-secondary mb-0">Contenido reportado por usuarios</p>
+                        </div>
+                        <div class="container px-4" id="contenedor-reportes">
         
-                            <!-- Reporte 1 -->
-                            <div class="rounded-4 p-3 mb-3" style="background-color:#fff5f5; border:1px solid #ffd6d6;">
-                                
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <span class="badge rounded-pill"style="background-color:#ffe8e8; color: #ef4444;">COMENTARIO</span>
-                                    <small class="text-secondary fw-bold">HACE 2H</small>
-                                </div>
-        
-                                <h6 class="fw-bold">
-                                    Lenguaje inapropiado en hilo "Salarios 2024"
-                                </h6>
-        
-                                <div class="d-flex justify-content-between align-items-center mt-4">
-                                    <small class="text-secondary fw-semibold">De: User99</small>
-                                    <div class="d-flex gap-3">
-                                        <i class="bi bi-eye" style="color: #554DEF;"></i>
-                                        <i class="bi bi-person-x" style="color: #ef4444;"></i>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
     
-                        <div class="container px-4">
-                            <!-- Reporte 2 -->
-                            <div class="rounded-4 p-3 mb-4" style="background-color:#fff5f5; border:1px solid #ffd6d6;">
-                                    
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <span class="badge rounded-pill"style="background-color:#ffe8e8; color: #ef4444;">PUBLICACIÓN</span>
-                                    <small class="text-secondary fw-bold">HACE 5H</small>
-                                </div>
-        
-                                <h6 class="fw-bold">
-                                    Contenido spam detectado en foro de reclutamiento
-                                    </h6>
-                                <div class="d-flex justify-content-between align-items-center mt-4">
-                                    <small class="text-secondary fw-semibold">De: User124</small>
-                                    <div class="d-flex gap-3">
-                                        <i class="bi bi-eye" style="color: #554DEF;"></i>
-                                        <i class="bi bi-person-x" style="color: #ef4444;"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
     
                         <!-- Footer -->
                         <div class="text-center">
-                            <a href="moderacionReportes.html" class="fw-bold text-decoration-none" style="color: #ef4444;">Ver todos los reportes (14)</a>
+                            <a href="moderacionReportes.html" class="fw-bold text-decoration-none" style="color: #ef4444;">Ver todos los reportes <span id="ver-reportes">(14)</span></a>
                         </div>
 
                         <!-- SEGUNDA CARD DE LA DERECHA -->
@@ -319,10 +275,10 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-1">
                                 <small>Vacantes Publicadas (Mes)</small>
-                                <small class="fw-bold">+248</small>
+                                <small class="fw-bold" id="num-vacantes">+248</small>
                             </div>
                             <div class="progress" style="background-color: #8c87ec; height:6px;">
-                                <div class="progress-bar bg-white" style="width:75%;"></div>
+                                <div class="progress-bar bg-white" id="barra-vacantes" style="width:75%;"></div>
                             </div>
                         </div>
 
@@ -330,21 +286,21 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-1">
                                 <small>Empresas Activas</small>
-                                <small class="fw-bold">1,240</small>
+                                <small class="fw-bold" id="num-empresas">1,240</small>
                             </div>
                             <div class="progress" style="background-color: #8c87ec; height:6px;">
-                                <div class="progress-bar bg-white" style="width:85%;"></div>
+                                <div class="progress-bar bg-white" id="barra-empresas" style="width:85%;"></div>
                             </div>
                         </div>
 
                         <!-- Métrica 3 -->
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-1">
-                                <small>Publicaciones en Foro</small>
-                                <small class="fw-bold">124</small>
+                                <small>Usuarios bloqueados</small>
+                                <small class="fw-bold" id="num-usuarios">124</small>
                             </div>
                             <div class="progress" style="background-color: #8c87ec; height:6px;">
-                                <div class="progress-bar bg-white" style="width:45%;"></div>
+                                <div class="progress-bar bg-white" id="barra-usuarios" style="width:45%;"></div>
                             </div>
                         </div>
 
@@ -352,10 +308,10 @@
                         <div class="mb-4">
                             <div class="d-flex justify-content-between mb-1">
                                 <small>Comentarios Reportados</small>
-                                <small class="fw-bold">8</small>
+                                <small class="fw-bold" id="num-reportes">8</small>
                             </div>
                             <div class="progress" style="background-color: #8c87ec; height:6px;">
-                                <div class="progress-bar" style="background-color: #ef4444; width:15%;"></div>
+                                <div class="progress-bar" id="barra-reportes" style="background-color: #ef4444; width:15%;"></div>
                             </div>
                         </div>
 

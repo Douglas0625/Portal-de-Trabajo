@@ -4,6 +4,8 @@ import { renderizarNavbar } from "./navbar.js";
 
 let usuariosOriginales = [];
 let empresasOriginales = [];
+let mapaReportToUserGlobal = {};
+
 // -------------------------
 // 1. Navbar
 // -------------------------
@@ -15,10 +17,14 @@ renderizarNavbar();
 const totalUsuarios = document.getElementById("total-usuarios");
 const totalEmpresas = document.getElementById("total-empresas");
 const totalVacantes = document.getElementById("total-vacantes");
+const totalReportes = document.getElementById("total-reportes");
+const verReportes = document.getElementById("ver-reportes");
 
 const tablaUsuarios = document.getElementById("tabla-usuarios");
 const tablaEmpresas = document.getElementById("tabla-empresas");
 const tablaVacantes = document.getElementById("tabla-vacantes");
+
+
 
 // -------------------------
 // 3. Inicializar
@@ -26,20 +32,42 @@ const tablaVacantes = document.getElementById("tabla-vacantes");
 async function initDashboard() {
 
   try {
-    const [profiles, users, companies, jobs] = await Promise.all([
+    const [profiles, users, companies, jobs, reports, reasons, actions] = await Promise.all([
       obtenerDatos("/profiles"),
       obtenerDatos("/users"),
       obtenerDatos("/company-profiles"),
-      obtenerDatos("/job-posts")
-    ]);
+      obtenerDatos("/job-posts"),
+      obtenerDatos("/forum/reports"),
+      obtenerDatos("/report-reasons"),
+      obtenerDatos("/moderation/actions")
 
+    ]);
+    
     const listaProfiles = Array.isArray(profiles) ? profiles : profiles.data || [];
     const listaUsers = Array.isArray(users) ? users : users.data || [];
     const listaCompanies = Array.isArray(companies) ? companies : companies.data || [];
     const listaJobs = Array.isArray(jobs) ? jobs : jobs.data || [];
+    const listaReports = Array.isArray(reports) ? reports : reports.data || [];
+    const listaReasons = Array.isArray(reasons) ? reasons : reasons.data || [];
+    const listaActions = Array.isArray(actions) ? actions : actions.data || [];
+
+
+    const mapaReasons = Object.fromEntries(
+      listaReasons.map(r => [r.id, r.reason_name])
+    );
+
+    const mapaProfiles = Object.fromEntries(
+      listaProfiles.map(p => [p.user_id, p])
+    );
+
+    const mapaReportToUser = Object.fromEntries(
+      listaActions.map(a => [a.report_id, a.target_user_id])
+    );
+
 
     usuariosOriginales = listaUsers;
     empresasOriginales = listaCompanies;
+    mapaReportToUserGlobal = mapaReportToUser;
 
     // -------------------------
     // 4. MAPAS
@@ -55,6 +83,39 @@ async function initDashboard() {
     totalUsuarios.textContent = listaUsers.length;
     totalEmpresas.textContent = listaCompanies.length;
     totalVacantes.textContent = listaJobs.length;
+    const reportesPendientes = listaReports.filter(r => r.status === "pending");
+    totalReportes.textContent = reportesPendientes.length;
+    verReportes.textContent = `(${reportesPendientes.length})`;
+    const ahora = new Date();
+    const usuariosBloqueados = listaUsers.filter(u => u.is_blocked).length;
+
+    const vacantesMes = listaJobs.filter(job => {
+      const fecha = new Date(job.created_at);
+      return (
+        fecha.getMonth() === ahora.getMonth() &&
+        fecha.getFullYear() === ahora.getFullYear()
+      );
+    }).length;
+    const empresasActivas = listaCompanies.length;
+
+    const maxVacantes = 50;
+    const maxEmpresas = 50;
+    const maxUsuarios = 50;
+    const maxReportes = 20;
+    
+    const porcentajeVacantes = (vacantesMes / maxVacantes) * 100;
+    const porcentajeEmpresas = (empresasActivas / maxEmpresas) * 100;
+    const porcentajeUsuarios = (usuariosBloqueados / maxUsuarios) * 100;
+    const porcentajeReportes = (reportesPendientes / maxReportes) * 100;
+
+    document.getElementById("num-vacantes").textContent = `+${vacantesMes}`;
+    document.getElementById("num-empresas").textContent = empresasActivas;
+    document.getElementById("num-usuarios").textContent = usuariosBloqueados;
+    document.getElementById("num-reportes").textContent = reportesPendientes.length;
+    document.getElementById("barra-vacantes").style.width = `${porcentajeVacantes}%`;
+    document.getElementById("barra-empresas").style.width = `${porcentajeEmpresas}%`;
+    document.getElementById("barra-usuarios").style.width = `${porcentajeUsuarios}%`;
+    document.getElementById("barra-reportes").style.width = `${porcentajeReportes}%`;
 
     // -------------------------
     // 6. TABLA USUARIOS
@@ -162,6 +223,55 @@ async function initDashboard() {
       `;
     });
 
+    // -------------------------
+    // 9. REPORTES
+    // -------------------------
+    const contenedorReportes = document.getElementById("contenedor-reportes");
+    contenedorReportes.innerHTML = "";
+
+    // solo los pendientes
+    reportesPendientes.sort(() => Math.random() - 0.5).slice(0, 2).forEach(rep => {
+
+      const tipo = rep.comment_id ? "COMENTARIO" : "PUBLICACIÓN";
+      const razon = mapaReasons[rep.reason_id] || "Sin razón";
+
+      const targetUserId = mapaReportToUser[rep.id];
+      const usuario = mapaUsers[targetUserId];
+      const profile = mapaProfiles[targetUserId];
+      const nombreUsuario = profile ? `${profile.first_name} ${profile.last_name}` : "Usuario";
+
+      const fecha = new Date(rep.created_at);
+      const ahora = new Date();
+      const diffHoras = Math.floor((ahora - fecha) / (1000 * 60 * 60));
+
+      contenedorReportes.innerHTML += `
+        <div class="rounded-4 p-3 mb-3" style="background-color:#fff5f5; border:1px solid #ffd6d6;">
+          
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge rounded-pill" style="background-color:#ffe8e8; color:#ef4444;">
+              ${tipo}
+            </span>
+            <small class="text-secondary fw-bold">HACE ${diffHoras}H</small>
+          </div>
+
+          <h6 class="fw-bold">
+            ${razon}
+          </h6>
+
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <small class="text-secondary fw-semibold">De: ${nombreUsuario}</small>
+            <div class="d-flex gap-3">
+              <button class="btn btn-ver-reporte" data-id="${rep.id}">
+                <i class="bi bi-eye" style="color:#554DEF;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+
+
   } catch (error) {
     console.error("Error cargando dashboard:", error);
   }
@@ -227,6 +337,30 @@ function activarEventosDashboard() {
             initDashboard();
         });
     });
+
+    // ---------------------
+    // REPORTES
+    // ---------------------
+    document.querySelectorAll(".btn-ver-reporte").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const reportId = btn.dataset.id;
+
+        const targetUserId = mapaReportToUserGlobal[reportId];
+
+        if (!targetUserId) {
+          console.warn("No se encontró usuario objetivo para el reporte");
+          return;
+        }
+
+        // guardas el usuario objetivo
+        localStorage.setItem("usuarioSeleccionado", targetUserId);
+
+        // rediriges al perfil
+        window.location.href = "perfilUsuario.html";
+      });
+    });
+
+
 }
 
 // -------------------------
