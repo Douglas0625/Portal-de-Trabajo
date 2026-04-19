@@ -82,6 +82,7 @@ function navbarCandidato() {
               <a class="nav-link" href="ofertas.html">Empleos</a>
               <a class="nav-link" href="recursos_y_valoraciones.html">Recursos</a>
               <a class="nav-link" href="foro.html">Foro</a>
+              <a class="nav-link" href="misPostulaciones.html">Mis Postulaciones</a>
             </div>
           </div>
         </div>
@@ -96,14 +97,16 @@ function navbarCandidato() {
               <p class="profile-name">${nombre}</p>
               <p class="profile-role">${titulo}</p>
             </div>
-            <img 
-              src="${fotoFinal}" 
-              alt="${nombre}" 
-              width="40" 
-              height="40"
-              class="rounded-circle"
-              style="object-fit: cover;"
-            >
+            <a href="perfilDeCandidato.html">
+              <img 
+                src="${fotoFinal}" 
+                alt="${nombre}" 
+                width="40" 
+                height="40"
+                class="rounded-circle"
+                style="object-fit: cover;"
+              >
+            </a>
           </div>
           <div class="logout-icon ms-2" id="btn-logout" style="cursor: pointer;">
             <i class="bi bi-box-arrow-right"></i>
@@ -181,6 +184,7 @@ function navbarAdmin() {
             <div class="navbar-nav nav-link-gap">
               <a class="nav-link active" aria-current="page" href="dashboardAdmin.html">Dashboard</a>
               <a class="nav-link" href="moderacionReportes.html">Moderación</a>
+              <a class="nav-link" href="gestionDeUsuarios.html">Usuarios</a>
             </div>
           </div>
         </div>

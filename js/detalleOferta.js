@@ -90,7 +90,7 @@ function configurarBotones(oferta, empresa) {
   if (btnAplicar) {
     btnAplicar.addEventListener("click", (event) => {
       event.preventDefault();
-      alert("La postulación se conectará después con login y aplicaciones.");
+      aplicarAOferta(oferta);
     });
   }
 
@@ -104,6 +104,90 @@ function configurarBotones(oferta, empresa) {
         alert("No se encontró el perfil de la empresa.");
       }
     });
+  }
+}
+
+async function aplicarAOferta(oferta) {
+  // Verificar sesión del usuario
+  const sesionGuardada = localStorage.getItem("usuarioLoggeado");
+  if (!sesionGuardada) {
+    alert("Debes iniciar sesión para aplicar a una oferta");
+    window.location.href = "inicio_registro.html";
+    return;
+  }
+
+  try {
+    const sesion = JSON.parse(sesionGuardada);
+
+    console.log("Sesión:", sesion);
+    console.log("Oferta ID:", oferta.id);
+
+    // Verificar que sea candidato
+    if (sesion.role_name !== "candidate") {
+      alert("Solo los candidatos pueden aplicar a ofertas");
+      return;
+    }
+
+    // Obtener ID del candidato (se llama profile_id en la sesión)
+    const candidatoId = sesion.profile_id;
+    if (!candidatoId) {
+      alert("❌ No tienes perfil de candidato creado.\n\nPor favor, completa tu perfil primero:");
+      window.location.href = "perfilUsuario.html";
+      return;
+    }
+
+    console.log("Candidato ID:", candidatoId);
+
+    // Crear la aplicación con estructura correcta
+    const datosAplicacion = {
+      profile_id: Number(candidatoId),
+      job_post_id: Number(oferta.id)
+    };
+
+    console.log("Enviando datos de aplicación:", datosAplicacion);
+    console.log("URL:", "https://portal-empleo-api-production.up.railway.app/applications");
+
+    const response = await fetch("https://portal-empleo-api-production.up.railway.app/applications", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(datosAplicacion)
+    });
+
+    console.log("Response status:", response.status);
+    const responseText = await response.text();
+    console.log("Response body:", responseText);
+
+    if (!response.ok) {
+      console.error("Error completo:", response.status, responseText);
+      
+      if (response.status === 404) {
+        throw new Error("El endpoint no se encontró o los datos están incompletos. Verifica que tengas perfil completado.");
+      } else if (response.status === 400) {
+        throw new Error(`Datos inválidos: ${responseText}`);
+      } else if (response.status === 500) {
+        throw new Error(`Error del servidor: ${responseText}`);
+      }
+      
+      throw new Error(`Error ${response.status}: ${responseText || "Error desconocido"}`);
+    }
+
+    const resultado = JSON.parse(responseText);
+    console.log("Aplicación exitosa:", resultado);
+    
+    alert("✅ ¡Aplicación enviada exitosamente!\nProto te contactarán.");
+    
+    // Cambiar el estado del botón
+    const btnAplicar = document.getElementById("btn-aplicar-oferta");
+    if (btnAplicar) {
+      btnAplicar.textContent = "Ya aplicaste";
+      btnAplicar.style.pointerEvents = "none";
+      btnAplicar.style.opacity = "0.6";
+    }
+  } catch (error) {
+    console.error("Error al aplicar a oferta:", error);
+    alert("❌ Error al aplicar:\n\n" + error.message + "\n\nAbre F12 → Console para ver más detalles.");
   }
 }
 
