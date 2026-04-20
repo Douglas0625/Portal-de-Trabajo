@@ -1,4 +1,4 @@
-import { obtenerDatos, actualizarUsuario } from "./api.js";
+import { obtenerDatos, actualizarUsuario, postDatos } from "./api.js";
 import { renderizarNavbar } from "./navbar.js";
 
 
@@ -23,6 +23,14 @@ const verReportes = document.getElementById("ver-reportes");
 const tablaUsuarios = document.getElementById("tabla-usuarios");
 const tablaEmpresas = document.getElementById("tabla-empresas");
 const tablaVacantes = document.getElementById("tabla-vacantes");
+
+const form = document.getElementById("form-publicacion");
+const tipoContenido = document.getElementById("tipo-contenido");
+const categoriaSelect = document.getElementById("categoria");
+
+const tituloInput = document.getElementById("titulo");
+const imagenInput = document.getElementById("imagen");
+const contenidoInput = document.getElementById("contenido");
 
 
 
@@ -363,5 +371,82 @@ function activarEventosDashboard() {
 
 }
 
+tipoContenido.addEventListener("change", () => {
+
+    categoriaSelect.innerHTML = "";
+
+    if (tipoContenido.value === "Entrada de Foro") {
+        categoriaSelect.innerHTML = `
+            <option value="OFICIAL">OFICIAL</option>
+            <option value="GENERAL">GENERAL</option>
+            <option value="DISCUSIÓN">DISCUSIÓN</option>
+        `;
+    } else {
+        categoriaSelect.innerHTML = `
+            <option value="consejo">consejo</option>
+            <option value="plantilla">plantilla</option>
+            <option value="guia">guia</option>
+        `;
+    }
+});
+
 // -------------------------
 initDashboard();
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const sesion = JSON.parse(localStorage.getItem("usuarioLoggeado"));
+    const userId = sesion?.id;
+    if (!userId) {
+        alert("No hay sesión activa");
+        console.error("Sesión inválida:", sesion);
+        return;
+    }
+
+    const titulo = tituloInput.value.trim();
+    const imagen = imagenInput.value.trim();
+    const contenido = contenidoInput.value.trim();
+    const categoria = categoriaSelect.value;
+    const tipo = tipoContenido.value;
+    console.log("userId raw:", userId);
+    console.log("userId number:", Number(userId));
+
+    // VALIDACIÓN
+    if (!titulo || !contenido || !categoria) {
+        alert("Todos los campos son obligatorios");
+        return;
+    }
+
+    try {
+
+        if (tipo === "Entrada de Foro") {
+
+            await postDatos("/forum/posts", {
+                user_id: Number(userId),
+                title: titulo,
+                content: contenido,
+                category: categoria
+            });
+
+        } else {
+
+            await postDatos("/resources", {
+                user_id: Number(userId),
+                title: titulo,
+                description: contenido,
+                resource_type: categoria,
+                url: imagen,
+                image_url: imagen
+            });
+
+        }
+
+        alert("Publicación creada correctamente");
+        form.reset();
+
+    } catch (error) {
+        console.error("Error al crear publicación:", error);
+        alert("Error al crear publicación");
+    }
+});

@@ -20,55 +20,23 @@
     <body>
         <!-- Navbar -->
 
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <!-- Izquierda -->
-                <div class="nav-gap d-flex">
-                    <a class="navbar-brand" href="#">
-                        <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
-                    </a>
-                    
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-        
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav nav-link-gap">
-                            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-                            <a class="nav-link" href="#">Empleos</a>
-                            <a class="nav-link" href="#">Foro</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Derecha -->
-                <div class="d-flex gap-3 align-items-center">
-                    <i class="bi bi-bell"></i>
-                    <hr class="vr" style="height: 30px; margin: 0 15px;">
-                    <div class="d-flex flex-column align-items-end">
-                        <p class="mb-0 fw-bold" style="font-family: sans-serif;">TechFlow Solutions</p>
-                        <small class="text-muted" style="font-family: sans-serif;" >Empresa Premium</small>
-                    </div>
-                    <a class="nav-link d-flex align-items-center justify-content-center bg-primary bg-opacity-10 fw-bold rounded-circle" href="#" style="width: 45px; height: 45px; color: #554DEF;">
-                        TF
-                    </a>
-                    <i class="bi bi-box-arrow-right"></i>
-                </div>
-            </div>
-        </nav>
+        <div id="navbar-container"></div>
 
         <!-- base del titulo -->
         <section class="pb-5" style=" background-color: #ECEDF4">
             <div class="container d-flex flex-column align-items-start gap-3 py-4">
-                <a class="fw-bold nav-link" href="#" style="color:#554DEF"><small><i class="bi bi-arrow-left"></i> Volver al Dashboard</small></a>
+                <a id="btnVolverPerfilEmpresa" href="#" class="fw-bold fuente-inter text-azul text-decoration-none">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </a>
             </div>
             <div class="container d-flex pb-5 justify-content-between align-items-center gap-5">
                 <div>
-                    <h1>Mi <span style="color: #554DEF;">Empresa</span></h1>
-                    <p class="secondary-color" style="font-family: sans-serif;">Gestiona tu identidad institucional y destaca tu cultura para atraer al mejor talento.</p>
+                    <h1 id="tituloPerfilEmpresa" class="titulos">Mi <span class="text-azul">Empresa</span></h1>
+                    <p id="subtituloPerfilEmpresa" class="secondary-color subtitulos" style="font-family: sans-serif;">Gestiona tu identidad institucional y destaca tu cultura para atraer al mejor talento.</p>
                 </div>
-                <div class="d-flex gap-3">
-                    <button class="boton-secundario">Cancelar</button>
-                    <button class="boton-primario"><i class="bi bi-floppy"></i> Guardar Cambios</button>
+                <div id="accionesPerfilEmpresaTop" class="d-flex gap-3">
+                    <button id="btnCancelarPerfilEmpresa" class="boton-secundario">Cancelar</button>
+                    <button id="btnGuardarPerfilEmpresa" class="boton-primario"><i class="bi bi-floppy"></i> Guardar Cambios</button>
                 </div>
             </div>
 
@@ -85,22 +53,44 @@
                         <div class="text-center p-5 d-flex flex-column align-items-center" style="background-color:#f7f7fb;">
                             <div class="position-relative d-inline-block">
 
-                                <!-- Avatar -->
-                                <div class="shadow rounded-5 d-flex justify-content-center align-items-center fw-bold"
-                                    style="width:110px; height:110px; background:white; color:#554DEF; font-size:50px;">
+                                <!-- Imagen real del logo -->
+                                <img
+                                    id="empresaLogoPreview"
+                                    src=""
+                                    alt="Logo empresa"
+                                    class="shadow rounded-5 d-none"
+                                    style="width:110px; height:110px; object-fit:cover; background:white;"
+                                >
+
+                                <!-- Fallback con iniciales -->
+                                <div
+                                    id="empresaAvatarFallback"
+                                    class="shadow rounded-5 d-flex justify-content-center align-items-center fw-bold"
+                                    style="width:110px; height:110px; background:white; color:#554DEF; font-size:50px;"
+                                >
                                     TF
                                 </div>
 
                                 <!-- Botón cámara -->
-                                <button data-bs-toggle="modal" data-bs-target="#modalFotoPerfil" class="btn rounded-circle d-flex justify-content-center align-items-center position-absolute" style="width:36px; cursor: pointer; height:36px; background:#554DEF; color:white; bottom:0; right:0; border:3px solid white;">
+                                <button
+                                    id="btnAbrirModalLogoEmpresa"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalFotoPerfil"
+                                    class="btn rounded-circle d-flex justify-content-center align-items-center position-absolute"
+                                    style="width:36px; cursor: pointer; height:36px; background:#554DEF; color:white; bottom:0; right:0; border:3px solid white;"
+                                >
                                     <i class="bi bi-camera"></i>
                                 </button>
                             </div>
-                            <h3 class="fw-bold mt-3 mb-1">TechFlows Solutions</h3>
 
-                            <h6 class="fw-bold mb-2" style="color:#554DEF;">Tecnologia e Inteligencia Artificial</h6>
+                            <h3 id="empresaNombreResumen" class="fw-bold mt-3 mb-1">TechFlows Solutions</h3>
 
-                            <small class="text-secondary d-flex justify-content-center align-items-center gap-1"><i class="bi bi-geo-alt" style="color: #554DEF;"></i> Buenos Aires, Argentina</small>
+                            <h6 id="empresaIndustriaResumen" class="fw-bold mb-2" style="color:#554DEF;">Tecnologia e Inteligencia Artificial</h6>
+
+                            <small id="empresaUbicacionResumen" class="text-secondary d-flex justify-content-center align-items-center gap-1">
+                                <i class="bi bi-geo-alt" style="color: #554DEF;"></i>
+                                Buenos Aires, Argentina
+                            </small>
                         </div>
 
                         <!-- Body -->
@@ -108,18 +98,25 @@
                             <div class="my-3">
                                 <!-- Email -->
                                 <div class="mb-3">
-                                    <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="contact@techflow.io">
+                                    <div id="empresaEmailResumen" class="form-control rounded-4 d-flex align-items-center" style="height: 50px;">
+                                        contact@techflow.io
+                                    </div>
                                 </div>
     
                                 <!-- Teléfono -->
                                 <div class="mb-3">
-                                    <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="+54 9 11 5555 0123">
-                                </div>    
+                                    <div id="empresaTelefonoResumen" class="form-control rounded-4 d-flex align-items-center" style="height: 50px;">
+                                        +54 9 11 5555 0123
+                                    </div>
+                                </div> 
+                                <div>
+                                    <button id="btnToggleVistaPublicaEmpresa" class="boton-secundario-grande w-100">Ver perfil público</button>
+                                </div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="card border-0 rounded-5 shadow-sm p-4">
+                    <div id="empresaStatsCard" class="card border-0 rounded-5 shadow-sm p-4">
 
                         <!-- Título -->
                         <h6 class="text-uppercase text-secondary mb-4" style="letter-spacing:1px;">Actividad General</h6>
@@ -131,7 +128,7 @@
                             <div class="col-6">
                                 <div class="border rounded-4 text-center py-4 h-100">
                                     <i class="bi bi-suitcase-lg fs-3 text-primary"></i>
-                                    <h2 class="fw-bold my-2">32</h2>
+                                    <h2 id="statVacantesTotales" class="fw-bold my-2">32</h2>
                                     <small class="text-uppercase text-secondary ">Vacantes Totales</small>
                                 </div>
                             </div>
@@ -140,7 +137,7 @@
                             <div class="col-6">
                                 <div class="border rounded-4 text-center py-4 h-100">
                                     <i class="bi bi-check-circle fs-4" style="color: #22C55E;"></i>
-                                    <h2 class="fw-bold my-2">8</h2>
+                                    <h2 id="statVacantesActivas" class="fw-bold my-2">8</h2>
                                     <small class="text-uppercase text-secondary">Vacantes Activas</small>
                                 </div>
                             </div>
@@ -149,7 +146,7 @@
                             <div class="col-6">
                                 <div class="border rounded-4 text-center py-4 h-100">
                                     <i class="bi bi-people fs-4" style="color:#554DEF;"></i>
-                                    <h2 class="fw-bold my-2">1.4k</h2>
+                                    <h2 id="statPostulantesEmpresa" class="fw-bold my-2">1.4k</h2>
                                     <small class="text-uppercase text-secondary ">Postulantes</small>
                                 </div>
                             </div>
@@ -158,7 +155,7 @@
                             <div class="col-6">
                                 <div class="border rounded-4 text-center py-4 h-100">
                                     <i class="bi bi-graph-up-arrow fs-4 text-warning"></i>
-                                    <h2 class="fw-bold my-2">+12%</h2>
+                                    <h2 id="statCrecimientoEmpresa" class="fw-bold my-2">+12%</h2>
                                     <small class="text-uppercase text-secondary ">
                                         Crecimiento
                                     </small>
@@ -181,26 +178,26 @@
                             <h1 class="fw-bold ps-4 titulos fuente-inter">Informacion General</h1>
                         </div>
                         <p class="pb-4">Datos básicos de identificación institucional</p>
-                        <form class="row g-3 mb-4">
-                            <div class="mb-3 col-md-6" s>
-                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Nombre de la Empresa</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="TecgFlows Solutions">
+                        <form id="formInfoGeneralEmpresa" class="row g-3 mb-4">
+                            <div class="mb-3 col-md-6">
+                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Nombre de la empresa</label>
+                                <input id="empresaNombreInput" type="text" class="form-control rounded-4" style="height: 50px;" placeholder="TechFlow Solutions">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputPassword4" class="form-label fw-bold fuente-inter">Correo Corporativo</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="contact@techflow.io">
+                                <input id="empresaEmailInput" type="email" class="form-control rounded-4" style="height: 50px;" placeholder="contact@techflow.io">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputEmail4" class="form-label fw-bold fuente-inter">Telefono</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="+54 9 11 5555 0123">
+                                <input id="empresaTelefonoInput" type="text" class="form-control rounded-4" style="height: 50px;" placeholder="+503 5555 0123">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputPassword4" class="form-label fw-bold fuente-inter">Ubicacion</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="Buenos Aires, Argentina">
+                                <input id="empresaUbicacionInput" type="text" class="form-control rounded-4" style="height: 50px;" placeholder="Buenos Aires, Argentina">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputState" class="form-label fw-bold fuente-inter">Rubro o Sector</label>
-                                <select id="inputState" class="form-select rounded-4" style="height: 50px;">
+                                <select id="empresaIndustriaSelect" class="form-select rounded-4" style="height: 50px;">
                                     <option selected>Tecnologia e IA</option>
                                     <option>Backend</option>
                                     <option>Frontend</option>
@@ -208,14 +205,18 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputState" class="form-label fw-bold fuente-inter">Tamaño de la empresa</label>
-                                <select id="inputState" class="form-select rounded-4" style="height: 50px;">
+                                <select id="empresaTamanoSelect" class="form-select rounded-4" style="height: 50px;">
                                     <option selected>0 - 50 empleados</option>
                                     <option>51 - 250 empleados</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                    <label for="inputPassword4" class="form-label fw-bold fuente-inter">Enlace de imagen o Recurso</label>
-                                    <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="https://ejemplo.com/imagen.jpg">
+                                <label for="empresaWebsiteInput" class="form-label fw-bold fuente-inter">Sitio web oficial</label>
+                                <input id="empresaWebsiteInput" type="url" class="form-control rounded-4" style="height: 50px;" placeholder="https://ejemplo.com">
+                            </div>
+                            <div class="col-12">
+                                <label for="empresaCoverImageInput" class="form-label fw-bold fuente-inter">Enlace de imagen de portada</label>
+                                <input id="empresaCoverImageInput" type="url" class="form-control rounded-4" style="height: 50px;" placeholder="https://ejemplo.com/portada.jpg">
                             </div>
                         </form>
                     </div>
@@ -232,62 +233,25 @@
                             <h1 class="fw-bold ps-4 titulos fuente-inter">Descripcion y Cultura</h1>
                         </div>
                         <p class="pb-4">Define la esencia de tu organización</p>
-                        <form class="row g-3">
+                        <form id="formDescripcionEmpresa" class="row g-3">
                             <div class="mb-3 col-12">
                                 <label for="exampleFormControlTextarea1" class="form-label fw-bold fuente-inter">Sobre la empresa</label>
-                                <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Somos una compañía líder en el desarrollo de soluciones de Inteligencia Artificial aplicadas al análisis de datos masivos. Nuestra misión es democratizar el acceso a la tecnología de punta para empresas de todos los tamaños."></textarea>
+                                <textarea id="empresaAboutInput" class="form-control rounded-4" rows="4" placeholder="Somos una compañía líder..."></textarea>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="exampleFormControlTextarea1" class="form-label fw-bold fuente-inter">Misión (Opcional)</label>
-                                <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Escribe la misión aquí..."></textarea>
+                                <textarea id="empresaMissionInput" class="form-control rounded-4" rows="4" placeholder="Escribe la misión aquí..."></textarea>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="exampleFormControlTextarea1" class="form-label fw-bold fuente-inter">Visión (Opcional)</label>
-                                <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Escribe la visión aquí..."></textarea>
+                                <textarea id="empresaVisionInput" class="form-control rounded-4" rows="4" placeholder="Escribe la visión aquí..."></textarea>
                             </div>
                             <div class="mb-3 mb-3 col-12">
                                 <label for="exampleFormControlTextarea1" class="form-label fw-bold fuente-inter">Cultura y Beneficios</label>
-                                <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Fomentamos un ambiente de trabajo colaborativo, flexible y orientado a objetivos. Ofrecemos medicina prepaga de primer nivel, capacitaciones constantes y home office total."></textarea>
+                                <textarea id="empresaCultureInput" class="form-control rounded-4" rows="4" placeholder="Fomentamos un ambiente de trabajo colaborativo, flexible y orientado a objetivos. Ofrecemos medicina prepaga de primer nivel, capacitaciones constantes y home office total."></textarea>
                             </div>
                         </form>
                     </div>
-
-
-                    <!-- Gestion de talentos -->
-
-
-                    <div class="p-5 rounded-5 mb-4" style=" background-color: white; font-family: sans-serif;">
-                        <div class="py-3 d-flex justify-content-start align-items-center">
-                            <div class="d-flex justify-content-center align-items-center rounded-4" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
-                                <i class="bi bi-people fs-3" style="color: #554DEF;"></i>
-                            </div>
-                            <h1 class="fw-bold ps-4 titulos fuente-inter">Gestion de talentos</h1>
-                        </div>
-                        <p class="pb-4">Datos del contacto de RRHH y reclutamiento</p>
-                        <form class="row g-3 mb-4">
-                            <div class="mb-3 col-md-6" s>
-                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Responsable de Reclutamiento</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="Lucía Fernández">
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="inputPassword4" class="form-label fw-bold fuente-inter">Cargo del Responsable</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="Gerente de Adquisición de Talento">
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Correo de Reclutamiento</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="jobs@techflow.io">
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="inputState" class="form-label fw-bold fuente-inter">Modalidad predominante</label>
-                                <select id="inputState" class="form-select rounded-4" style="height: 50px;">
-                                    <option selected>100% Remoto</option>
-                                    <option>50% remoto 50% presencial</option>
-                                    <option>100% presencial</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-
 
                     <!-- Redes y Enlaces -->
 
@@ -300,22 +264,18 @@
                             <h1 class="fw-bold ps-4 titulos fuente-inter">Redes y Enlaces</h1>
                         </div>
                         <p class="pb-4">Presencia digital de la compañía</p>
-                        <form class="row g-3 mb-4">
-                            <div class="mb-3 col-md-6" s>
-                                <label for="inputEmail4" class="form-label fw-bold fuente-inter">Sitio Web Oficial</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="www.techflow.io">
-                            </div>
+                        <form id="formRedesEmpresa" class="row g-3 mb-4">
                             <div class="mb-3 col-md-6">
                                 <label for="inputPassword4" class="form-label fw-bold fuente-inter">LinkedIn</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="linkedin.com/company/techflow">
+                                <input id="empresaLinkedinInput" type="text" class="form-control rounded-4" style="height: 50px;" placeholder="linkedin.com/company/techflow">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputEmail4" class="form-label fw-bold fuente-inter">Instagram</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="@techflow_io">
+                                <input id="empresaInstagramInput" type="text" class="form-control rounded-4" style="height: 50px;" placeholder="@techflow_io">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputEmail4" class="form-label fw-bold fuente-inter">Facebook</label>
-                                <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="facebook.com/techflowsolutions">
+                                <input id="empresaFacebookInput" type="text" class="form-control rounded-4" style="height: 50px;" placeholder="facebook.com/techflowsolutions">
                             </div>
                         </form>
                     </div>
@@ -324,9 +284,9 @@
                     <!-- BOTONES FINALES -->
 
 
-                    <div class="pb-5 mb-5 mt-5 d-flex gap-3 align-items-center justify-content-end">
-                        <button class="boton-secundario">Cancelar</button>
-                        <button class="boton-primario"><i class="bi bi-floppy"></i> Guardar Cambios</button>
+                    <div id="accionesPerfilEmpresaBottom" class="pb-5 mb-5 mt-5 d-flex gap-3 align-items-center justify-content-end">
+                        <button id="btnCancelarPerfilEmpresaBottom" class="boton-secundario">Cancelar</button>
+                        <button id="btnGuardarPerfilEmpresaBottom" class="boton-primario"><i class="bi bi-floppy"></i> Guardar Cambios</button>
                     </div>
                 </div>
             </div>
@@ -351,11 +311,11 @@
                         </div>
                     </div>
 
-                    <form action="http://localhost:3000/profiles/1/photo-url" method="POST">
+                    <form id="formLogoEmpresa">
                         <div class="modal-body modal-body-custom">
                             <div class="text-center mb-4">
-                                <img 
-                                    src="./media/fotoPerfilChiquita.jpg" 
+                                <img id="empresaLogoPreviewModal"
+                                    src="./media/fotoPerfilChiquita.jpg"
                                     alt="Vista previa"
                                     class="rounded-circle"
                                     style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #eef2ff;"
@@ -367,9 +327,9 @@
                                 <input 
                                     type="url"
                                     class="form-control"
-                                    id="profileImageUrl"
-                                    name="profile_image_url"
-                                    placeholder="https://ejemplo.com/mi-foto.jpg"
+                                    id="empresaLogoUrlInput"
+                                    name="logo_url"
+                                    placeholder="https://ejemplo.com/mi-logo.jpg"
                                     required
                                 >
                             </div>
@@ -381,7 +341,7 @@
 
                         <div class="modal-footer modal-footer-custom">
                             <button type="button" class="btn-cancel" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn-save">Guardar foto</button>
+                            <button id="btnGuardarLogoEmpresa" type="submit" class="btn-save">Guardar foto</button>
                         </div>
                     </form>
                 </div>
@@ -441,6 +401,8 @@
 
             </div>
         </footer>
+
+        <script type="module" src="./js/perfilDeEmpresa.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 </html>

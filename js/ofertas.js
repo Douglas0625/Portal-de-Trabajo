@@ -1,8 +1,15 @@
 import { obtenerDatos } from "./api.js";
 import { renderizarNavbar } from "./navbar.js";
 
+let inputBusqueda;
+let selectUbicacion;
+
 document.addEventListener("DOMContentLoaded", () => {
   renderizarNavbar();
+
+  inputBusqueda = document.getElementById("input-busqueda");
+  selectUbicacion = document.getElementById("select-ubicacion");
+
   activarEventos();
   cargarOfertas();
 });
@@ -13,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 const contenedorOfertas = document.getElementById("lista-ofertas");
 const textoCantidad = document.getElementById("cantidad-ofertas");
 
-const inputBusqueda = document.getElementById("input-busqueda");
-const selectUbicacion = document.getElementById("select-ubicacion");
+// const inputBusqueda = document.getElementById("input-busqueda");
+// const selectUbicacion = document.getElementById("select-ubicacion");
 const botonBuscar = document.getElementById("boton-buscar");
 
 const filtroRemoto = document.getElementById("filtro-remoto");
@@ -27,6 +34,7 @@ const filtroPracticas = document.getElementById("filtro-practicas");
 
 const filtroSalario = document.getElementById("filtro-salario");
 const botonLimpiar = document.getElementById("boton-limpiar");
+const botonAplicarFiltros = document.getElementById("boton-aplicar-filtros");
 
 let ofertasOriginales = [];
 let empresasOriginales = [];
@@ -54,7 +62,9 @@ async function cargarOfertas() {
       .filter((oferta) => Number(oferta.status_id) === 2) // solo publicadas
       .map(prepararOferta);
 
-    mostrarOfertas(ofertasOriginales);
+    // mostrarOfertas(ofertasOriginales);
+    aplicarParametrosURL();
+    aplicarFiltros();
   } catch (error) {
     console.error("Error al cargar ofertas:", error);
 
@@ -63,6 +73,30 @@ async function cargarOfertas() {
     }
 
     contenedorOfertas.innerHTML = "<p>Ocurrió un error al cargar las ofertas.</p>";
+  }
+}
+
+
+function aplicarParametrosURL() {
+  const params = new URLSearchParams(window.location.search);
+
+  console.log("PARAMS:", window.location.search); // 👈
+
+  const search = params.get("search");
+  const modality = params.get("modality");
+
+  console.log("SEARCH:", search); // 👈
+
+  // llenar input
+  if (search && inputBusqueda) {
+    inputBusqueda.value = search;
+  }
+
+  // mapear modalidad (API → UI)
+  if (modality && selectUbicacion) {
+    if (modality === "remote") selectUbicacion.value = "remoto";
+    if (modality === "onsite") selectUbicacion.value = "presencial";
+    if (modality === "hybrid") selectUbicacion.value = "hibrido";
   }
 }
 
@@ -195,8 +229,14 @@ function aplicarFiltros() {
   }
 
   if (ubicacionSelect && ubicacionSelect !== "todas") {
+    let modalidadBuscada = "";
+
+    if (ubicacionSelect === "remoto") modalidadBuscada = "remote";
+    if (ubicacionSelect === "presencial") modalidadBuscada = "onsite";
+    if (ubicacionSelect === "hibrido") modalidadBuscada = "hybrid";
+
     resultado = resultado.filter((oferta) =>
-      normalizarTexto(oferta.location).includes(normalizarTexto(ubicacionSelect))
+      oferta.rawModality === modalidadBuscada
     );
   }
 
@@ -260,6 +300,7 @@ function limpiarFiltros() {
 // -------------------------
 function activarEventos() {
   if (botonBuscar) botonBuscar.addEventListener("click", aplicarFiltros);
+  if (botonAplicarFiltros) botonAplicarFiltros.addEventListener("click", aplicarFiltros);
 
   if (inputBusqueda) {
     inputBusqueda.addEventListener("keyup", (event) => {

@@ -122,25 +122,39 @@
                             <h1 class="fw-bold ps-4 titulos fuente-inter">Publicar en el Foro / Recurso</h1>
                         </div>
                         <p class="pb-4 subtitulos fuente-inter">Crea nuevas entradas de noticias, consejos o recursos para la comunidad</p>
-                        <form class="row g-3">
+                        <form class="row g-3" id="form-publicacion">
                             <div class="col-md-8">
-                                    <label for="inputEmail4" class="form-label subtexto fw-bold">Titulo de la Publicacion</label>
-                                    <input type="email" class="form-control rounded-4" style="height: 50px;" id="inputEmail4" placeholder="Ej. Nuevas tendencias de IT 2024">
+                                    <label for="titulo" class="form-label subtexto fw-bold">Titulo de la Publicacion</label>
+                                    <input type="text" class="form-control rounded-4" style="height: 50px;" id="titulo" placeholder="Ej. Nuevas tendencias de IT 2024">
                             </div>
                             <div class="col-md-4">
-                                    <label for="inputState" class="form-label subtexto fw-bold">Tipo de Contenido</label>
-                                    <select id="inputState" class="form-select rounded-4" style="height: 50px;">
+                                    <label for="tipo-contenido" class="form-label subtexto fw-bold">Tipo de Contenido</label>
+                                    <select id="tipo-contenido" class="form-select rounded-4" style="height: 50px;">
                                         <option selected>Entrada de Foro</option>
                                         <option>Noticias</option>
                                     </select>
                             </div>
-                            <div class="col-12">
-                                    <label for="inputPassword4" class="form-label subtexto fw-bold">Enlace de imagen o Recurso</label>
-                                    <input type="password" class="form-control rounded-4" style="height: 50px;" id="inputPassword4" placeholder="https://ejemplo.com/imagen.jpg">
+                            <div class="col-6">
+                                    <label for="imagen" class="form-label subtexto fw-bold">Enlace de imagen o Recurso</label>
+                                    <input type="url" class="form-control rounded-4" style="height: 50px;" id="imagen" placeholder="https://ejemplo.com/imagen.jpg">
+                            </div>
+                            <div class="col-6">
+                                <label for="categoria" class="form-label subtexto fw-bold">Categoria</label>
+                                <select id="categoria" class="form-select rounded-4" style="height: 50px;">
+                                    <option selected>OFICIAL</option>
+                                    <option>GENERAL</option>
+                                    <option>DISCUSIÓN</option>
+                                </select>
+                                <!-- <label for="inputState" class="form-label subtexto fw-bold">Categoria</label>
+                                <select id="categoria" class="form-select rounded-4" style="height: 50px;">
+                                    <option selected>consejo</option>
+                                    <option>plantilla</option>
+                                    <option>guia</option>
+                                </select> -->
                             </div>
                             <div class="mb-3 col-12">
-                                <label for="exampleFormControlTextarea1" class="form-label subtexto fw-bold">Mensaje / Contenido</label>
-                                <textarea class="form-control rounded-4" id="exampleFormControlTextarea1" rows="4" placeholder="Escribe el cuerpo de tu Publicacion Aqui."></textarea>
+                                <label for="contenido" class="form-label subtexto fw-bold">Mensaje / Contenido</label>
+                                <textarea class="form-control rounded-4" id="contenido" rows="4" placeholder="Escribe el cuerpo de tu Publicacion Aqui."></textarea>
                             </div>
                             <div class="col-12 d-flex justify-content-end ">
                                     <button type="submit" class="rounded-4 boton-primario-grande"><i class="bi bi-send"></i> Publicar Ahora</button>
