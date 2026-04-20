@@ -21,48 +21,14 @@
     <body>
         <!-- Navbar -->
 
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <!-- Izquierda -->
-                <div class="nav-gap d-flex">
-                    <a class="navbar-brand" href="#">
-                        <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
-                    </a>
-                    
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-        
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav nav-link-gap">
-                            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-                            <a class="nav-link" href="#">Empleos</a>
-                            <a class="nav-link" href="#">Foro</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Derecha -->
-                <div class="d-flex gap-3 align-items-center">
-                    <i class="bi bi-bell"></i>
-                    <hr class="vr" style="height: 30px; margin: 0 15px;">
-                    <div class="d-flex flex-column align-items-end">
-                        <p class="mb-0 fw-bold" style="font-family: sans-serif;">TechFlow Solutions</p>
-                        <small class="text-muted" style="font-family: sans-serif;" >Empresa Premium</small>
-                    </div>
-                    <a class="nav-link d-flex align-items-center justify-content-center bg-primary bg-opacity-10 fw-bold rounded-circle" href="#" style="width: 45px; height: 45px; color: #554DEF;">
-                        TF
-                    </a>
-                    <i class="bi bi-box-arrow-right"></i>
-                </div>
-            </div>
-        </nav>
+        <div id="navbar-container"></div>
 
         <!-- base del titulo -->
         <section class="pb-5" style=" background-color: #ECEDF4"> 
             <div class="container d-flex py-5 justify-content-between align-items-end gap-5">
                 <div>
-                    <h1>Panel de <span style="color: #554DEF;">Empresa</span></h1>
-                    <p class="secondary-color" style="font-family: sans-serif;">Gestiona tus vacantes, revisa candidatos y mantente al tanto de las novedades del portal.</p>
+                    <h1>Panel de <span style="color: #554DEF;" id="dashboard-empresa-nombre-titulo">Empresa</span></h1>
+                    <p class="secondary-color" style="font-family: sans-serif;" id="dashboard-empresa-subtitulo">Gestiona tus vacantes, revisa candidatos y mantente al tanto de las novedades del portal.</p>
                 </div>
                 <div style="font-family: sans-serif;">
                     <button class="btn rounded-4 boton-primario-grande" data-bs-toggle="modal" data-bs-target="#modalOferta">
@@ -86,7 +52,7 @@
                         <!-- Texto -->
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">VACANTES ACTIVAS</small>
-                            <h2 class=" mb-0">8</h2>
+                            <h2 class="mb-0" id="stat-vacantes-activas">0</h2>
                         </div>
                     </div>
                 </div>
@@ -104,7 +70,7 @@
                         <!-- Texto -->
                         <div class="d-flex flex-column justify-content-start">
                             <small class=" text-secondary row" style="letter-spacing:1px;">TOTAL POSTULANTES</small>
-                            <h2 class=" mb-0">456</h2>
+                            <h2 class="mb-0" id="stat-total-postulantes">0</h2>
                         </div>
                     </div>
                 </div>
@@ -122,7 +88,7 @@
                         <!-- Texto -->
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">ENTREVISTAS</small>
-                            <h2 class=" mb-0">12</h2>
+                            <h2 class="mb-0" id="stat-entrevistas">0</h2>
                         </div>
                     </div>
                 </div>
@@ -141,7 +107,7 @@
                         <!-- Texto -->
                         <div>
                             <small class=" text-secondary" style="letter-spacing:1px;">VACANTES CERRADAS</small>
-                            <h2 class=" mb-0">24</h2>
+                            <h2 class="mb-0" id="stat-vacantes-cerradas">0</h2>
                         </div>
                     </div>
                 </div>
@@ -159,13 +125,13 @@
                     <div class="mb-4 card border-0 rounded-5 overflow-hidden" style="font-family: sans-serif; background-color:#ffffff;">
 
                         <!-- Header -->
-                        <div class="text-center p-5 d-flex flex-column align-items-center" style="background-color:#f7f7fb;">
+                        <div class="text-center px-5 pt-5 d-flex flex-column align-items-center" style="background-color:#f7f7fb;">
                             <div class="position-relative d-inline-block">
 
                                 <!-- Avatar -->
-                                <div class="shadow rounded-5 d-flex justify-content-center align-items-center fw-bold"
+                                <div class="shadow rounded-5 d-flex justify-content-center align-items-center fw-bold" id="empresa-avatar"
                                     style="width:110px; height:110px; background:white; color:#554DEF; font-size:50px;">
-                                    TF
+                                    EM
                                 </div>
 
                                 <!-- Botón cámara -->
@@ -173,28 +139,30 @@
                                     <i class="bi bi-camera"></i>
                                 </button>
                             </div>
-                            <h3 class="fw-bold mt-3 mb-1">TechFlows Solutions</h3>
-                            <p class="text-secondary">Tecnologia e IA</p>
+                            <h3 class="fw-bold mt-3 mb-1" id="empresa-nombre-card">Empresa</h3>
+                            <p class="text-secondary" id="empresa-industria-card">Industria</p>
 
 
                         </div>
 
                         <!-- Body -->
                         <div class="p-4">
-                            <div class="my-3">
+                            <div class="mb-3 fuente-inter">
                                 <!-- Email -->
-                                <div class="mb-3">
-                                    <small class="fw-bold"><i class="bi bi-geo-alt" style="color: #554DEF;"></i> Buenos Aires, Argentina</small>
+                                <div class="mb-3 boton-secundario-grande">
+                                    <small class="fw-bold" id="empresa-ubicacion-card"><i class="bi bi-geo-alt" style="color: #554DEF;"></i> Ubicación</small>
                                 </div>
     
                                 <!-- Teléfono -->
-                                <div class="mb-3">
-                                    <small class="fw-bold"><i class="bi bi-envelope" style="color: #554DEF;"></i> contact@techflow.io</small>
+                                <div class="mb-3 boton-secundario-grande">
+                                    <small class="fw-bold" id="empresa-email-card"><i class="bi bi-envelope" style="color: #554DEF;"></i> correo@empresa.com</small>
                                 </div>
                                 
                                 <hr>
                                 <div class="d-flex justify-content-center">
-                                    <button class="btn text-secondary rounded-3 fw-bold" style="background-color: #ECEDF4; width: 250px; height: 50px;"><i class="bi bi-gear"></i> Editar perfil</button>
+                                    <a href="perfilDeEmpresa.html">
+                                        <button class="boton-primario-grande rounded-3 fw-bold" id="btn-editar-perfil-empresa"><i class="bi bi-gear"></i> Editar perfil</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -223,46 +191,15 @@
                         </div>
 
                         <!-- Publicación 1 -->
-                        <div class="p-4 border-top">
-                            <small class="text-secondary fw-bold">15 Feb</small>
-
-                            <h4 class=" mt-3 mb-3" style="font-family: 'Jua', sans-serif;">Nuevas leyes de teletrabajo en LATAM 2024</h4>
-
-                            <p class="text-secondary mb-4">
-                                Todo lo que necesitas saber sobre los beneficios obligatorios
-                                que deben ofrecer las empresas.
-                            </p>
-
-                            <div class="text-end">
-                                <a href="#" class="fw-bold text-decoration-none"
-                                style="color:#554DEF;">
-                                    Ver discusión <i class="bi bi-chevron-right"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Publicación 2 -->
-                        <div class="p-4 border-top">
-                            <small class="text-secondary fw-bold">12 Feb</small>
-
-                            <h4 class=" mt-3 mb-3" style="font-family: 'Jua', sans-serif;">Feria de Empleo Virtual: Registro Abierto</h4>
-
-                            <p class="text-secondary mb-4">
-                                Más de 50 empresas multinacionales estarán buscando talento
-                                este fin de mes.
-                            </p>
-
-                            <div class="text-end">
-                                <a href="#" class="fw-bold text-decoration-none"
-                                style="color:#554DEF;">
-                                    Ver discusión <i class="bi bi-chevron-right"></i>
-                                </a>
+                        <div id="lista-foro-empresa">
+                            <div class="p-4 border-top">
+                                <p class="text-secondary mb-0">El foro estará disponible próximamente.</p>
                             </div>
                         </div>
 
                         <!-- Footer -->
                         <div class="text-center py-4 ">
-                            <a href="#" class="fw-bold text-decoration-none text-secondary">Explorar más discusiones</a>
+                            <a href="foro.html" class="fw-bold text-decoration-none text-secondary">Explorar más discusiones</a>
                         </div>
                     </div>
                 </div>
@@ -277,52 +214,12 @@
                         <!-- Header -->
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="fw-bold mb-0">Mis Ofertas</h4>
-                            <a href="#" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver todas</a>
+                            <a href="gestionDeOfertas.html" class="fw-bold text-decoration-none" style="color:#554DEF;">Ver todas</a>
                         </div>
 
                         <!-- Oferta 1 -->
-                        <div class="border rounded-4 p-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h6 class="fw-bold mb-0">Senior Product Designer</h6>
-                                <span class="badge rounded-pill" style="background-color:#22C55E ;">Activa</span>
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-3">
-                                <small class="text-secondary"><i class="bi bi-clock"></i> 12 Feb 2024</small>
-                                <small class="fw-bold"><i class="bi bi-people" style="color: #554DEF;"></i> 48 postulados</small>
-                            </div>
-
-                            <button class="btn w-100 rounded-4 text-secondary fw-bold"style="background:#f3f4f6;">Gestionar Candidatos</button>
-                        </div>
-
-                        <!-- Oferta 2 -->
-                        <div class="border rounded-4 p-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h6 class="fw-bold mb-0">Frontend Developer</h6>
-                                <span class="badge rounded-pill" style="background-color: #22C55E;">Activa</span>
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-3">
-                                <small class="text-secondary"><i class="bi bi-clock"></i> 10 Feb 2024</small>
-                                <small class="fw-bold"><i class="bi bi-people" style="color: #554DEF;"></i> 124 postulados</small>
-                            </div>
-
-                            <button class="btn w-100 rounded-4 text-secondary fw-bold"style="background:#f3f4f6;">Gestionar Candidatos</button>
-                        </div>
-
-                        <!-- Oferta 3 -->
-                        <div class="border rounded-4 p-3">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h6 class="fw-bold mb-0">UX Researcher</h6>
-                                <span class="badge rounded-pill" style="background-color: #ef4444;">Cerrada</span>
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-3">
-                                <small class="text-secondary"><i class="bi bi-clock"></i> 05 Feb 2024</small>
-                                <small class="fw-bold"><i class="bi bi-people" style="color: #554DEF;"></i> 89 postulados</small>
-                            </div>
-
-                            <button class="btn w-100 rounded-4 text-secondary fw-bold"style="background:#f3f4f6;">Gestionar Candidatos</button>
+                        <div id="lista-mis-ofertas">
+                            <p class="text-secondary">Cargando ofertas...</p>
                         </div>
                     </div>
                 </div>
@@ -350,17 +247,17 @@
                             </div>
                         </div>
 
-                        <form>
+                        <form id="form-crear-oferta">
                             <!-- Título -->
                             <div class="mb-4">
                                 <label class="titulo-seccion mb-2 fuente-inter">Título del Puesto</label>
-                                <input type="text" class="form-control input-auth" placeholder="Ej. Programador Senior">
+                                <input type="text" class="form-control input-auth" id="oferta-titulo" placeholder="Ej. Programador Senior">
                             </div>
 
                             <!-- Experiencia -->
                             <div class="mb-4">
                                 <label class="titulo-seccion mb-2 fuente-inter">Experiencia requerida</label>
-                                <input type="text" class="form-control input-auth" placeholder="Ej. Programador Senior">
+                                <input type="text" class="form-control input-auth" id="oferta-experiencia" placeholder="Ej. 2 a 3 años">
                             </div>
 
                             <!-- Ubicación -->
@@ -370,7 +267,7 @@
                                 <div class="row g-3">
                                     <div class="col-md-4">
                                         <div class="opcion-radio">
-                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="remoto" checked>
+                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="remoto" value="remote" checked>
                                             <label class="form-check-label parrafos mb-0" for="remoto">
                                                 Remoto
                                             </label>
@@ -379,7 +276,7 @@
 
                                     <div class="col-md-4">
                                         <div class="opcion-radio">
-                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="presencial">
+                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="presencial" value="onsite">
                                             <label class="form-check-label parrafos mb-0" for="presencial">
                                                 Presencial
                                             </label>
@@ -388,7 +285,7 @@
 
                                     <div class="col-md-4">
                                         <div class="opcion-radio">
-                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="hibrido">
+                                            <input class="form-check-input radio-oferta" type="radio" name="ubicacion" id="hibrido" value="hybrid">
                                             <label class="form-check-label parrafos mb-0" for="hibrido">
                                                 Híbrido
                                             </label>
@@ -404,7 +301,7 @@
                                 <div class="row g-3">
                                     <div class="col-md-4">
                                         <div class="opcion-radio">
-                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="fulltime" checked>
+                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="fulltime" value="full_time" checked>
                                             <label class="form-check-label parrafos mb-0" for="fulltime">
                                                 Full time
                                             </label>
@@ -413,7 +310,7 @@
 
                                     <div class="col-md-4">
                                         <div class="opcion-radio">
-                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="midtime">
+                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="midtime" value="part_time">
                                             <label class="form-check-label parrafos mb-0" for="midtime">
                                                 Mid time
                                             </label>
@@ -422,7 +319,7 @@
 
                                     <div class="col-md-4">
                                         <div class="opcion-radio">
-                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="practicas">
+                                            <input class="form-check-input radio-oferta" type="radio" name="tipo" id="practicas" value="internship">
                                             <label class="form-check-label parrafos mb-0" for="practicas">
                                                 Prácticas
                                             </label>
@@ -435,40 +332,40 @@
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-3 mb-md-0">
                                     <label class="titulo-seccion mb-2 fuente-inter">Salario Mínimo</label>
-                                    <input type="text" class="form-control input-auth">
+                                    <input type="text" class="form-control input-auth" id="oferta-salario-min">
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="titulo-seccion mb-2 fuente-inter">Salario Máximo</label>
-                                    <input type="text" class="form-control input-auth">
+                                    <input type="text" class="form-control input-auth" id="oferta-salario-max">
                                 </div>
                             </div>
 
                             <!-- Descripción -->
                             <div class="mb-4">
                                 <label class="titulo-seccion mb-2 fuente-inter">Descripción</label>
-                                <textarea class="form-control input-auth textarea-oferta" rows="4"></textarea>
+                                <textarea class="form-control input-auth textarea-oferta" id="oferta-descripcion" rows="4"></textarea>
                             </div>
 
                             <!-- Responsabilidades -->
                             <div class="mb-4">
                                 <label class="titulo-seccion mb-2 fuente-inter">Responsabilidades</label>
-                                <textarea class="form-control input-auth textarea-oferta" rows="4"></textarea>
+                                <textarea class="form-control input-auth textarea-oferta" id="oferta-responsabilidades" rows="4"></textarea>
                             </div>
 
                             <!-- Requisitos -->
                             <div class="mb-4">
                                 <label class="titulo-seccion mb-2 fuente-inter">Requisitos</label>
-                                <textarea class="form-control input-auth textarea-oferta" rows="4"></textarea>
+                                <textarea class="form-control input-auth textarea-oferta" id="oferta-requisitos" rows="4"></textarea>
                             </div>
 
                             <!-- Estado -->
                             <div class="mb-5">
                                 <label class="titulo-seccion mb-2 fuente-inter">Estado de Publicación</label>
-                                <select class="form-select input-auth">
-                                    <option selected>Activa</option>
-                                    <option>Pausada</option>
-                                    <option>Cerrada</option>
+                                <select class="form-select input-auth" id="oferta-estado">
+                                    <option value="2" selected>Activa</option>
+                                    <option value="1">Pausada</option>
+                                    <option value="3">Cerrada</option>
                                 </select>
                             </div>
 
@@ -484,7 +381,7 @@
             </div>
         </div>
 
-
+        <p class="texto-mini mt-3 mb-0 text-center" id="mensaje-crear-oferta"></p>
         
         <!-- FOOTER -->
 
@@ -539,6 +436,7 @@
             </div>
         </footer>
         
+        <script type="module" src="./js/dashboardEmpresa.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 </html>

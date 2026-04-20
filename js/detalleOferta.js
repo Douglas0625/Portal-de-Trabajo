@@ -52,7 +52,9 @@ function buscarEmpresaDeOferta(oferta, empresas) {
 
 function llenarDetalleOferta(oferta, empresa) {
   const titulo = oferta.title || "Sin título";
-  const descripcion = oferta.description || "Sin descripción";
+  const descripcionCompleta = oferta.description || "Sin descripción";
+  const secciones = separarSeccionesDescripcion(descripcionCompleta);
+  const descripcion = secciones.descripcion;
   const modalidad = traducirModalidad(oferta.modality);
   const tipoTrabajo = traducirTipoTrabajo(oferta.job_type);
   const ubicacion = oferta.location || "No especificada";
@@ -88,8 +90,8 @@ function llenarDetalleOferta(oferta, empresa) {
 
   renderizarLogoEmpresa("detalle-logo", empresa, inicialesEmpresa);
 
-  llenarResponsabilidades(descripcion);
-  llenarRequisitos(oferta);
+  llenarResponsabilidades(secciones.responsabilidades);
+  llenarRequisitos(oferta, secciones.requisitos);
   actualizarTitlePagina(titulo, nombreEmpresa);
 }
 
@@ -204,11 +206,11 @@ function configurarBotones(oferta, empresa, aplicaciones = []) {
   }
 }
 
-function llenarResponsabilidades(descripcion) {
+function llenarResponsabilidades(textoResponsabilidades) {
   const lista = document.getElementById("detalle-responsabilidades");
   if (!lista) return;
 
-  const items = extraerLineas(descripcion);
+  const items = extraerItems(textoResponsabilidades);
 
   if (!items.length) {
     lista.innerHTML = `
@@ -232,11 +234,14 @@ function llenarResponsabilidades(descripcion) {
     .join("");
 }
 
-function llenarRequisitos(oferta) {
+function llenarRequisitos(oferta, textoRequisitos = "") {
   const lista = document.getElementById("detalle-requisitos");
   if (!lista) return;
 
   const requisitos = [];
+
+  const itemsTexto = extraerItems(textoRequisitos);
+  requisitos.push(...itemsTexto);
 
   if (oferta.experience_required_timelapse_id) {
     requisitos.push(`Experiencia requerida: ${traducirExperiencia(oferta.experience_required_timelapse_id)}.`);
@@ -257,15 +262,63 @@ function llenarRequisitos(oferta) {
   lista.innerHTML = requisitos.map((item) => `<li>${item}</li>`).join("");
 }
 
-function extraerLineas(texto) {
+function separarSeccionesDescripcion(texto) {
+  if (!texto) {
+    return {
+      descripcion: "Sin descripción",
+      responsabilidades: "",
+      requisitos: ""
+    };
+  }
+
+  const textoLimpio = texto.trim();
+
+  const indiceResponsabilidades = textoLimpio.indexOf("Responsabilidades:");
+  const indiceRequisitos = textoLimpio.indexOf("Requisitos:");
+
+  let descripcion = textoLimpio;
+  let responsabilidades = "";
+  let requisitos = "";
+
+  if (indiceResponsabilidades !== -1) {
+    descripcion = textoLimpio.slice(0, indiceResponsabilidades).trim();
+
+    if (indiceRequisitos !== -1) {
+      responsabilidades = textoLimpio
+        .slice(indiceResponsabilidades + "Responsabilidades:".length, indiceRequisitos)
+        .trim();
+
+      requisitos = textoLimpio
+        .slice(indiceRequisitos + "Requisitos:".length)
+        .trim();
+    } else {
+      responsabilidades = textoLimpio
+        .slice(indiceResponsabilidades + "Responsabilidades:".length)
+        .trim();
+    }
+  } else if (indiceRequisitos !== -1) {
+    descripcion = textoLimpio.slice(0, indiceRequisitos).trim();
+    requisitos = textoLimpio
+      .slice(indiceRequisitos + "Requisitos:".length)
+      .trim();
+  }
+
+  return {
+    descripcion: descripcion || "Sin descripción",
+    responsabilidades,
+    requisitos
+  };
+}
+
+
+
+function extraerItems(texto) {
   if (!texto) return [];
 
-  const partes = texto
-    .split(/[.\n]/)
+  return texto
+    .split(/\n|•|-/)
     .map((item) => item.trim())
-    .filter((item) => item.length > 12);
-
-  return partes.slice(0, 5);
+    .filter((item) => item.length > 3);
 }
 
 function cambiarTexto(id, valor) {

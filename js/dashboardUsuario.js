@@ -60,7 +60,7 @@ function llenarDatosBasicos(sesion) {
 
 async function cargarDashboard(sesion) {
   await cargarBloquePostulaciones(sesion);
-  await cargarBloqueForo(sesion);
+  await cargarBloqueForo();
   await cargarBloqueRecomendadas();
 }
 
@@ -104,27 +104,66 @@ async function cargarBloquePostulaciones(sesion) {
   }
 }
 
-async function cargarBloqueForo(sesion) {
+async function cargarBloqueForo() {
   try {
-    const [forumPostsApi, forumCommentsApi] = await Promise.all([
-      obtenerDatos("/forum-posts"),
-      obtenerDatos("/forum-comments")
+    const [postsApi, commentsApi] = await Promise.all([
+      obtenerDatos("/forum/posts"),
+      obtenerDatos("/forum/comments")
     ]);
 
-    const forumPosts = normalizarArray(forumPostsApi);
-    const forumComments = normalizarArray(forumCommentsApi);
+    const posts = normalizarArray(postsApi);
+    const comments = normalizarArray(commentsApi);
 
-    const misComentarios = forumComments.filter(
-      (item) =>
-        Number(item.profile_id) === Number(sesion.profile_id) ||
-        Number(item.user_id) === Number(sesion.id)
-    );
+    const contenedor = document.getElementById("lista-foro");
+    if (!contenedor) return;
 
-    cambiarTexto("stat-comentarios", String(misComentarios.length));
-    renderizarForo(forumPosts);
+    if (!posts.length) {
+      contenedor.innerHTML = `<p class="parrafos mb-0">No hay publicaciones disponibles.</p>`;
+      return;
+    }
+
+    const recientes = [...posts]
+      .sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0))
+      .slice(0, 2);
+
+    contenedor.innerHTML = recientes
+      .map((post, index) => {
+        const fecha = formatearFechaCorta(post.created_at);
+        const cantidadComentarios = comments.filter(
+          (c) => Number(c.post_id) === Number(post.id)
+        ).length;
+
+        const esUltimo = index === recientes.length - 1;
+
+        return `
+          <div class="forum-item ${esUltimo ? "border-0 pb-0" : ""}">
+            <div class="d-flex align-items-center gap-3 mb-2">
+              <span class="forum-tag">${post.category || "OFICIAL"}</span>
+              <span class="forum-date">${fecha}</span>
+            </div>
+
+            <h4 class="titulo-card" style="font-weight: 600; font-size: 16px;">
+              ${post.title || "Sin título"}
+            </h4>
+
+            <p class="parrafos mb-3">
+              ${recortarTexto(post.content || "", 120)}
+            </p>
+
+            <div class="forum-author">
+              <img src="./media/logo.png" alt="Admin" onerror="this.src='https://ui-avatars.com/api/?name=Admin&background=random'">
+              <span>Admin EmpleaLink</span>
+            </div>
+
+            <div class="mt-2 text-muted" style="font-size: 13px;">
+              💬 ${cantidadComentarios} comentario${cantidadComentarios === 1 ? "" : "s"}
+            </div>
+          </div>
+        `;
+      })
+      .join("");
   } catch (error) {
     console.error("Error al cargar foro:", error);
-    cambiarTexto("stat-comentarios", "0");
     mostrarMensajeSimple("lista-foro", "No se pudieron cargar las publicaciones.");
   }
 }
