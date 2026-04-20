@@ -1,126 +1,106 @@
-// -------------------------
-// 1. IMPORTACIONES
-// -------------------------
 import { obtenerDatos, actualizarUsuario } from "./api.js";
 import { renderizarNavbar } from "./navbar.js";
 
-// -------------------------
-// 2. NAVBAR
-// -------------------------
 renderizarNavbar();
 
-// -------------------------
-// 3. VARIABLES GLOBALES
-// -------------------------
 let REPORTES = [];
 let RAZONES = [];
 let USUARIOS = [];
 let PERFILES = [];
 let EMPRESAS = [];
 let ACCIONES = [];
+let COMENTARIOS = [];
+let POSTS = [];
 
-// -------------------------
-// 4. EVENTO INICIAL (DOM)
-// -------------------------
 document.addEventListener("DOMContentLoaded", () => {
   cargarReportes();
 
-  //input búsqueda (filtra mientras escribe)
-  document.querySelector('input[type="search"]').addEventListener("input", aplicarFiltros);
+  document.querySelector('input[type="search"]')?.addEventListener("input", aplicarFiltros);
 
-  //selects (filtros por combo box)
   document.querySelectorAll("select").forEach(select => {
     select.addEventListener("change", aplicarFiltros);
   });
 
-  //evitar que el form recargue la página
-  document.querySelector("form").addEventListener("submit", (e) => {
+  document.querySelector("form")?.addEventListener("submit", (e) => {
     e.preventDefault();
   });
 });
 
-// -------------------------
-// 5. CARGAR DATOS DEL BACKEND
-// -------------------------
 async function cargarReportes() {
   try {
-    //petición paralela a todas las APIs
-    const [reportes, razones, usuarios, perfiles, empresas, acciones] = await Promise.all([
+    const [
+      reportes,
+      razones,
+      usuarios,
+      perfiles,
+      empresas,
+      acciones,
+      comentarios,
+      posts
+    ] = await Promise.all([
       obtenerDatos("/forum/reports"),
       obtenerDatos("/report-reasons"),
       obtenerDatos("/users"),
       obtenerDatos("/profiles"),
       obtenerDatos("/company-profiles"),
-      obtenerDatos("/moderation/actions")
+      obtenerDatos("/moderation/actions"),
+      obtenerDatos("/forum/comments"),
+      obtenerDatos("/forum/posts")
     ]);
 
-     //guardar datos en variables globales
-    REPORTES = reportes;
-    RAZONES = razones;
-    USUARIOS = usuarios;
-    PERFILES = perfiles;
-    EMPRESAS = empresas;
-    ACCIONES = acciones;
+    REPORTES = normalizarArray(reportes);
+    RAZONES = normalizarArray(razones);
+    USUARIOS = normalizarArray(usuarios);
+    PERFILES = normalizarArray(perfiles);
+    EMPRESAS = normalizarArray(empresas);
+    ACCIONES = normalizarArray(acciones);
+    COMENTARIOS = normalizarArray(comentarios);
+    POSTS = normalizarArray(posts);
 
-    //pintar estadísticas
     renderStats(REPORTES, USUARIOS);
-    //aplicar filtros automáticamente
     aplicarFiltros();
-
   } catch (error) {
     console.error("Error cargando reportes:", error);
   }
 }
 
-// -------------------------
-// 6. STATS (RESUMEN SUPERIOR)
-// -------------------------
 function renderStats(reportes, usuarios) {
   const pendientes = reportes.filter(r => r.status === "pending").length;
   const revisados = reportes.filter(r => r.status !== "pending").length;
   const bloqueados = usuarios.filter(u => u.is_blocked).length;
 
-  // actualizar números en el HTML
-  document.querySelectorAll(".titulos.fuente-inter")[0].textContent = pendientes;
-  document.querySelectorAll(".titulos.fuente-inter")[1].textContent = revisados;
-  document.querySelectorAll(".titulos.fuente-inter")[2].textContent = bloqueados;
+  const stats = document.querySelectorAll(".titulos.fuente-inter");
+  if (stats[0]) stats[0].textContent = pendientes;
+  if (stats[1]) stats[1].textContent = revisados;
+  if (stats[2]) stats[2].textContent = bloqueados;
 }
 
-// -------------------------
-// 7. FILTROS (BUSQUEDA + SELECTS)
-// -------------------------
 function aplicarFiltros() {
+  const texto = document.querySelector('input[type="search"]')?.value.toLowerCase() || "";
 
-  // texto escrito en el input
-  const texto = document.querySelector('input[type="search"]').value.toLowerCase();
-
-  // valores de los combos
   const selects = document.querySelectorAll("select");
-  const filtroMotivo = selects[0].value;
-  const filtroEstado = selects[1].value;
+  const filtroMotivo = selects[0]?.value || "Todos los tipos";
+  const filtroEstado = selects[1]?.value || "Todos los tipos";
 
-  // filtrar reportes
   const filtrados = REPORTES.filter(reporte => {
+    const razon = RAZONES.find(r => Number(r.id) === Number(reporte.reason_id));
+    const objetivo = obtenerObjetivoReporte(reporte);
 
-    const razon = RAZONES.find(r => r.id === reporte.reason_id);
-    const accion = ACCIONES.find(a => a.report_id === reporte.id);
-    const userIdDenunciado = accion?.target_user_id;
-
-    const nombreDenunciado = obtenerNombreUsuario(userIdDenunciado).toLowerCase();
+    const nombreDenunciado = obtenerNombreUsuario(objetivo?.user_id).toLowerCase();
     const nombreDenunciante = obtenerNombreUsuario(reporte.reporter_user_id).toLowerCase();
+    const nombreMotivo = obtenerNombreRazon(razon).toLowerCase();
 
-    // filtro por texto
     const coincideTexto =
       nombreDenunciado.includes(texto) ||
       nombreDenunciante.includes(texto) ||
-      (razon?.reason_name || "").toLowerCase().includes(texto);
+      nombreMotivo.includes(texto) ||
+      (objetivo?.contenido || "").toLowerCase().includes(texto) ||
+      (reporte.details || "").toLowerCase().includes(texto);
 
-    // filtro por motivo
     const coincideMotivo =
       filtroMotivo === "Todos los tipos" ||
-      razon?.reason_name === filtroMotivo;
+      obtenerNombreRazon(razon) === filtroMotivo;
 
-    // filtro por estado
     const coincideEstado =
       filtroEstado === "Todos los tipos" ||
       (filtroEstado === "Pendientes" && reporte.status === "pending") ||
@@ -129,54 +109,94 @@ function aplicarFiltros() {
     return coincideTexto && coincideMotivo && coincideEstado;
   });
 
-  // renderizar solo los filtrados
   renderReportes(filtrados);
 }
 
-// -------------------------
-// 8. OBTENER NOMBRE DE USUARIO
-// -------------------------
 function obtenerNombreUsuario(userId) {
   const user = USUARIOS.find(u => Number(u.id) === Number(userId));
   if (!user) return "Usuario";
 
-  // candidato
   if (Number(user.role_id) === 2) {
     const perfil = PERFILES.find(p => Number(p.user_id) === Number(userId));
     if (perfil) {
-      return `${perfil.first_name || ""} ${perfil.last_name || ""}`.trim();
+      return `${perfil.first_name || ""} ${perfil.last_name || ""}`.trim() || user.email;
     }
   }
 
-  // empresa
   if (Number(user.role_id) === 3) {
     const empresa = EMPRESAS.find(e => Number(e.user_id) === Number(userId));
     if (empresa) {
-      return empresa.company_name;
+      return empresa.company_name || user.email;
     }
   }
 
-  return user.email;
+  if (Number(user.role_id) === 1) {
+    return "Administrador";
+  }
+
+  return user.email || "Usuario";
 }
 
-// -------------------------
-// 9. RENDER DE CARDS
-// -------------------------
+function obtenerNombreRazon(razon) {
+  return (
+    razon?.reason_name ||
+    razon?.name ||
+    razon?.reason ||
+    razon?.title ||
+    razon?.description ||
+    "Sin motivo"
+  );
+}
+
+function obtenerObjetivoReporte(reporte) {
+  if (reporte.comment_id) {
+    const comentario = COMENTARIOS.find(c => Number(c.id) === Number(reporte.comment_id));
+    if (comentario) {
+      return {
+        tipo: "comentario",
+        id: comentario.id,
+        user_id: comentario.user_id,
+        contenido: comentario.content || "",
+        created_at: comentario.created_at || null
+      };
+    }
+  }
+
+  if (reporte.post_id) {
+    const post = POSTS.find(p => Number(p.id) === Number(reporte.post_id));
+    if (post) {
+      return {
+        tipo: "post",
+        id: post.id,
+        user_id: post.user_id,
+        contenido: post.content || "",
+        created_at: post.created_at || null
+      };
+    }
+  }
+
+  return null;
+}
+
 function renderReportes(reportes) {
   const contenedor = document.getElementById("contenedor-reportes");
+  if (!contenedor) return;
+
   contenedor.innerHTML = "";
 
   reportes.forEach(reporte => {
+    const razon = RAZONES.find(r => Number(r.id) === Number(reporte.reason_id));
+    const objetivo = obtenerObjetivoReporte(reporte);
 
-    const razon = RAZONES.find(r => r.id === reporte.reason_id);
     const nombreDenunciante = obtenerNombreUsuario(reporte.reporter_user_id);
+    const nombreDenunciado = obtenerNombreUsuario(objetivo?.user_id);
 
-    const accion = ACCIONES.find(a => a.report_id === reporte.id);
-    const userIdDenunciado = accion?.target_user_id;
+    const accion = ACCIONES.find(a => Number(a.report_id) === Number(reporte.id));
 
-    const nombreDenunciado = obtenerNombreUsuario(userIdDenunciado);
+    const userIdDenunciado = objetivo?.user_id || null;
+    const contenidoReportado = objetivo?.contenido || "Contenido no encontrado";
+    const detalleDenuncia = reporte.details || "Sin detalle adicional";
 
-    // botón dinámico (activo o deshabilitado)
     const botonBloquear = userIdDenunciado
       ? `<button class="btn-bloquear btn rounded-4"
           data-user="${userIdDenunciado}"
@@ -194,14 +214,14 @@ function renderReportes(reportes) {
         <div class="row g-0 fuente-inter">
 
           <div class="col-md-3 com-seccion-l">
-            <span class="com-etiqueta">COMENTARIO</span>
+            <span class="com-etiqueta">${objetivo?.tipo === "post" ? "POST" : "COMENTARIO"}</span>
             <div class="text-muted small fw-bold mt-2 mb-4">${formatearTiempo(reporte.created_at)}</div>
 
             <div class="mb-3 d-flex gap-3 align-items-start">
               <i class="bi bi-exclamation-circle com-icono" style="color:#ef4444; background-color: rgba(239, 68, 68, 0.15);"></i>
               <div>
                 <h5 style="font-size:11px; color:gray; font-weight:700;">MOTIVO</h5>
-                <h6 style="color:#ef4444; font-weight:600;">${razon?.reason_name || "Sin motivo"}</h6>
+                <h6 style="color:#ef4444; font-weight:600;">${escapeHtml(obtenerNombreRazon(razon))}</h6>
               </div>
             </div>
 
@@ -209,7 +229,7 @@ function renderReportes(reportes) {
               <i class="d-flex bi bi-person com-icono"></i>
               <div>
                 <h5 style="font-size:11px; color:gray; font-weight:700;">DENUNCIANTE</h5>
-                <h6>${nombreDenunciante}</h6>
+                <h6>${escapeHtml(nombreDenunciante)}</h6>
               </div>
             </div>
 
@@ -217,16 +237,23 @@ function renderReportes(reportes) {
               <i class="d-flex bi bi-person-exclamation com-icono"></i>
               <div>
                 <h5 style="font-size:11px; color:gray; font-weight:700;">DENUNCIADO</h5>
-                <a href="#" style="color:#554DEF; font-weight:600;">${nombreDenunciado}</a>
+                <a href="#" style="color:#554DEF; font-weight:600;">${escapeHtml(nombreDenunciado)}</a>
               </div>
             </div>
 
-            <div>
-              <h5 style="font-size:11px; color:gray; font-weight:700;">SEVERIDAD</h5>
-              <span style="background:#f97316; color:white; font-size:12px; padding:4px 10px; border-radius:12px; font-weight:700;">
-                Alta
+            <div class="mb-4">
+              <h5 style="font-size:11px; color:gray; font-weight:700;">ESTADO</h5>
+              <span style="background:${reporte.status === "pending" ? "#f97316" : "#22c55e"}; color:white; font-size:12px; padding:4px 10px; border-radius:12px; font-weight:700;">
+                ${reporte.status === "pending" ? "Pendiente" : "Revisado"}
               </span>
             </div>
+
+            ${accion ? `
+              <div>
+                <h5 style="font-size:11px; color:gray; font-weight:700;">ÚLTIMA ACCIÓN</h5>
+                <h6>${escapeHtml(accion.action_type || "Sin acción")}</h6>
+              </div>
+            ` : ""}
           </div>
 
           <div class="col-md-9" style="background:#fff; padding:28px;">
@@ -236,19 +263,24 @@ function renderReportes(reportes) {
             </div>
 
             <div class="mb-4 com">
-              "${reporte.details || "Sin contenido"}"
+              "${escapeHtml(contenidoReportado)}"
+            </div>
+
+            <div class="mb-4">
+              <h6 class="fw-bold mb-2">Detalle del denunciante</h6>
+              <div class="text-muted">
+                ${escapeHtml(detalleDenuncia)}
+              </div>
             </div>
 
             <hr>
 
             <div class="d-flex justify-content-end gap-4 align-items-center mt-4">
-
               <a href="#" class="btn-descartar" data-id="${reporte.id}" style="color:#6b7280; font-weight:600;">
                 No bloquear / Descartar
               </a>
 
               ${botonBloquear}
-
             </div>
           </div>
         </div>
@@ -258,19 +290,12 @@ function renderReportes(reportes) {
     contenedor.innerHTML += card;
   });
 
-  // activar eventos después de renderizar
   activarEventos();
 }
 
-// -------------------------
-// 10. EVENTOS (BOTONES)
-// -------------------------
 function activarEventos() {
-
-  //bloquear usuario
   document.querySelectorAll(".btn-bloquear").forEach(btn => {
     btn.addEventListener("click", async () => {
-
       const userId = Number(btn.dataset.user);
 
       if (!userId || isNaN(userId)) {
@@ -285,7 +310,6 @@ function activarEventos() {
 
         alert("Usuario bloqueado");
         location.reload();
-
       } catch (error) {
         console.error(error);
         alert("Error al bloquear usuario");
@@ -293,7 +317,6 @@ function activarEventos() {
     });
   });
 
-  // descartar reporte
   document.querySelectorAll(".btn-descartar").forEach(btn => {
     btn.addEventListener("click", async (e) => {
       e.preventDefault();
@@ -306,7 +329,6 @@ function activarEventos() {
 
         alert("Reporte descartado");
         location.reload();
-
       } catch (error) {
         console.error(error);
         alert("Error al descartar");
@@ -315,14 +337,27 @@ function activarEventos() {
   });
 }
 
-// -------------------------
-// 11. FORMATEAR TIEMPO
-// -------------------------
 function formatearTiempo(fecha) {
+  if (!fecha) return "SIN FECHA";
+
   const diff = Math.floor((new Date() - new Date(fecha)) / 60000);
 
   if (diff < 60) return `HACE ${diff} MIN`;
   if (diff < 1440) return `HACE ${Math.floor(diff / 60)} HORAS`;
 
   return `HACE ${Math.floor(diff / 1440)} DÍAS`;
+}
+
+function normalizarArray(data) {
+  return Array.isArray(data) ? data : data?.data || [];
+}
+
+function escapeHtml(texto) {
+  if (texto == null) return "";
+  return String(texto)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }

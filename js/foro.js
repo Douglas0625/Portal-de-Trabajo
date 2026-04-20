@@ -549,7 +549,7 @@ async function enviarReporteComentario() {
     return;
   }
 
-  if (!comentarioReportadoActivo || !postReportadoActivo) {
+  if (!comentarioReportadoActivo) {
     alert("No se encontró el comentario a reportar.");
     return;
   }
@@ -566,19 +566,18 @@ async function enviarReporteComentario() {
   }
 
   try {
-    const respuesta = await postDatos("/forum/reports", {
+    const reporteCreado = await postDatos("/forum/reports", {
       reporter_user_id: sesion.id,
-      post_id: postReportadoActivo,
+      post_id: null,
       comment_id: comentarioReportadoActivo,
       reason_id: reasonId,
       details
     });
 
-    console.log("Reporte guardado:", respuesta);
+    console.log("Reporte guardado:", reporteCreado);
 
     const modalElement = document.getElementById("modalReportarComentario");
-    const closeBtn = modalElement?.querySelector(".btn-close");
-    if (closeBtn) closeBtn.focus();
+    document.activeElement?.blur();
 
     const modalInstancia = bootstrap.Modal.getInstance(modalElement);
     if (modalInstancia) modalInstancia.hide();
