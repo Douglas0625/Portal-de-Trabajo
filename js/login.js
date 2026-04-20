@@ -66,23 +66,23 @@ function activarLogin() {
   });
 }
 
-function activarRegistroCandidato() {
-  const form = document.getElementById("form-registro-candidato");
+function activarRegistroEmpresa() {
+  const form = document.getElementById("form-registro-empresa");
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const nombre = document.getElementById("registro-candidato-nombre")?.value.trim();
-    const apellido = document.getElementById("registro-candidato-apellido")?.value.trim();
-    const email = document.getElementById("registro-candidato-email")?.value.trim().toLowerCase();
-    const password = document.getElementById("registro-candidato-password")?.value.trim();
-    const confirmar = document.getElementById("registro-candidato-confirmar")?.value.trim();
-    const mensaje = document.getElementById("registro-candidato-mensaje");
+    const nombreEmpresa = document.getElementById("registro-empresa-nombre")?.value.trim();
+    const email = document.getElementById("registro-empresa-email")?.value.trim().toLowerCase();
+    const password = document.getElementById("registro-empresa-password")?.value.trim();
+    const confirmar = document.getElementById("registro-empresa-confirmar")?.value.trim();
+    const contacto = document.getElementById("registro-empresa-contacto")?.value.trim();
+    const mensaje = document.getElementById("registro-empresa-mensaje");
 
     limpiarMensaje();
 
-    if (!nombre || !apellido || !email || !password || !confirmar) {
+    if (!nombreEmpresa || !email || !password || !confirmar || !contacto) {
       mostrarMensaje("Completa todos los campos.");
       return;
     }
@@ -98,33 +98,56 @@ function activarRegistroCandidato() {
     }
 
     try {
+      // 1) Crear usuario empresa
       const usuarioCreado = await postDatos("/users", {
         email,
         password_hash: password,
         external_id: "",
         is_blocked: false,
-        role_id: 2
+        role_id: 3
       });
 
-      await postDatos("/profiles", {
+      // 2) Crear additional-info con textos válidos
+      const additionalInfoCreada = await postDatos("/additional-info", {
+        about_company: `Somos ${nombreEmpresa}, una empresa registrada en EmpleaLink.`,
+        mission: `Brindar oportunidades laborales y crecimiento profesional desde ${nombreEmpresa}.`,
+        vision: `Consolidarnos como una empresa reconocida y atractiva para el talento.`,
+        culture: `En ${nombreEmpresa} promovemos colaboración, responsabilidad e innovación.`
+      });
+
+      // 3) Crear perfil de empresa
+      await postDatos("/company-profiles", {
         user_id: usuarioCreado.id,
-        first_name: nombre,
-        last_name: apellido,
+        company_name: nombreEmpresa,
         phone: "",
         location: "",
-        external_link: "https://linkedin.com",
-        cv_url: "https://example.com/cv.pdf",
-        profile_image_url: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
-        about_me: "",
-        professional_title: ""
+        website_url: "https://example.com",
+        logo_url: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=400&q=80",
+        cover_image_url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
+        company_size_id: 1,
+        industry_id: 1,
+        additional_info_id: additionalInfoCreada.id
       });
 
-      mostrarMensaje("Cuenta creada con éxito. Ahora puedes iniciar sesión.", false);
+      mostrarMensaje("Empresa registrada con éxito. Ahora puedes iniciar sesión.", false);
       form.reset();
       activarTabLogin();
     } catch (error) {
-      console.error("Error al registrar candidato:", error);
-      mostrarMensaje("No se pudo crear la cuenta.");
+      console.error("Error al registrar empresa:", error);
+
+      const errorText = error?.message?.toLowerCase() || "";
+
+      if (errorText.includes("already exists")) {
+        mostrarMensaje("Ese correo ya está registrado.");
+        return;
+      }
+
+      if (errorText.includes("about_company")) {
+        mostrarMensaje("El backend exige información adicional de la empresa. Ya fue corregido en el envío.");
+        return;
+      }
+
+      mostrarMensaje("No se pudo registrar la empresa.");
     }
 
     function mostrarMensaje(texto, esError = true) {
@@ -142,7 +165,7 @@ function activarRegistroCandidato() {
       }
     }
   });
-}
+} 
 
 function activarRegistroEmpresa() {
   const form = document.getElementById("form-registro-empresa");

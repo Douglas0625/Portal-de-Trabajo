@@ -21,41 +21,7 @@
   </head>
   <body class="bg-gris">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-white">
-        <div class="container">
-            <div class="nav-gap d-flex align-items-center">
-                <a class="navbar-brand m-0 p-0" href="#">
-                    <img src="./media/Frame.svg" alt="EmpleaLink" width="130">
-                </a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNavAltMarkup">
-                    <div class="navbar-nav nav-link-gap">
-                        <a class="nav-link" href="#">Empleos</a>
-                        <a class="nav-link" href="#">Dashboard</a>
-                        <a class="nav-link" href="#">Recursos</a>
-                        <a class="nav-link" href="#">Foro</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="nav-profile ms-auto">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="profile-info d-none d-md-block">
-                        <p class="profile-name">Gabriela Rojas</p>
-                        <p class="profile-role">UX/UI Designer</p>
-                    </div>
-                    <img src="./media/fotoPerfilChiquita.jpg" alt="Profile" width="40" height="40" onerror="this.src='https://ui-avatars.com/api/?name=Gabriela+Rojas&background=random'">
-                </div>
-                <div class="logout-icon ms-2">
-                    <i class="bi bi-box-arrow-right"></i>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-container"></div>
 
     <!-- header -->
     <div class="container">
@@ -67,139 +33,11 @@
         </section>
         <section class="bg-gris py-4">
             <div class="container">
-                <div class="bg-white foro-card-principal">
+                <div id="forumPostsContainer"></div>
 
-                    <!-- Encabezado del post -->
-                    <div class="p-4 border-bottom">
-                        <div class="d-flex justify-content-between align-items-start mb-4">
-
-                            <div class="d-flex gap-3 align-items-start">
-                                <div class="avatar-foro">
-                                    <img src="./media/fotoPerfilChiquita.jpg" alt="Admin" class="img-fluid rounded-circle">
-                                </div>
-
-                                <div>
-                                    <div class="subtexto fuente-titulos text-dark mb-0">Admin EmpleaLink</div>
-                                    <div class="d-flex gap-2 align-items-center flex-wrap">
-                                        <span class="texto-mini text-azul fw-semibold">Administrador</span>
-                                        <span class="texto-mini">•</span>
-                                        <span class="texto-mini">Hace 2 horas</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <span class="badge-etiqueta-oficial">OFICIAL</span>
-                        </div>
-
-                        <h1 class="titulo-card fuente-inter fw-bold titulo-post-foro mb-2">
-                            Nuevas leyes de teletrabajo en LATAM 2024
-                        </h1>
-
-                        <p class="subtexto mb-0">
-                            A partir del próximo mes, entra en vigor el nuevo marco regulatorio para el trabajo remoto.
-                            Esto incluye subsidios obligatorios para internet y equipos ergonómicos.
-                            ¿Cómo creen que esto afectará a las pequeñas empresas?
-                        </p>
-                    </div>
-
-                    <!-- Acciones -->
-                    <div class="p-4 border-bottom">
-                        <div class="d-flex gap-4 flex-wrap">
-                            <div class="d-flex align-items-center gap-2 texto-etiqueta">
-                                <i class="bi bi-chat"></i>
-                                <span>14 comentarios</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Comentarios -->
-                    <div class="p-4">
-
-                        <!-- Comentario 1 -->
-                        <div class="d-flex gap-3 align-items-start mb-4">
-                            <div class="avatar-comentario">
-                                <img src="./media/fotoPerfilChiquita.jpg" alt="Usuario" class="img-fluid rounded-circle">
-                            </div>
-
-                            <div class="flex-grow-1">
-                                <div class="comentario-box">
-                                    <div class="d-flex justify-content-between align-items-start gap-3 mb-1">
-                                        <div class="titulo-seccion">Carlos Ruiz</div>
-                                        <span class="texto-mini">Hace 1 hora</span>
-                                    </div>
-
-                                    <p class="parrafos mb-0">
-                                        Es un gran avance para los derechos laborales, aunque el costo operativo subirá un poco.
-                                    </p>
-                                </div>
-
-                                <button class="boton-responder mt-2" type="button" data-bs-toggle="modal" data-bs-target="#modalResponder">
-                                    Responder
-                                </button>
-
-
-                                <!-- Respuesta admin -->
-                                <div class="d-flex gap-2 align-items-start ms-2 mt-3">
-                                    <i class="bi bi-arrow-return-right texto-mini mt-2"></i>
-
-                                    <div class="respuesta-admin-box flex-grow-1">
-                                        <div class="d-flex justify-content-between align-items-start gap-3 mb-1">
-                                            <div class="texto-mini text-azul fw-semibold">Admin EmpleaLink</div>
-                                            <span class="texto-mini">Hace 45 min</span>
-                                        </div>
-
-                                        <p class="parrafos mb-0">
-                                            Exacto Carlos, buscamos un equilibrio entre bienestar y sostenibilidad.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Comentario 2 -->
-                        <div class="d-flex gap-3 align-items-start mb-4">
-                            <div class="avatar-comentario">
-                                <img src="./media/fotoPerfilChiquita.jpg" alt="Usuario" class="img-fluid rounded-circle">
-                            </div>
-
-                            <div class="flex-grow-1">
-                                <div class="comentario-box">
-                                    <div class="d-flex justify-content-between align-items-start gap-3 mb-1">
-                                        <div class="titulo-seccion">Ana Martínez</div>
-                                        <span class="texto-mini">Hace 30 min</span>
-                                    </div>
-
-                                    <p class="parrafos mb-0">
-                                        ¿Esto aplica también para contratos por honorarios o solo dependencia?
-                                    </p>
-                                </div>
-
-                                <button class="boton-responder mt-2" type="button" data-bs-toggle="modal" data-bs-target="#modalResponder">
-                                    Responder
-                                </button>
-                            </div>
-                        </div>
-
-
-
-                        <!-- Escribir comentario -->
-                        <div class="d-flex gap-3 align-items-start mt-5">
-                            <div class="avatar-comentario">
-                                <img src="./media/fotoPerfilChiquita.jpg" alt="Usuario" class="img-fluid rounded-circle">
-                            </div>
-
-                            <div class="flex-grow-1">
-                                <div class="comentario-input-box d-flex align-items-center justify-content-between gap-3">
-                                    <input type="text" class="input-comentario parrafos" placeholder="Escribe un comentario...">
-                                    <button class="boton-enviar-comentario" type="button">
-                                        <i class="bi bi-send"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <nav class="mt-4">
+                    <ul id="postsPagination" class="pagination justify-content-center"></ul>
+                </nav>
             </div>
         </section>
 
@@ -212,9 +50,9 @@
                 <div class="modal-body p-0">
 
                     <div class="comentario-input-box d-flex align-items-end justify-content-between gap-3">
-                        <textarea class="input-comentario-modal parrafos" placeholder="Escribe un comentario..."></textarea>
+                        <textarea id="replyInput" class="input-comentario-modal parrafos" placeholder="Escribe un comentario..."></textarea>
 
-                        <button class="boton-enviar-comentario" type="button">
+                        <button id="sendReplyBtn" class="boton-enviar-comentario" type="button">
                             <i class="bi bi-send"></i>
                         </button>
                     </div>
@@ -224,7 +62,39 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalReportarComentario" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title">Reportar comentario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
 
+                <div class="modal-body pt-3">
+                    <div class="mb-3">
+                        <label for="reportReasonSelect" class="form-label">Motivo</label>
+                        <select id="reportReasonSelect" class="form-select">
+                            <option value="">Cargando motivos...</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-0">
+                        <label for="reportDescriptionInput" class="form-label">Detalle</label>
+                        <textarea
+                            id="reportDescriptionInput"
+                            class="form-control"
+                            rows="4"
+                            placeholder="Explica por qué estás reportando este comentario..."></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="sendReportBtn" class="btn btn-danger">Enviar reporte</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- footer -->
     <footer class="bg-white border-top">
@@ -277,6 +147,7 @@
             </div>
         </footer>
     
+    <script type="module" src="./js/foro.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
