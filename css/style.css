@@ -170,3 +170,45 @@ body {
 .btn-save:hover {
     background-color: #4a5ae0;
 }
+
+/* ===== PERFIL CANDIDATO ===== */
+.page-header { background-color: #ECEDF4; padding: 24px 0 32px; }
+.candidato-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+.candidato-card-header { background: #f7f7fb; padding: 28px 20px 20px; text-align: center; }
+.candidato-card-body { padding: 20px; }
+.contact-box { border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 10px 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #374151; }
+.modalidad-row { text-align: center; padding: 10px 0 14px; }
+.modalidad-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #9ca3af; letter-spacing: .05em; }
+.modalidad-value { font-size: 15px; font-weight: 700; color: #1f2937; margin-top: 2px; }
+.section-card { background: #fff; border-radius: 20px; box-shadow: 0 2px 12px rgba(0,0,0,.06); padding: 28px 32px; margin-bottom: 20px; }
+.section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.section-icon { width: 48px; height: 48px; background: rgba(85,77,239,.08); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.section-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 22px; color: #1f2937; margin: 0; }
+.info-box-row { display: flex; gap: 16px; margin-top: 18px; }
+.info-box { flex: 1; border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 12px 16px; }
+.info-box-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #9ca3af; letter-spacing: .05em; }
+.info-box-value { font-size: 15px; font-weight: 700; color: #1f2937; margin-top: 4px; }
+.exp-entry { display: flex; gap: 16px; margin-bottom: 28px; align-items: flex-start; }
+.exp-dot { width: 12px; height: 12px; background: #554DEF; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+.exp-content { flex: 1; }
+.exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
+.exp-job { font-weight: 700; font-size: 16px; color: #1f2937; margin: 0; font-family: 'Jua', sans-serif; }
+.exp-company { color: #554DEF; font-weight: 600; font-size: 14px; margin: 2px 0 6px; }
+.exp-badge { background: rgba(85,77,239,.08); color: #554DEF; font-size: 12px; font-weight: 600; border-radius: 20px; padding: 4px 12px; white-space: nowrap; }
+.exp-desc { color: #6b7280; font-size: 14px; margin: 0; }
+.edu-entry { margin-bottom: 20px; }
+.edu-degree { font-weight: 700; font-family: 'Jua', sans-serif; font-size: 16px; color: #1f2937; margin: 0 0 2px; }
+.edu-inst { color: #554DEF; font-weight: 600; font-size: 14px; margin: 0 0 2px; }
+.edu-dates { color: #9ca3af; font-size: 13px; }
+.skill-pill { background: rgba(85,77,239,.08); color: #554DEF; border-radius: 20px; padding: 5px 14px; font-size: 13px; font-weight: 500; display: inline-block; margin: 3px; }
+.grid-bottom { display: flex; gap: 20px; }
+.grid-bottom > div { flex: 1; }
+.btn-aceptar { background: #554DEF; color: #fff; border: none; border-radius: 10px; width: 100%; padding: 12px; font-weight: 600; font-size: 15px; cursor: pointer; margin-bottom: 10px; transition: background .2s; }
+.btn-aceptar:hover { background: #4338ca; }
+.btn-rechazar { background: #fff; color: #ef4444; border: 1.5px solid #ef4444; border-radius: 10px; width: 100%; padding: 12px; font-weight: 600; font-size: 15px; cursor: pointer; margin-bottom: 12px; transition: all .2s; }
+.btn-rechazar:hover { background: #fef2f2; }
+.btn-cv { background: none; border: none; color: #6b7280; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; justify-content: center; width: 100%; padding: 6px; }
+.btn-cv:hover { color: #554DEF; }
+hr.divider { border-color: #f3f4f6; margin: 16px 0; }
+.back-link { color: #554DEF; font-weight: 600; font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.back-link:hover { color: #4338ca; }

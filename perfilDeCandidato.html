@@ -1,377 +1,193 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>EmpleaLink - Perfil del Candidato</title>
-        <!-- bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <!-- Fuentes -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jua&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-        <!-- css -->
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/componentes.css">
-        <!-- iconos -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    </head>
-    <body>
-        <!-- Navbar -->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EmpleaLink - Perfil del Candidato</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
 
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <!-- Izquierda -->
-                <div class="nav-gap d-flex">
-                    <a class="navbar-brand" href="#">
-                        <img src="./media/Frame.svg" alt="Bootstrap" width="150" height="40">
-                    </a>
-                    
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-        
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav nav-link-gap">
-                            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-                            <a class="nav-link" href="#">Moderacion</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Derecha -->
-                <div class="d-flex gap-3 align-items-center">
-                    <i class="bi bi-bell"></i>
-                    <hr class="vr" style="height: 30px; margin: 0 15px;">
-                    <div class="d-flex flex-column align-items-end">
-                        <p class="mb-0 fw-bold" style="font-family: sans-serif;">TechFlow Solutions</p>
-                        <small class="text-muted" style="font-family: sans-serif;" >Empresa Premium</small>
-                    </div>
-                    <a class="nav-link d-flex align-items-center justify-content-center bg-primary bg-opacity-10 fw-bold rounded-circle" href="#" style="width: 45px; height: 45px; color: #554DEF;">
-                        TF
-                    </a>
-                    <i class="bi bi-box-arrow-right"></i>
-                </div>
-            </div>
-        </nav>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
 
-        <!-- base del titulo -->
-        <section class="pb-5" style=" background-color: #ECEDF4">
-            <div class="container d-flex flex-column align-items-start gap-3 py-4">
-                <a class="fw-bold nav-link" href="#" style="color:#554DEF"><small><i class="bi bi-arrow-left"></i> Volver a gestion de ofertas</small></a>
-            </div>
-            <div class="container d-flex pb-5 justify-content-between align-items-end gap-5">
-                <div>
-                    <h1 class="titulos">Perfil del <span class="text-azul">Candidato</span></h1>
-                    <p class="subtitulos fuente-inter">Analiza detalladamente la información profesional del postulante para vacante.</p>
-                </div>
+    <!-- Header de página -->
+    <div class="page-header">
+      <div class="container">
+        <a href="gestionDeOfertas.html" class="back-link">
+          <i class="bi bi-arrow-left"></i> Volver a Gestión de Ofertas
+        </a>
+        <h1 class="titulos mt-3">Perfil del <span class="text-azul">Candidato</span></h1>
+        <p class="subtitulos fuente-inter">Analiza detalladamente la información profesional del postulante para vacante.</p>
+      </div>
+    </div>
+
+    <!-- Cuerpo -->
+    <div class="container pb-5">
+      <div class="d-flex gap-4 align-items-start">
+
+        <!-- ── COLUMNA IZQUIERDA ── -->
+        <div style="width: 280px; flex-shrink: 0;">
+          <div class="candidato-card">
+
+            <!-- Foto + nombre + título + ubicación -->
+            <div class="candidato-card-header">
+              <img
+                id="foto-perfil"
+                src="https://ui-avatars.com/api/?name=C&background=random"
+                class="rounded-circle border border-3"
+                style="width: 90px; height: 90px; object-fit: cover;"
+                alt="Foto candidato"
+              />
+              <h4 class="fw-bold mt-3 mb-1" id="nombre-candidato" style="font-family:'Jua',sans-serif;">Cargando…</h4>
+              <p class="mb-1 fw-semibold" style="color:#554DEF; font-size:14px;" id="titulo-candidato">—</p>
+              <small class="text-secondary d-flex justify-content-center align-items-center gap-1">
+                <i class="bi bi-geo-alt" style="color:#554DEF;"></i>
+                <span id="ubicacion-candidato">—</span>
+              </small>
             </div>
 
+            <!-- Contacto + modal + botones -->
+            <div class="candidato-card-body">
+              <div class="contact-box">
+                <i class="bi bi-envelope" style="color:#554DEF;"></i>
+                <span id="email-candidato">—</span>
+              </div>
+              <div class="contact-box">
+                <i class="bi bi-telephone" style="color:#554DEF;"></i>
+                <span id="telefono-candidato">—</span>
+              </div>
 
-            <!-- CUERPO DEL PERFIL DE CANDIDATOS -->
+              <div class="modalidad-row">
+                <div class="modalidad-label">Modalidad</div>
+                <div class="modalidad-value" id="modalidades-candidato">—</div>
+              </div>
 
+              <hr class="divider" />
 
-
-            <div class="container d-flex gap-4">
-                <div class="col-4">
-                    <div class="card border-0 rounded-5 overflow-hidden shadow-sm" style="font-family: sans-serif; background-color:#ffffff;">
-
-                        <!-- Header -->
-                        <div class="text-center p-4" style="background-color:#f7f7fb;">
-                            <img src="media/fotoPerfilChiquita.jpg"
-                                class="rounded-circle border border-3"
-                                style="width:90px; height:90px; object-fit:cover;"
-                                alt="foto">
-
-                            <h3 class="fw-bold mt-3 mb-1">Ana Martínez</h3>
-
-                            <h6 class="fw-bold mb-2 fuente-inter" style="color:#554DEF;">
-                                Senior UI/UX Designer
-                            </h6>
-
-                            <small class="text-secondary d-flex justify-content-center align-items-center gap-1"><i class="bi bi-geo-alt" style="color: #554DEF;"></i>Madrid, España (Remoto)
-                            </small>
-                        </div>
-
-                        <!-- Body -->
-                        <div class="p-4">
-                            <!-- Email -->
-                            <div class="border rounded-4 px-3 py-2 mb-3 d-flex align-items-center gap-2">
-                                <i class="bi bi-envelope" style="color:#554DEF;"></i>
-                                <small>ana.martinez@email.com</small>
-                            </div>
-
-                            <!-- Teléfono -->
-                            <div class="border rounded-4 px-3 py-2 mb-4 d-flex align-items-center gap-2">
-                                <i class="bi bi-telephone" style="color:#554DEF;"></i>
-                                <small>+34 612 345 678</small>
-                            </div>
-
-                            <!-- Info extra -->
-                            <div class="row mb-4 fuente-inter text-center">
-                                <div class="col">
-                                    <small class="text-uppercase fuente-inter subtexto fw-bold">
-                                        Modalidad
-                                    </small>
-                                    <div class="fw-bold">Remoto / Híbrido</div>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <!-- Botones -->
-                            <button class="btn w-100 boton-primario-grande mb-3">
-                                <i class="bi bi-check-circle me-2"></i>
-                                Aceptar Candidato
-                            </button>
-
-                            <button class="btn w-100 boton-rojo-grande mb-3">
-                                <i class="bi bi-x-circle me-2"></i>
-                                Rechazar Candidato
-                            </button>
-
-                            <div class="text-center ">
-                                <a href="#" class="text-secondary fw-bold text-decoration-none">
-                                    <i class="bi bi-download me-2"></i>
-                                    Descargar CV (PDF)
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- SECCION DE LA DERECHA -->
-
-
-                <div class="fuente-inter">
-                    <div class="mb-4 p-4 rounded-5" style=" background-color: white; font-family: sans-serif;">
-                        <div class="py-3 d-flex justify-content-start align-items-center">
-                            <div class="d-flex justify-content-center align-items-center rounded-3" style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
-                                <i class="bi bi-star fs-3" style="color: #554DEF;"></i>
-                            </div>
-                            <h3 class="fw-bold ps-4 titulos fuente-inter">Perfil Profesional</h3>
-                        </div>
-                        <p class="pb-3">Crea nuevas entradas de noticias, consejos o recursos para la comunidad</p>
-                        <div class="pb-3">
-                            <h5 style="font-family: 'Jua', sans-serif;">Senior UI/UX Designer</h5>
-                            <p class="text-secondary">Diseñadora visual con más de 8 años de experiencia creando interfaces intuitivas y sistemas de diseño escalables. Apasionada por resolver problemas complejos a través del diseño centrado en el usuario y la colaboración interdisciplinaria.</p>
-                        </div>
-                        <div class="d-flex gap-3 align-items-center justify-content-center fuente-inter">
-                            <div class="col-md-6 border rounded-4 px-3 py-2 mb-4 d-flex align-items-center gap-2">
-                                <div>
-                                    <small class="text-secondary fw-bold">ESPECIALIZACION</small>
-                                    <p class="fw-bold">Product Design & Design Systems</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 border rounded-4 px-3 py-2 mb-4 d-flex align-items-center gap-2">
-                                <div>
-                                    <small class="text-secondary fw-bold">EXPERIENCIA</small>
-                                    <p class="fw-bold">8 años</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- TABLA EXPERIENCIA LABORAL -->
-
-
-                    <div class="card border-0 rounded-5 p-5 mb-4">
-
-                        <!-- Header -->
-                        <div class="d-flex align-items-center gap-2 mb-4">
-                            <div class="d-flex justify-content-center align-items-center rounded-3" style="width:40px; height:40px; background-color: rgba(79,70,229,0.08);">
-                                <i class="bi bi-suitcase-lg fs-3" style=" color:#554DEF;"></i>
-                            </div>
-                            <h3 class="fw-bold mb-0 titulos fuente-inter">Experiencia Laboral</h3>
-                        </div>
-
-
-                        <!-- Item 1 -->
-                        <div class="d-flex align-items-start justify-content-center mb-5">
-                            <i class="bi bi-circle-fill pe-4" style="color: #554DEF;"></i>
-                            <div>
-                                <div class="d-flex justify-content-between align-items-start">
-                                     <div>
-                                        <h5 class="fw-bold mb-1" style="font-family: 'Jua', sans-serif;">Senior Product Designer</h5>
-                                        <div class="fw-bold mb-2" style="color:#554DEF;">
-                                            Globant
-                                        </div>
-                                    </div>
-    
-                                    <span class="badge rounded-pill px-3 py-2"
-                                        style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                        2021 - Presente
-                                    </span>
-                                </div>
-    
-                                <p class="text-secondary mb-0">
-                                    Liderazgo del rediseño de la plataforma de banca online,
-                                    mejorando la tasa de conversión en un 25%.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Item 2 -->
-                        <div class="d-flex align-items-start justify-content-center mb-5">
-                            <i class="bi bi-circle-fill pe-4" style="color: #554DEF;"></i>
-                            <div>
-                                <div class="d-flex justify-content-between align-items-start">
-                                     <div>
-                                        <h5 class="fw-bold mb-1" style="font-family: 'Jua', sans-serif;">UX Designer</h5>
-                                        <div class="fw-bold mb-2" style="color:#554DEF;">TechFlow Solutions</div>
-                                    </div>
-    
-                                    <span class="badge rounded-pill px-3 py-2"
-                                        style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                        2018 - 2021
-                                    </span>
-                                </div>
-    
-                                <p class="text-secondary mb-0">Creación y mantenimiento del sistema de diseño interno utilizado por más de 10 equipos de desarrollo.</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- CARTA DE EDUCACION Y HABILIDADES -->
-
-
-                    <div class="d-flex gap-3 justify-content-center">
-                        <!-- EDUCACION -->
-    
-    
-                        <div class="card border-0 rounded-5 col-md-6 p-4">
-    
-                            <!-- Header -->
-                            <div class="d-flex align-items-center gap-2 mb-4">
-                                <i class="bi bi-mortarboard" style="color:#554DEF;"></i>
-                                <h4 class="fw-bold mb-0 subtitulos text-dark fuente-inter">Educación</h4>
-                            </div>
-    
-                            <!-- Educación 1 -->
-                            <div class="mb-4">
-                                <h5 class="fw-bold mb-2" style="font-family: 'Jua', sans-serif;">Máster en Diseño de Interacción</h5>
-                                <div class="fw-bold" style="color:#554DEF;">
-                                    IED Madrid
-                                </div>
-                                <small class="text-secondary">2017 - 2018</small>
-                            </div>
-    
-                            <!-- Educación 2 -->
-                            <div>
-                                <h5 class="fw-bold mb-2" style="font-family: 'Jua', sans-serif;">Grado en Diseño Gráfico</h5>
-                                <div class="fw-bold" style="color:#554DEF;">Universidad Complutense</div>
-                                <small class="text-secondary">2013 - 2017</small>
-                            </div>
-                        </div>
-
-
-                        <!-- HABILIDADES -->
-
-
-                        <div class="card border-0 rounded-5 shadow-sm p-4 col-md-6" >
-
-                            <!-- Header -->
-                            <div class="d-flex align-items-center gap-2 mb-4">
-                                <i class="bi bi-tools" style="color:#554DEF;"></i>
-                                <h4 class="fw-bold mb-0 subtitulos text-dark fuente-inter">Habilidades</h4>
-                            </div>
-
-                            <!-- Tags -->
-                            <div class="d-flex flex-wrap gap-2">
-                                <span class="badge rounded-pill px-3 py-2"style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                    Figma
-                                </span>
-
-                                <span class="badge rounded-pill px-3 py-2"style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                    Adobe XD
-                                </span>
-
-                                <span class="badge rounded-pill px-3 py-2"style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                    Prototipado
-                                </span>
-
-                                <span class="badge rounded-pill px-3 py-2"style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                    Sistemas de Diseño
-                                </span>
-
-                                <span class="badge rounded-pill px-3 py-2"style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                    UX Research
-                                </span>
-
-                                <span class="badge rounded-pill px-3 py-2"style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                    HTML/CSS
-                                </span>
-
-                                <span class="badge rounded-pill px-3 py-2"style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                    Metodologías Ágiles
-                                </span>
-
-                                <span class="badge rounded-pill px-3 py-2"style="background:rgba(85,77,239,0.08); color:#554DEF;">
-                                    Ingles C1
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <button class="btn-aceptar" id="btn-aceptar">
+                <i class="bi bi-check-circle me-2"></i>Aceptar Candidato
+              </button>
+              <button class="btn-rechazar" id="btn-rechazar">
+                <i class="bi bi-x-circle me-2"></i>Rechazar Candidato
+              </button>
+              <a id="btn-descargar-cv" href="#" class="btn-cv" style="display:none;">
+                <i class="bi bi-download"></i> Descargar CV (PDF)
+              </a>
             </div>
-        </section>  
-        
-        
-        <!-- FOOTER -->
+          </div>
+        </div>
 
+        <!-- ── COLUMNA DERECHA ── -->
+        <div style="flex: 1; min-width: 0;">
 
-        <footer class="bg-white border-top">
-            <div class="container py-5">
-                <div class="row mb-4 gap-4 py-2">
-
-                    <div class="col-lg-4 col-md-12">
-                        <div class="d-flex align-items-center gap-2 mb-3">
-                            <img src="./media/Frame.svg" width="130">
-                        </div>
-
-                        <p class="subtexto" style="font-size: 14px;">
-                            Transformamos el futuro laboral conectando el talento adecuado con el lugar perfecto.
-                        </p>
-
-                        <div class="d-flex gap-3 mt-4">
-                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-facebook" style="font-size: 14px; color: #1f2333;"></i></span>
-                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-twitter" style="font-size: 14px; color: #1f2333;"></i></span>
-                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-instagram" style="font-size: 14px; color: #1f2333;"></i></span>
-                            <span class="bg-gris d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 50%;"><i class="bi bi-linkedin" style="font-size: 14px; color: #1f2333;"></i></span>
-                        </div>
-                    </div>
-                    <!-- Candidatos -->
-                    <div class="col">
-                        <h6 class="titulo-seccion mb-3" style="font-size: 16px;">Para Candidatos</h6>
-                        <ul class="lista-footer" style="font-size: 14px;">
-                            <li>Explorar Empleos</li>
-                            <li>Subir mi CV</li>
-                            <li>Consejos de Carrera</li>
-                        </ul>
-                    </div>
-                    <!-- Empresas -->
-                    <div class="col">
-                        <h6 class="titulo-seccion mb-3" style="font-size: 16px;">Para Empresas</h6>
-                        <ul class="lista-footer" style="font-size: 14px;">
-                            <li>Publicar Vacante</li>
-                            <li>Crear perfil</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <hr style="border-color: #ecedf4; margin-top: 30px; margin-bottom: 20px;">
-
-                <div class="d-flex justify-content-between flex-wrap texto-mini">
-                    <span>© 2026 EmpleaLink. Todos los derechos reservados. Douglas Leon y Luis Barrera</span>
-                    <span>Hecho con ❤ para tu futuro</span>
-                </div>
-
+          <!-- Perfil Profesional -->
+          <div class="section-card">
+            <div class="section-header">
+              <div class="section-icon"><i class="bi bi-star" style="color:#554DEF; font-size:22px;"></i></div>
+              <h3 class="section-title">Perfil Profesional</h3>
             </div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    </body>
+            <h5 id="titulo-profesional-card" style="font-family:'Jua',sans-serif; color:#1f2937; margin-bottom:8px;">—</h5>
+            <p id="resumen-profesional" style="color:#374151; font-size:15px; margin-bottom:0;">—</p>
+            <div class="info-box-row">
+              <div class="info-box">
+                <div class="info-box-label">Especialización</div>
+                <div class="info-box-value" id="especializacion-candidato">—</div>
+              </div>
+              <div class="info-box">
+                <div class="info-box-label">Experiencia Total</div>
+                <div class="info-box-value" id="experiencia-candidato">—</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experiencia Laboral -->
+          <div class="section-card">
+            <div class="section-header">
+              <div class="section-icon"><i class="bi bi-briefcase" style="color:#554DEF; font-size:22px;"></i></div>
+              <h3 class="section-title">Experiencia Laboral</h3>
+            </div>
+            <div id="experiencia-laboral-container">
+              <p class="text-secondary">Cargando…</p>
+            </div>
+          </div>
+
+          <!-- Educación + Habilidades -->
+          <div class="grid-bottom">
+            <div class="section-card mb-0">
+              <div class="section-header">
+                <div class="section-icon"><i class="bi bi-mortarboard" style="color:#554DEF; font-size:22px;"></i></div>
+                <h3 class="section-title">Educación</h3>
+              </div>
+              <div id="educacion-container">
+                <p class="text-secondary">Cargando…</p>
+              </div>
+            </div>
+
+            <div class="section-card mb-0">
+              <div class="section-header">
+                <div class="section-icon"><i class="bi bi-tools" style="color:#554DEF; font-size:22px;"></i></div>
+                <h3 class="section-title">Habilidades</h3>
+              </div>
+              <div id="habilidades-container" class="d-flex flex-wrap">
+                <p class="text-secondary">Cargando…</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /columna derecha -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-top">
+      <div class="container py-5">
+        <div class="row mb-4 gap-4 py-2">
+          <div class="col-lg-4 col-md-12">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <img src="./media/Frame.svg" width="130" alt="EmpleaLink" />
+            </div>
+            <p class="subtexto" style="font-size: 14px;">
+              Transformamos el futuro laboral conectando el talento adecuado con el lugar perfecto.
+            </p>
+            <div class="d-flex gap-3 mt-4">
+              <span class="bg-gris d-flex align-items-center justify-content-center" style="width:32px;height:32px;border-radius:50%;"><i class="bi bi-facebook" style="font-size:14px;color:#1f2333;"></i></span>
+              <span class="bg-gris d-flex align-items-center justify-content-center" style="width:32px;height:32px;border-radius:50%;"><i class="bi bi-twitter" style="font-size:14px;color:#1f2333;"></i></span>
+              <span class="bg-gris d-flex align-items-center justify-content-center" style="width:32px;height:32px;border-radius:50%;"><i class="bi bi-instagram" style="font-size:14px;color:#1f2333;"></i></span>
+              <span class="bg-gris d-flex align-items-center justify-content-center" style="width:32px;height:32px;border-radius:50%;"><i class="bi bi-linkedin" style="font-size:14px;color:#1f2333;"></i></span>
+            </div>
+          </div>
+          <div class="col">
+            <h6 class="titulo-seccion mb-3" style="font-size:16px;">Para Candidatos</h6>
+            <ul class="lista-footer" style="font-size:14px;">
+              <li>Explorar Empleos</li>
+              <li>Subir mi CV</li>
+              <li>Consejos de Carrera</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h6 class="titulo-seccion mb-3" style="font-size:16px;">Para Empresas</h6>
+            <ul class="lista-footer" style="font-size:14px;">
+              <li>Publicar Vacante</li>
+              <li>Crear perfil</li>
+            </ul>
+          </div>
+        </div>
+        <hr style="border-color:#ecedf4; margin-top:30px; margin-bottom:20px;" />
+        <div class="d-flex justify-content-between flex-wrap texto-mini">
+          <span>© 2026 EmpleaLink. Todos los derechos reservados. Douglas Leon y Luis Barrera</span>
+          <span>Hecho con ❤ para tu futuro</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="module" src="./js/perfilDeCandidato.js"></script>
+  </body>
 </html>
