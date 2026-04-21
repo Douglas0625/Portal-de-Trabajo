@@ -97,8 +97,8 @@ async function cargarPerfil() {
       ) || null;
     }
 
-    renderHeader(profileActual, userActual, alertaActual);
-    renderPerfilProfesional(profileActual, experienciasFiltradas, skillsFiltradas, skillsCatalogo);
+    renderHeader(profileActual, userActual);
+    renderPerfilProfesional(profileActual, experienciasFiltradas, alertaActual);
     renderExperiencia(experienciasFiltradas);
     renderEducacion(educacionFiltrada, degreesCatalogo);
     renderHabilidades(skillsFiltradas, skillsCatalogo);
@@ -109,7 +109,7 @@ async function cargarPerfil() {
   }
 }
 
-function renderHeader(profile, user, alerta) {
+function renderHeader(profile, user) {
   const nombre = `${profile.first_name || ""} ${profile.last_name || ""}`.trim() || "Candidato";
 
   cambiarTexto("nombre-candidato", nombre);
@@ -162,15 +162,17 @@ function configurarBotonCv(cvUrl) {
   }
 }
 
-function renderPerfilProfesional(profile, experiencias, profileSkills, skillsCatalogo) {
+function renderPerfilProfesional(profile, experiencias, alertaActual) {
   const contenedor = document.getElementById("perfil-profesional-container");
   if (!contenedor) return;
 
   const años = calcularExperiencia(experiencias);
-  const especializacion = construirEspecializacion(profileSkills, skillsCatalogo, profile);
+  const modalidadPreferida = construirModalidad(alertaActual);
 
   const html = `
-    <div class="mb-4 p-4 rounded-5 d-flex flex-column justify-content-between w-100" style="background-color: white; font-family: sans-serif; min-height: 485px;">
+    <div class="mb-4 p-4 rounded-5 d-flex flex-column justify-content-between w-100"
+         style="background-color: white; font-family: sans-serif; min-height: 485px;">
+      
       <div class="py-3 d-flex align-items-center">
         <div class="d-flex justify-content-center align-items-center rounded-3"
              style="width:60px; height:60px; background-color: rgba(79,70,229,0.08);">
@@ -191,16 +193,16 @@ function renderPerfilProfesional(profile, experiencias, profileSkills, skillsCat
       <div class="d-flex gap-3 align-items-center justify-content-center fuente-inter flex-wrap">
         <div class="col-md-6 border rounded-4 px-3 py-2 d-flex align-items-center gap-2">
           <div>
-            <small class="text-secondary fw-bold">ESPECIALIZACIÓN</small>
+            <small class="text-secondary fw-bold">MODALIDAD PREFERIDA</small>
             <p class="fw-bold mb-0">
-              ${escapeHtml(especializacion)}
+              ${escapeHtml(modalidadPreferida)}
             </p>
           </div>
         </div>
 
         <div class="col-md-6 border rounded-4 px-3 py-2 d-flex align-items-center gap-2">
           <div>
-            <small class="text-secondary fw-bold">EXPERIENCIA</small>
+            <small class="text-secondary fw-bold">EXPERIENCIA TOTAL</small>
             <p class="fw-bold mb-0">
               ${años} año${años === 1 ? "" : "s"}
             </p>
@@ -213,17 +215,18 @@ function renderPerfilProfesional(profile, experiencias, profileSkills, skillsCat
   contenedor.innerHTML = html;
 }
 
-function construirEspecializacion(profileSkills, skillsCatalogo, profile) {
-  const nombres = profileSkills
-    .map((ps) => skillsCatalogo.find((s) => Number(s.id) === Number(ps.skill_id))?.skill_name)
-    .filter(Boolean)
-    .slice(0, 3);
+function construirModalidad(alerta) {
+  if (!alerta) return "No definida";
 
-  if (nombres.length) {
-    return nombres.join(" / ");
-  }
+  const modalidades = [];
 
-  return profile.professional_title || "No especificada";
+  if (alerta.remote) modalidades.push("Remoto");
+  if (alerta.onsite) modalidades.push("Presencial");
+  if (alerta.hybrid) modalidades.push("Híbrido");
+
+  if (!modalidades.length) return "No definida";
+
+  return modalidades.join(" / ");
 }
 
 function calcularExperiencia(exps) {
@@ -381,7 +384,6 @@ function configurarBotones() {
     btnEntrevistar.addEventListener("click", () => actualizarEstadoCandidato("interview", false));
   }
 
-  // si no hay application asociada, deshabilitar botones
   const hayAplicacion = !!applicationActual;
 
   [btnAceptar, btnRechazar, btnEntrevistar].forEach((btn) => {
