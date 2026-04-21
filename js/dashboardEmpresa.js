@@ -240,6 +240,7 @@ async function cargarBloqueForoEmpresa() {
   }
 }
 
+
 function activarBotones() {
   const btnEditarPerfil = document.getElementById("btn-editar-perfil-empresa");
 
@@ -248,6 +249,90 @@ function activarBotones() {
       window.location.href = "perfilDeEmpresa.html";
     });
   }
+}
+
+async function generarNotificacionesPorNuevaVacante(jobPost) {
+  try {
+    const [alertasApi, perfilesApi, notificacionesApi] = await Promise.all([
+      obtenerDatos("/job-alerts"),
+      obtenerDatos("/profiles"),
+      obtenerDatos("/notifications")
+    ]);
+
+    const alertas = normalizarArray(alertasApi);
+    const perfiles = normalizarArray(perfilesApi);
+    const notificacionesExistentes = normalizarArray(notificacionesApi);
+
+    const textoVacante = `${jobPost.title || ""} ${jobPost.description || ""}`.toLowerCase();
+    const modalidadVacante = String(jobPost.modality || "").toLowerCase();
+
+    for (const alerta of alertas) {
+      if (!alerta.is_active) continue;
+
+      const perfil = perfiles.find(
+        (p) => Number(p.id) === Number(alerta.profile_id)
+      );
+
+      if (!perfil?.user_id) continue;
+
+      const keywords = String(alerta.keywords || "")
+        .split(",")
+        .map((k) => k.trim().toLowerCase())
+        .filter(Boolean);
+
+      const coincideKeyword =
+        keywords.length === 0 ||
+        keywords.some((keyword) => textoVacante.includes(keyword));
+
+      const coincideModalidad =
+        (modalidadVacante === "remote" && alerta.remote) ||
+        (modalidadVacante === "onsite" && alerta.onsite) ||
+        (modalidadVacante === "hybrid" && alerta.hybrid);
+
+      if (!coincideKeyword || !coincideModalidad) continue;
+
+      // evitar duplicados para la misma vacante y usuario
+      const yaExiste = notificacionesExistentes.some((n) =>
+        Number(n.user_id) === Number(perfil.user_id) &&
+        String(n.title || "").toLowerCase().includes((jobPost.title || "").toLowerCase())
+      );
+
+      if (yaExiste) continue;
+
+      await postDatos("/notifications", {
+        user_id: perfil.user_id,
+        title: "Nueva vacante que coincide contigo",
+        message: `Se publicó la vacante "${jobPost.title}" que coincide con tu alerta de empleo.`,
+        is_read: false
+      });
+    }
+  } catch (error) {
+    console.error("Error generando notificaciones por nueva vacante:", error);
+  }
+}
+
+function construirPayloadOferta({
+  titulo,
+  experiencia,
+  modalidad,
+  tipo,
+  salarioMin,
+  salarioMax,
+  descripcionCompleta,
+  estado
+}) {
+  return {
+    company_profile_id: empresaActual.id,
+    title: titulo,
+    description: descripcionCompleta,
+    location: empresaActual.location || "No especificada",
+    modality: modalidad,
+    job_type: tipo,
+    experience_required_timelapse_id: mapearExperiencia(experiencia),
+    min_salary: Number(salarioMin),
+    max_salary: Number(salarioMax),
+    status_id: Number(estado)
+  };
 }
 
 function activarFormularioOferta() {
@@ -288,18 +373,26 @@ function activarFormularioOferta() {
     ].filter(Boolean).join("\n\n");
 
     try {
-      await postDatos("/job-posts", {
-        company_profile_id: empresaActual.id,
-        title: titulo,
-        description: descripcionCompleta,
-        location: empresaActual.location || "No especificada",
-        modality: modalidad,
-        job_type: tipo,
-        experience_required_timelapse_id: mapearExperiencia(experiencia),
-        min_salary: Number(salarioMin),
-        max_salary: Number(salarioMax),
-        status_id: Number(estado)
+      const payloadOferta = construirPayloadOferta({
+        titulo,
+        experiencia,
+        modalidad,
+        tipo,
+        salarioMin,
+        salarioMax,
+        descripcionCompleta,
+        estado
       });
+
+      const nuevaOferta = await postDatos("/job-posts", payloadOferta);
+
+      // generar notificaciones solo si la oferta quedó publicada
+      if (Number(payloadOferta.status_id) === 2) {
+        await generarNotificacionesPorNuevaVacante({
+          ...payloadOferta,
+          id: nuevaOferta?.id || null
+        });
+      }
 
       mostrarMensaje("Oferta creada con éxito.", false);
       form.reset();
