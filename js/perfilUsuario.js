@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   sesion = obtenerSesion();
   cacheDom();
-  
+
   if (modo === "ver" && dom.btnVolver) {
     dom.btnVolver.style.display = "none";
   }
@@ -349,11 +349,15 @@ async function cargarStats() {
       (item) => String(item.application_status || "").toLowerCase() === "interview"
     ).length;
     const totalGuardados = savedJobsGlobales.length;
+    const rechazos = applicationsGlobales.filter(
+      (item) => String(item.application_status || "").toLowerCase() === "rejected"
+    ).length;
+
 
     setText(dom.statPostulaciones, totalPostulaciones);
     setText(dom.statEntrevistas, totalEntrevistas);
     setText(dom.statGuardados, totalGuardados);
-    setText(dom.statVistas, "0");
+    setText(dom.statVistas, rechazos);
   } catch (error) {
     console.warn("No se pudieron cargar las estadísticas:", error);
     setText(dom.statPostulaciones, "0");

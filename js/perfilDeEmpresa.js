@@ -352,19 +352,19 @@ async function cargarStatsEmpresa() {
       const estado = String(item.status_id || "").trim();
       return estado === "1" || estado.toLowerCase() === "active";
     }).length;
-
+    const vacantesCerradas = totalVacantes - vacantesActivas;
     const totalPostulantes = postulaciones.length;
 
     setText(dom.statVacantesTotales, totalVacantes);
     setText(dom.statVacantesActivas, vacantesActivas);
     setText(dom.statPostulantes, totalPostulantes);
-    setText(dom.statCrecimiento, "—");
+    setText(dom.statCrecimiento, vacantesCerradas);
   } catch (error) {
     console.warn("No se pudieron cargar stats empresa:", error);
     setText(dom.statVacantesTotales, "0");
     setText(dom.statVacantesActivas, "0");
     setText(dom.statPostulantes, "0");
-    setText(dom.statCrecimiento, "—");
+    setText(dom.statCrecimiento, "0");
   }
 }
 
