@@ -1,15 +1,27 @@
 import { renderizarNavbar } from "./navbar.js";
 import { obtenerDatos, postDatos } from "./api.js";
 
+const params = new URLSearchParams(window.location.search);
+const idUrl = params.get("id");
+const modo = params.get("modo"); // "ver" o null
+
 document.addEventListener("DOMContentLoaded", async () => {
   renderizarNavbar();
 
   sesion = obtenerSesion();
   cacheDom();
+  
+  if (modo === "ver" && dom.btnVolver) {
+    dom.btnVolver.style.display = "none";
+  }
   activarEventosBase();
 
   await cargarCatalogos();
   await cargarPerfilUsuario();
+
+  if (modo === "ver") {
+    bloquearEdicion();
+  }
 });
 
 const API_BASE = "https://portal-empleo-api-production.up.railway.app";
@@ -186,7 +198,8 @@ async function cargarPerfilUsuario() {
     return;
   }
 
-  if (sesion.role_name !== "candidate") {
+  // Si viene en modo "ver", NO bloqueamos por rol
+  if (modo !== "ver" && sesion.role_name !== "candidate") {
     alert("Esta página es solo para candidatos.");
     window.location.href = "index.html";
     return;
@@ -229,8 +242,10 @@ async function cargarUserYProfile() {
   const usuarios = normalizarArray(usersApi);
   const perfiles = normalizarArray(profilesApi);
 
-  userActual = usuarios.find((u) => Number(u.id) === Number(sesion.id)) || null;
-  profileActual = perfiles.find((p) => Number(p.user_id) === Number(sesion.id)) || null;
+  const userIdFinal = idUrl ? Number(idUrl) : Number(sesion.id);
+
+  userActual = usuarios.find((u) => Number(u.id) === userIdFinal) || null;
+  profileActual = perfiles.find((p) => Number(p.user_id) === userIdFinal) || null;
 }
 
 async function cargarExperiencias() {
@@ -963,6 +978,29 @@ function actualizarSesionUsuario() {
   sesion.email = userActual?.email || sesion.email;
 
   localStorage.setItem("usuarioLoggeado", JSON.stringify(sesion));
+}
+
+function bloquearEdicion() {
+  // Desactivar TODOS los inputs
+  document.querySelectorAll("input, textarea, select").forEach(el => {
+    el.disabled = true;
+  });
+
+  // Ocultar botones de guardar
+  if (dom.btnGuardar) dom.btnGuardar.style.display = "none";
+  if (dom.btnCancelar) dom.btnCancelar.style.display = "none";
+
+  // Ocultar botones de agregar (experiencia, educación, skills)
+  document.querySelectorAll("button").forEach(btn => {
+    if (btn.textContent.toLowerCase().includes("agregar")) {
+      btn.style.display = "none";
+    }
+  });
+
+  // Opcional: cambiar título
+  if (dom.subtitulo) {
+    dom.subtitulo.textContent = "Vista de perfil (solo lectura)";
+  }
 }
 
 /* =========================

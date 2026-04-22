@@ -242,8 +242,8 @@ function activarBotones() {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
 
-      localStorage.setItem("empresaSeleccionada", id);
-      window.location.href = "perfilDeCandidato.html";
+      // localStorage.setItem("empresaSeleccionada", id);
+      window.location.href = `perfilDeEmpresa.html?id=${id}&mode=public`;
     });
   });
 }

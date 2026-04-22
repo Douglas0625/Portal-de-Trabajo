@@ -182,7 +182,7 @@ function crearCardUsuario(usuario) {
       <hr class="my-4">
 
       <div class="d-flex gap-3">
-        <button class="btn flex-fill rounded-4 py-3 fw-bold btn-ver" data-id="${usuario.id}" style="background:#ececff; color:#554DEF; border:1px solid #c7c7ff;">
+        <button class="btn flex-fill rounded-4 py-3 fw-bold btn-ver" data-id="${usuario.user_id}" style="background:#ececff; color:#554DEF; border:1px solid #c7c7ff;">
           <i class="bi bi-eye me-2"></i>Ver Perfil
         </button>
 
@@ -289,7 +289,7 @@ function activarBotones() {
             localStorage.setItem("usuarioSeleccionado", id);
 
             // Redirigir
-            window.location.href = "perfilDeCandidato.html";
+            window.location.href = `perfilUsuario.html?id=${id}&modo=ver`;
         });
     });
 }
