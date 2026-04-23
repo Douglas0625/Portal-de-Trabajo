@@ -1,9 +1,3 @@
-```markdown
-![Status](https://img.shields.io/badge/status-active-success)
-![Frontend](https://img.shields.io/badge/frontend-JavaScript-blue)
-![Backend](https://img.shields.io/badge/backend-Node.js-green)
-![Database](https://img.shields.io/badge/database-PostgreSQL-blue)
-
 # 💼 EmpleaLink – Portal de Empleo
 
 Plataforma web desarrollada para conectar empresas con candidatos, permitiendo la gestión de ofertas laborales, postulaciones, perfiles profesionales y un sistema de interacción mediante foro y notificaciones.
