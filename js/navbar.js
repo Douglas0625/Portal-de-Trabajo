@@ -44,7 +44,7 @@ function navbarPublica() {
             <div class="navbar-nav nav-link-gap">
               <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
               <a class="nav-link" href="ofertas.html">Empleos</a>
-              <a class="nav-link" href="recursos_y_valoraciones.html">Recursos</a>
+              <a class="nav-link" href="recursos_y_valoracione.html">Recursos</a>
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@ function navbarCandidato() {
           <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNavAltMarkup">
             <div class="navbar-nav nav-link-gap">
               <a class="nav-link" href="ofertas.html">Empleos</a>
-              <a class="nav-link" href="recursos_y_valoraciones.html">Recursos</a>
+              <a class="nav-link" href="recursos_y_valoracione.html">Recursos</a>
               <a class="nav-link" href="foro.html">Foro</a>
             </div>
           </div>
